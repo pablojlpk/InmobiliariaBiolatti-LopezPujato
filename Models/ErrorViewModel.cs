@@ -1,4 +1,4 @@
-namespace InmobiliariaLopezPujato.Models;
+namespace InmobiliariaBiolatti_LopezPujato.Models;
 
 public class ErrorViewModel
 {

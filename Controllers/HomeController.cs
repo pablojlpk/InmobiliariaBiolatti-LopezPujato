@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using InmobiliariaLopezPujato.Models;
+using InmobiliariaBiolatti_LopezPujato.Models;
 
-namespace InmobiliariaLopezPujato.Controllers;
+namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
 public class HomeController : Controller
 {
@@ -19,15 +19,6 @@ public class HomeController : Controller
     }
 
     public IActionResult Privacy()
-    {
-        return View();
-    }
-    public IActionResult Propietario()
-    {
-        return View();
-    }
-
-public IActionResult Inquilino()
     {
         return View();
     }

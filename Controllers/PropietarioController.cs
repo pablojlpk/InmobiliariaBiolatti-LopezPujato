@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using InmobiliariaLopezPujato.Models;
+using InmobiliariaBiolatti_LopezPujato.Models;
 
-namespace InmobiliariaLopezPujato.Controllers;
+namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
 public class PropietarioController : Controller
 {
@@ -29,4 +29,6 @@ public class PropietarioController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    
 }

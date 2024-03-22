@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Propietario";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>En esta sección se listarán los propietarios.</p>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+
+            <div id="datos" calss="col-md-4">
+                <label>nombre: </label>
+                <input id="nombre">
+                <br>
+                <label>Apellido: </label>
+                <input id="apellido">
+                <br>
+                <label>Telefono: </label>
+                <input id="telefono">
+                <br>
+                <label>Dni: </label>
+                <input id="dni">
+                <br>
+                <label>Email: </label>
+                <input id="email">
+                <br>
+                <label>Dirección: </label>
+                <input id="direccion">
+                <br>
+
+        </form>
+    </div>
+</div>
+
+    
+<button id="alta"> Alta </button>
+<button id="baja"> Baja </button>
+<button id="modifica"> Modificacion </button>
+
+<script>
+    const modifica = document.getElementById("modifica");
+    //modifica.addEventListener('click',Ejecutar());
+    modifica.addEventListener('click', function () {
+        console.log("ejecutar");
+    });
+
+    function Ejecutar() {
+        console.log("ejecutar");
+
+    }
+
+</script>
