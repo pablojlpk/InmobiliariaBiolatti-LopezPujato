@@ -14,25 +14,25 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>Teléfono</th>
                     <th>DNI</th>
                     <th>Email</th>
-                    <th>Dirección</th>
                     <th>Acciones</th>
                 </tr>
-                <td>
+                
                     @foreach (var item in Model)
                     {
                         <tr>
-                            
                             <td>@item.nombre</td>
                             <td>@item.apellido</td>
                             <td>@item.dni</td>
-                            <td>@item.clave</td>
-                            
+                            <td>@item.mail</td>
+                            <td><i class="fa-solid fa-pen-to-square"></i> <a asp-action="Editar">Editar</a> |
+                                <i class="fa-solid fa-trash"></i> <a asp-action="Eliminar">Eliminar</a>
+                            </td>
                         </tr>
+
                     }
-                </td>
+                
                 <br>
 
             </thead>
@@ -42,5 +42,3 @@
 </div>
 
 <a asp-action="Create" class="btn btn-success">Crear nuevo</a>
-<i class="fa-solid fa-pen-to-square"></i> <a asp-action="Editar">Editar</a> |
-<i class="fa-solid fa-trash"></i> <a asp-action="Eliminar">Eliminar</a>
