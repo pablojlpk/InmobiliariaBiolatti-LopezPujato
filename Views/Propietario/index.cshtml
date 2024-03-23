@@ -1,11 +1,11 @@
+@model IEnumerable<Propietario>
 @{
     ViewData["Title"] = "Propietario";
 }
 <h1>@ViewData["Title"]</h1>
-<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
-<script src="https://kit.fontawesome.com/708362d465.js" crossorigin="anonymous"></script>
 
-<p>En esta sección se listarán los propietarios.</p>
+<p>LISTA PROPIETARIOS.</p>
+
 
 <div class="row">
     <div class="col-md-8">
@@ -20,8 +20,23 @@
                     <th>Dirección</th>
                     <th>Acciones</th>
                 </tr>
+                <td>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            
+                            <td>@item.nombre</td>
+                            <td>@item.apellido</td>
+                            <td>@item.dni</td>
+                            <td>@item.clave</td>
+                            
+                        </tr>
+                    }
+                </td>
+                <br>
+
             </thead>
-            
+
         </table>
     </div>
 </div>
@@ -29,7 +44,3 @@
 <a asp-action="Create" class="btn btn-success">Crear nuevo</a>
 <i class="fa-solid fa-pen-to-square"></i> <a asp-action="Editar">Editar</a> |
 <i class="fa-solid fa-trash"></i> <a asp-action="Eliminar">Eliminar</a>
-
-
-
-

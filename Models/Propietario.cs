@@ -1,15 +1,17 @@
-namespace InmobiliariaBiolatti_LopezPujato.Controllers
+namespace InmobiliariaBiolatti_LopezPujato.Models;
+
+public class Propietario
 {
-    public class Propietario
-    {
-        public int idPropietario { get; set; }
-        public string? Nombre { get; set; }
-        public string? Apellido { get; set; }
-        public string? Dni { get; set; }
-        public string? mail { get; set; }
-        public string? Clave { get; set; }
-    }
-    
+    public int? idpropietario { get; set; }
+    public string? nombre { get; set; }
+    public string? apellido { get; set; }
+    public int? dni { get; set; }
+    public string? mail { get; set; }
+    public string? clave { get; set; }
 }
+
+
+
+
 
 

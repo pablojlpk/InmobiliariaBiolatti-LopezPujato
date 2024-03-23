@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using InmobiliariaBiolatti_LopezPujato.Models;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -15,13 +16,12 @@ public class PropietarioController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        RepositorioPropietario rp = new RepositorioPropietario();
+        var lista = rp.GetPropietarios();
+        
+        return View(lista);
     }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
     
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
