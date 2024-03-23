@@ -9,7 +9,7 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
         public string? mail { get; set; }
         public string? Clave { get; set; }
     }
-    
+
 }
 
 
