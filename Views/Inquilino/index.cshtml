@@ -1,56 +1,33 @@
 @{
-    ViewData["Title"] = "Inquilino";
+    ViewData["Title"] = "Inquilinos";
 }
 <h1>@ViewData["Title"]</h1>
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+<script src="https://kit.fontawesome.com/708362d465.js" crossorigin="anonymous"></script>
 
-<p>Prueba Inquilino</p>
 
-<p>En esta sección se listarán los propietarios.</p>
+<p>En esta sección se listarán los Inquilinos.</p>
 
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-
-            <div id="datos" calss="col-md-4">
-                <label>nombre: </label>
-                <input id="nombre">
-                <br>
-                <label>Apellido: </label>
-                <input id="apellido">
-                <br>
-                <label>Telefono: </label>
-                <input id="telefono">
-                <br>
-                <label>Dni: </label>
-                <input id="dni">
-                <br>
-                <label>Email: </label>
-                <input id="email">
-                <br>
-                <label>Dirección: </label>
-                <input id="direccion">
-                <br>
-
-        </form>
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Teléfono</th>
+                    <th>DNI</th>
+                    <th>Email</th>
+                    <th>Dirección</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            
+        </table>
     </div>
 </div>
 
     
-<button id="alta"> Alta </button>
-<button id="baja"> Baja </button>
-<button id="modifica"> Modificacion </button>
-<a asp-action="Create">Crear nuevo</a>
-
-<script>
-    const modifica = document.getElementById("modifica");
-    //modifica.addEventListener('click',Ejecutar());
-    modifica.addEventListener('click', function () {
-        console.log("ejecutar");
-    });
-
-    function Ejecutar() {
-        console.log("ejecutar");
-
-    }
-
-</script>
+<a asp-action="Create" class="btn btn-success">Crear nuevo</a>
+<i class="fa-solid fa-pen-to-square"></i> <a asp-action="Editar">Editar</a> |
+<i class="fa-solid fa-trash"></i> <a asp-action="Eliminar">Eliminar</a>
