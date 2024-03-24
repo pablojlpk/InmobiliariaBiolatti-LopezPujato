@@ -46,5 +46,6 @@ public class RepositorioPropietario
         }
         return propietarios;
     }
+
        
 }

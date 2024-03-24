@@ -21,6 +21,15 @@ public class PropietarioController : Controller
         
         return View(lista);
     }
+    public IActionResult Editar()
+    {                       
+        return View();
+    }
+    public IActionResult Agregar()
+    {                       
+        return View();
+    }
+
 
     
     
