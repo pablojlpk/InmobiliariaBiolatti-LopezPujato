@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using InmobiliariaBiolatti_LopezPujato.Models;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
+using ZstdSharp.Unsafe;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -18,26 +19,34 @@ public class PropietarioController : Controller
     {
         RepositorioPropietario rp = new RepositorioPropietario();
         var lista = rp.GetPropietarios();
-        
+
         return View(lista);
     }
     public IActionResult Editar()
-    {                       
+    {
         return View();
     }
     public IActionResult Agregar()
-    {                       
+    {
+    
         return View();
     }
+    public IActionResult create(Propietario p) {
+        
+        RepositorioPropietario rp = new RepositorioPropietario();
+        rp.AltaPropietario(p);
+        return RedirectToAction(nameof(Index));
+    }
+
+  
 
 
-    
-    
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    
+
 }
