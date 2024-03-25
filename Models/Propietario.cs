@@ -8,6 +8,7 @@ public class Propietario
     public int? dni { get; set; }
     public string? mail { get; set; }
     public string? clave { get; set; }
+    public bool? borrado { get; set; }
 }
 
 

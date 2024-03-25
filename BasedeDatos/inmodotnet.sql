@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-03-2024 a las 22:04:31
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 25-03-2024 a las 12:38:18
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,42 +24,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `inquilino`
---
-
-CREATE TABLE `inquilino` (
-  `idinquilino` int(11) NOT NULL,
-  `nombre` text NOT NULL,
-  `apellido` text NOT NULL,
-  `mail` text NOT NULL,
-  `clave` text NOT NULL,
-  `dni` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `propietario`
 --
 
 CREATE TABLE `propietario` (
   `idpropietario` int(11) NOT NULL,
-  `nombre` text NOT NULL,
-  `apellido` text NOT NULL,
-  `dni` int(8) DEFAULT NULL,
-  `mail` text NOT NULL,
-  `clave` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `nombre` varchar(30) NOT NULL,
+  `apellido` varchar(30) NOT NULL,
+  `dni` int(8) NOT NULL,
+  `mail` varchar(30) NOT NULL,
+  `clave` text NOT NULL,
+  `borrado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `propietario`
+--
+
+INSERT INTO `propietario` (`idpropietario`, `nombre`, `apellido`, `dni`, `mail`, `clave`, `borrado`) VALUES
+(1, 'Pablo Javier', 'Lopez Pujato', 11121121, 'pablojlpk@pablol.com', '2134', 0),
+(2, 'ANA', 'BIOLATTI', 123, 'analuz@gmail.com', '1234', 0);
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `inquilino`
---
-ALTER TABLE `inquilino`
-  ADD PRIMARY KEY (`idinquilino`);
 
 --
 -- Indices de la tabla `propietario`
@@ -72,16 +60,10 @@ ALTER TABLE `propietario`
 --
 
 --
--- AUTO_INCREMENT de la tabla `inquilino`
---
-ALTER TABLE `inquilino`
-  MODIFY `idinquilino` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `propietario`
 --
 ALTER TABLE `propietario`
-  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
