@@ -29,6 +29,7 @@ public class PropietarioController : Controller
     
         return View();
     }
+
     public IActionResult create(Propietario p) {
         
         RepositorioPropietario rp = new RepositorioPropietario();
@@ -39,8 +40,8 @@ public class PropietarioController : Controller
     public IActionResult Editar(int id)
     {
         RepositorioPropietario rp = new RepositorioPropietario();
-        rp.GetPropietario(1);
-        return View();
+        var persona=rp.GetPropietario(id);
+        return View(persona);
     }
     
 

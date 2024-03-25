@@ -65,10 +65,10 @@ public class RepositorioPropietario
         return p;
     }
 
-    public Propietario GetPropietario(int idpropietario)
+    public Propietario? GetPropietario(int idpropietario)
     {
         
-        Propietario propietario = new Propietario();
+        Propietario? propietario = null;
         using (var connection = new MySqlConnection(ConnectionString))
         {
             var sql = @$"SELECT {nameof(Propietario.idpropietario)}, {nameof(Propietario.nombre)}, {nameof(Propietario.apellido)}, {nameof(Propietario.dni)}, {nameof(Propietario.mail)}, {nameof(Propietario.clave)}
@@ -93,7 +93,7 @@ public class RepositorioPropietario
                     };
                 }
                 
-                connection.Close();
+                //connection.Close();
                 
                 
 
