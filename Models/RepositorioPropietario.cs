@@ -21,7 +21,7 @@ public class RepositorioPropietario
 
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = $"SELECT {nameof(Propietario.idpropietario)}, {nameof(Propietario.nombre)}, {nameof(Propietario.apellido)}, {nameof(Propietario.dni)}, {nameof(Propietario.mail)}, {nameof(Propietario.clave)} FROM propietario where borrado=0";
+            var sql = $"SELECT {nameof(Propietario.idpropietario)}, {nameof(Propietario.nombre)}, {nameof(Propietario.apellido)}, {nameof(Propietario.dni)}, {nameof(Propietario.mail)}, {nameof(Propietario.clave)} FROM propietario where borrado=0 ORDER by apellido ASC";
 
             using (var command = new MySqlCommand(sql, connection))
             {

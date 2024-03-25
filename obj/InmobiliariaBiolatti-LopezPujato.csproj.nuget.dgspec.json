@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sistema\\Documents\\Github\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj": {}
+    "C:\\Users\\pablo\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sistema\\Documents\\Github\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj": {
+    "C:\\Users\\pablo\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sistema\\Documents\\Github\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
+        "projectUniqueName": "C:\\Users\\pablo\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
         "projectName": "InmobiliariaBiolatti-LopezPujato",
-        "projectPath": "C:\\Users\\sistema\\Documents\\Github\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
-        "packagesPath": "C:\\Users\\sistema\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sistema\\Documents\\Github\\InmobiliariaBiolatti-LopezPujato\\obj\\",
+        "projectPath": "C:\\Users\\pablo\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
+        "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pablo\\Desktop\\InmobiliariaBiolatti-LopezPujato\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sistema\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
