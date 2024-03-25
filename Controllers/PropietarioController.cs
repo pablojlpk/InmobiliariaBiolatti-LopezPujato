@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using InmobiliariaBiolatti_LopezPujato.Models;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using ZstdSharp.Unsafe;
+using System.Reflection.Metadata.Ecma335;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -22,10 +23,7 @@ public class PropietarioController : Controller
 
         return View(lista);
     }
-    public IActionResult Editar()
-    {
-        return View();
-    }
+ 
     public IActionResult Agregar()
     {
     
@@ -38,7 +36,13 @@ public class PropietarioController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-  
+    public IActionResult Editar(int id)
+    {
+        RepositorioPropietario rp = new RepositorioPropietario();
+        rp.GetPropietario(1);
+        return View();
+    }
+    
 
 
 
