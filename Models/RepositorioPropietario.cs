@@ -14,7 +14,7 @@ public class RepositorioPropietario
 
     }
 
-    public IList<Propietario> GetPropietarios()
+    public IList<Propietario> GetPropietarios()// funciona ok
     {
         var propietarios = new List<Propietario>();
 
@@ -48,7 +48,7 @@ public class RepositorioPropietario
         return propietarios;
     }
 
-    public Propietario AltaPropietario(Propietario p)
+    public Propietario AltaPropietario(Propietario p) // funciona ok
     {
         using (var connection = new MySqlConnection(ConnectionString))
         {
@@ -65,7 +65,7 @@ public class RepositorioPropietario
         return p;
     }
 
-    public Propietario? GetPropietario(int idpropietario)
+    public Propietario? GetPropietario(int idpropietario) //funciona ok
     {
 
         Propietario? propietario = null;
@@ -107,7 +107,7 @@ public class RepositorioPropietario
     }
 
 
-    public int Modifica(Propietario p)
+    public int Modifica(Propietario p) //funciona ok
     {
         int res = -1;
         using (var connection = new MySqlConnection(ConnectionString))
@@ -135,7 +135,7 @@ public class RepositorioPropietario
         return res;
     }
 
-    public int baja(int idpropietario)
+    public int Baja(int idpropietario)//funciona ok
     {
         int res = -1;
         using (var connection = new MySqlConnection(ConnectionString))

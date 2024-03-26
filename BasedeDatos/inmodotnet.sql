@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-03-2024 a las 14:56:23
+-- Tiempo de generación: 26-03-2024 a las 16:20:42
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -59,19 +59,21 @@ CREATE TABLE `propietario` (
 
 INSERT INTO `propietario` (`idpropietario`, `nombre`, `apellido`, `dni`, `mail`, `clave`, `borrado`) VALUES
 (1, 'Pablo Javier', 'Lopez Pujato', 11121121, 'pablojlpk@pablol.com', '2134', 0),
-(4, 'juan gomez', 'asdf', 1232, 'dsdsdf@sddfad.com', '1233', 0),
+(4, 'juan ', 'gomez', 12325874, 'pp@pp.com', '1233', 0),
 (6, 'JUAN ANDRES', 'LUCERO', 1231231, 'lllucero@yahoo.com', '', 0),
-(11, 'juan gomez', 'asdf', 12328741, 'dsdsdf@sddfad.com', '1233', 0),
+(11, 'Ignacio', 'Torres', 12328741, 'dsdsdf@sddfad.com', '1233', 0),
 (12, 'ANA', 'BIOLATTI', 123963254, 'analuz@gmail.com', '1234', 0),
-(14, 'Juan', '12', 12, '12', '12', 0),
+(14, 'Juan', 'Gonzalez', 12456789, 'ggonzale@hotmail.com', '23456789', 0),
 (15, 'Juan', 'Gonzalez', 54789123, 'rrgonzalez@gmail.com', '251', 0),
-(16, 'Pedro', 'Albornoz', 12328741, 'dsdsdf@sddfad.com', '1233', 0),
-(17, 'Marcelo Cesar', 'Lot', 11232131, '123123@1232-com', '1233', 0),
+(16, 'Pedro', 'Albornoz', 12328741, 'dsdsdf@sddfad.com', '1233', 1),
+(17, 'Marcelo Cesar', 'Lot', 11232131, '123123@1232-com', '1233', 1),
 (18, 'Rolando René', 'Guiñazu', 1232131231, '123123@1232-com', '1233', 0),
-(19, 'ana', 'BIOLATTI', 123963254, 'analuz@gmail.com', '1234', 0),
+(19, 'Ana', 'BIOLATTIs', 122163254, 'analuz@gmail.com', '1234', 0),
 (20, 'ANA2', 'BIOLATTI', 123963254, 'analuz@gmail.com', '1234', 0),
-(21, 'marcelo cesar', 'Lot', 1232131231, '123123@1232-com', '1233', 0),
-(22, 'marcelo cesar', 'Lot', 1232131231, '123123@1232-com', '1233', 0);
+(21, 'marcelo cesar', 'Lot', 1232131231, '123123@1232-com', '1233', 1),
+(22, 'marcelo cesar', 'Lotufo', 1232131231, '123123@1232-com', '1233', 0),
+(23, 'Lorena', 'Crizado', 12432980, 'crizadol@gmail.com', '12111qw', 0),
+(24, '231', '452', 423, '432', '4234', 1);
 
 --
 -- Índices para tablas volcadas
@@ -103,7 +105,7 @@ ALTER TABLE `inquilino`
 -- AUTO_INCREMENT de la tabla `propietario`
 --
 ALTER TABLE `propietario`
-  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

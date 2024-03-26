@@ -61,7 +61,7 @@ public class PropietarioController : Controller
     }
     public IActionResult Baja(int id){
         RepositorioPropietario rp = new RepositorioPropietario();
-        rp.baja(id);
+        rp.Baja(id);
         return RedirectToAction(nameof(Index));
     }
 
