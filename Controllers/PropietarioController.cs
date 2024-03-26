@@ -46,10 +46,10 @@ public class PropietarioController : Controller
     }
 
 
-    public IActionResult ModPropietario(Propietario propietario)
+    public IActionResult ModPropietario(Propietario p)
     {
         RepositorioPropietario rp = new RepositorioPropietario();
-        var res=rp.Modifica(propietario);
+        var res=rp.Modifica(p);
         return RedirectToAction(nameof(Index));
         
     }

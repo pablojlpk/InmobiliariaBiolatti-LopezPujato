@@ -134,31 +134,7 @@ public class RepositorioPropietario
         return res;
     }
 
-    public Propietario? ModPropietariomodificado(int id)
-    {
-        Propietario? propietario = null;
-        propietario.idpropietario = id;
-        using (var connection = new MySqlConnection(ConnectionString))
-        {
-            string sql = @$"UPDATE propietario 
-					SET {nameof(Propietario.nombre)} = @{nameof(propietario.nombre)}
-					WHERE {nameof(Propietario.idpropietario)} = @{nameof(propietario.idpropietario)};";
-
-            using (var command = new MySqlCommand(sql, connection))
-            {
-                command.Parameters.AddWithValue($"@{nameof(Propietario.idpropietario)}", propietario.idpropietario);
-                command.Parameters.AddWithValue($"@{nameof(Propietario.nombre)}", propietario.nombre);
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
-            }
-
-            return propietario;
-        }
-    }
-
-
-
+  
     ///final
     ///
 }

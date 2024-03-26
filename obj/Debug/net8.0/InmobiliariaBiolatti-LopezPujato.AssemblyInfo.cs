@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InmobiliariaBiolatti-LopezPujato")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac4ad17f73dd96161f0662c25c100b7b82934e6e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb7caa1eb94edb871a857153ec671d3aeca7379c")]
 [assembly: System.Reflection.AssemblyProductAttribute("InmobiliariaBiolatti-LopezPujato")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InmobiliariaBiolatti-LopezPujato")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
