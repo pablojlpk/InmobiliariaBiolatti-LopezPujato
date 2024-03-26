@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-03-2024 a las 16:20:42
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 27-03-2024 a las 00:50:28
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `inmuebles`
+--
+
+CREATE TABLE `inmuebles` (
+  `idinmieble` int(11) NOT NULL,
+  `direccion` varchar(100) NOT NULL,
+  `ambientes` int(2) NOT NULL,
+  `superficie` int(4) NOT NULL,
+  `latitud` decimal(7,0) NOT NULL,
+  `longitud` decimal(7,0) NOT NULL,
+  `idpropietario` int(11) NOT NULL,
+  `nompropietario` varchar(100) NOT NULL,
+  `borrado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `inmuebles`
+--
+
+INSERT INTO `inmuebles` (`idinmieble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `nompropietario`, `borrado`) VALUES
+(1, 'virgen del carmen', 2, 200, '1235', '0', 0, '', 0),
+(2, 'virgen del carmen', 2, 200, '1235', '0', 0, '', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `inquilino`
 --
 
@@ -35,7 +61,7 @@ CREATE TABLE `inquilino` (
   `clave` varchar(30) NOT NULL,
   `dni` int(8) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -51,7 +77,7 @@ CREATE TABLE `propietario` (
   `mail` varchar(30) NOT NULL,
   `clave` text NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `propietario`
@@ -80,6 +106,12 @@ INSERT INTO `propietario` (`idpropietario`, `nombre`, `apellido`, `dni`, `mail`,
 --
 
 --
+-- Indices de la tabla `inmuebles`
+--
+ALTER TABLE `inmuebles`
+  ADD PRIMARY KEY (`idinmieble`);
+
+--
 -- Indices de la tabla `inquilino`
 --
 ALTER TABLE `inquilino`
@@ -94,6 +126,12 @@ ALTER TABLE `propietario`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `inmuebles`
+--
+ALTER TABLE `inmuebles`
+  MODIFY `idinmieble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `inquilino`
