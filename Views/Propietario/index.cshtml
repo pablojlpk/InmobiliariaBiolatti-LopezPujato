@@ -27,7 +27,7 @@
                             <td>@item.dni</td>
                             <td>@item.mail</td>
                             <td><a asp-action="Editar" asp-route-id="@item.idpropietario"  class="btn btn-warning">Editar</a>
-                            <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@item.idpropietario">Eliminar</a>
+                            <a asp-action="Baja" asp-route-id="@item.idpropietario" class="btn btn-danger">Eliminar </a>
                             
                             </td>
                         </tr>

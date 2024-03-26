@@ -135,7 +135,27 @@ public class RepositorioPropietario
         return res;
     }
 
-  
+    public int baja(int idpropietario)
+    {
+        int res = -1;
+        using (var connection = new MySqlConnection(ConnectionString))
+        {
+            var sql = @$"UPDATE propietario
+            SET borrado = true
+            WHERE {nameof(Propietario.idpropietario)} =@{nameof(Propietario.idpropietario)}";
+
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue($"@{nameof(Propietario.idpropietario)}", idpropietario);
+
+                connection.Open();
+                res = command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+        return res;
+    }
+
     ///final
     ///
 }

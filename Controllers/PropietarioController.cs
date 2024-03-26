@@ -51,7 +51,6 @@ public class PropietarioController : Controller
         RepositorioPropietario rp = new RepositorioPropietario();
         var res=rp.Modifica(p);
         return RedirectToAction(nameof(Index));
-        
     }
 
 
@@ -59,6 +58,11 @@ public class PropietarioController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+    public IActionResult Baja(int id){
+        RepositorioPropietario rp = new RepositorioPropietario();
+        rp.baja(id);
+        return RedirectToAction(nameof(Index));
     }
 
 
