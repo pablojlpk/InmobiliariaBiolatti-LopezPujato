@@ -23,15 +23,15 @@ public class PropietarioController : Controller
 
         return View(lista);
     }
- 
+
     public IActionResult Agregar()
     {
-    
+
         return View();
     }
 
-    public IActionResult create(Propietario p) {
-        
+    public IActionResult create(Propietario p)
+    {
         RepositorioPropietario rp = new RepositorioPropietario();
         rp.AltaPropietario(p);
         return RedirectToAction(nameof(Index));
@@ -40,11 +40,19 @@ public class PropietarioController : Controller
     public IActionResult Editar(int id)
     {
         RepositorioPropietario rp = new RepositorioPropietario();
-        var persona=rp.GetPropietario(id);
-        return View(persona);
-    }
-    
+        var propietario = rp.GetPropietario(id);
 
+        return View(propietario);
+    }
+
+
+    public IActionResult ModPropietario(int nro)
+    {
+        RepositorioPropietario rp = new RepositorioPropietario();
+        rp.ModPropietario(nro);
+        return RedirectToAction(nameof(Index));
+        
+    }
 
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

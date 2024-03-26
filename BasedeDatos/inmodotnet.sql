@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2024 a las 12:38:18
+-- Tiempo de generación: 26-03-2024 a las 14:56:23
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `inmodotnet`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inquilino`
+--
+
+CREATE TABLE `inquilino` (
+  `idinquilino` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `apellido` varchar(30) NOT NULL,
+  `mail` varchar(30) NOT NULL,
+  `clave` varchar(30) NOT NULL,
+  `dni` int(8) NOT NULL,
+  `borrado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -43,11 +59,29 @@ CREATE TABLE `propietario` (
 
 INSERT INTO `propietario` (`idpropietario`, `nombre`, `apellido`, `dni`, `mail`, `clave`, `borrado`) VALUES
 (1, 'Pablo Javier', 'Lopez Pujato', 11121121, 'pablojlpk@pablol.com', '2134', 0),
-(2, 'ANA', 'BIOLATTI', 123, 'analuz@gmail.com', '1234', 0);
+(4, 'juan gomez', 'asdf', 1232, 'dsdsdf@sddfad.com', '1233', 0),
+(6, 'JUAN ANDRES', 'LUCERO', 1231231, 'lllucero@yahoo.com', '', 0),
+(11, 'juan gomez', 'asdf', 12328741, 'dsdsdf@sddfad.com', '1233', 0),
+(12, 'ANA', 'BIOLATTI', 123963254, 'analuz@gmail.com', '1234', 0),
+(14, 'Juan', '12', 12, '12', '12', 0),
+(15, 'Juan', 'Gonzalez', 54789123, 'rrgonzalez@gmail.com', '251', 0),
+(16, 'Pedro', 'Albornoz', 12328741, 'dsdsdf@sddfad.com', '1233', 0),
+(17, 'Marcelo Cesar', 'Lot', 11232131, '123123@1232-com', '1233', 0),
+(18, 'Rolando René', 'Guiñazu', 1232131231, '123123@1232-com', '1233', 0),
+(19, 'ana', 'BIOLATTI', 123963254, 'analuz@gmail.com', '1234', 0),
+(20, 'ANA2', 'BIOLATTI', 123963254, 'analuz@gmail.com', '1234', 0),
+(21, 'marcelo cesar', 'Lot', 1232131231, '123123@1232-com', '1233', 0),
+(22, 'marcelo cesar', 'Lot', 1232131231, '123123@1232-com', '1233', 0);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `inquilino`
+--
+ALTER TABLE `inquilino`
+  ADD PRIMARY KEY (`idinquilino`);
 
 --
 -- Indices de la tabla `propietario`
@@ -60,10 +94,16 @@ ALTER TABLE `propietario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `inquilino`
+--
+ALTER TABLE `inquilino`
+  MODIFY `idinquilino` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `propietario`
 --
 ALTER TABLE `propietario`
-  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,19 +1,26 @@
 @model InmobiliariaBiolatti_LopezPujato.Models.Propietario;
 @{
 	ViewData["Title"] = "Editar Propietario";
+int? idpropietario = Model == null? 0 : Model.idpropietario;
 }
+
+
+
 <h1>@ViewData["Title"]</h1>
 
 <p>EDITANDO DATOS ....</p>
 
 <div class="row">
 
-	<div class="col-md-4">
-		<form asp-action="Create" enctype="multipart/form-data">
+
+
+    
+<div class="col-md-4">
+		<form asp-action="ModPropietario" method="post" >
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<div class="form-group">
-				<label asp-for="nombre" class="control-label" ></label>
-				<input asp-for="nombre" class="form-control" value="@Model.nombre" />
+				<label asp-for="nombre" class="control-label"></label>
+				<input asp-for="nombre" class="form-control" />
 				<span asp-validation-for="nombre" class="text-danger"></span>
 			</div>
 			<div class="form-group">
@@ -26,7 +33,7 @@
 				<input asp-for="mail" class="form-control" />
 				<span asp-validation-for="mail" class="text-danger"></span>
 			</div>
-			<div class="form-group">
+            <div class="form-group">
 				<label asp-for="dni" class="control-label"></label>
 				<input asp-for="dni" class="form-control" />
 				<span asp-validation-for="dni" class="number"></span>
@@ -36,13 +43,17 @@
 				<input asp-for="clave" class="form-control" />
 				<span asp-validation-for="clave" class="text-danger"></span>
 			</div>
-
+			
 			<div class="form-group">
 				<input type="submit" value="GUARDAR" class="btn btn-primary" />
-				<a asp-action="index" class="btn btn-primary">VOLVER</a>
+				<a asp-action="index" class="btn btn-primary">volver</a>
 				
-			</div>
 
+
+			</div>
+			
 		</form>
 
-	</div>
+</div>
+
+

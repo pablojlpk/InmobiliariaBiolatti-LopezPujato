@@ -67,15 +67,15 @@ public class RepositorioPropietario
 
     public Propietario? GetPropietario(int idpropietario)
     {
-        
+
         Propietario? propietario = null;
         using (var connection = new MySqlConnection(ConnectionString))
         {
             var sql = @$"SELECT {nameof(Propietario.idpropietario)}, {nameof(Propietario.nombre)}, {nameof(Propietario.apellido)}, {nameof(Propietario.dni)}, {nameof(Propietario.mail)}, {nameof(Propietario.clave)}
             FROM propietario
-            WHERE borrado=false and {nameof(Propietario.idpropietario)} = @{nameof(Propietario.idpropietario)}" ;            
-         
-             using (var command = new MySqlCommand(sql, connection))
+            WHERE borrado=false and {nameof(Propietario.idpropietario)} = @{nameof(Propietario.idpropietario)}";
+
+            using (var command = new MySqlCommand(sql, connection))
             {
                 command.Parameters.AddWithValue($"@{nameof(Propietario.idpropietario)}", idpropietario);
                 connection.Open();
@@ -92,19 +92,47 @@ public class RepositorioPropietario
                         clave = reader.GetString(nameof(Propietario.clave))
                     };
                 }
-                
+
                 //connection.Close();
-                
-                
+
+
 
             }
-            
+
 
 
             return propietario;
         }
 
     }
+
+
+
+
+    public Propietario? ModPropietario(int id)
+    {
+        Propietario? propietario = null;
+        propietario.idpropietario=id;
+        using (var connection = new MySqlConnection(ConnectionString))
+        {
+         string sql = @$"UPDATE propietario 
+					SET {nameof(Propietario.nombre)} = @{nameof(propietario.nombre)}
+					WHERE {nameof(Propietario.idpropietario)} = @{nameof(propietario.idpropietario)};";
+         
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue($"@{nameof(Propietario.idpropietario)}",propietario.idpropietario);
+                command.Parameters.AddWithValue($"@{nameof(Propietario.nombre)}", propietario.nombre);
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+
+            return propietario;
+        }
+    }
+
+
 
     ///final
     ///
