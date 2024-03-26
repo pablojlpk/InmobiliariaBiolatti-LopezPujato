@@ -108,20 +108,45 @@ public class RepositorioPropietario
 
 
 
-
-    public Propietario? ModPropietario(int id)
+    public int Modifica(Propietario p)
     {
-        Propietario? propietario = null;
-        propietario.idpropietario=id;
+        int res = -1;
         using (var connection = new MySqlConnection(ConnectionString))
         {
-         string sql = @$"UPDATE propietario 
-					SET {nameof(Propietario.nombre)} = @{nameof(propietario.nombre)}
-					WHERE {nameof(Propietario.idpropietario)} = @{nameof(propietario.idpropietario)};";
-         
+            var sql = @$"UPDATE propietario
+            SET {nameof(Propietario.nombre)} =@{nameof(p.nombre)}, {nameof(Propietario.apellido)} =@{nameof(p.apellido)}, {nameof(Propietario.dni)} =@{nameof(p.dni)}, {nameof(Propietario.mail)} =@{nameof(p.mail)}, {nameof(Propietario.clave)} =@{nameof(p.clave)}
+            WHERE {nameof(Propietario.idpropietario)} =@{nameof(p.idpropietario)}";
+
             using (var command = new MySqlCommand(sql, connection))
             {
-                command.Parameters.AddWithValue($"@{nameof(Propietario.idpropietario)}",propietario.idpropietario);
+                command.Parameters.AddWithValue($"@{nameof(Propietario.idpropietario)}", p.idpropietario);
+                command.Parameters.AddWithValue($"@{nameof(Propietario.nombre)}", p.nombre);
+                command.Parameters.AddWithValue($"@{nameof(Propietario.apellido)}", p.apellido);
+                command.Parameters.AddWithValue($"@{nameof(Propietario.dni)}", p.dni);
+                command.Parameters.AddWithValue($"@{nameof(Propietario.mail)}", p.mail);
+                command.Parameters.AddWithValue($"@{nameof(Propietario.clave)}", p.clave);
+
+                connection.Open();
+                res = command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+        return res;
+    }
+
+    public Propietario? ModPropietariomodificado(int id)
+    {
+        Propietario? propietario = null;
+        propietario.idpropietario = id;
+        using (var connection = new MySqlConnection(ConnectionString))
+        {
+            string sql = @$"UPDATE propietario 
+					SET {nameof(Propietario.nombre)} = @{nameof(propietario.nombre)}
+					WHERE {nameof(Propietario.idpropietario)} = @{nameof(propietario.idpropietario)};";
+
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue($"@{nameof(Propietario.idpropietario)}", propietario.idpropietario);
                 command.Parameters.AddWithValue($"@{nameof(Propietario.nombre)}", propietario.nombre);
                 connection.Open();
                 command.ExecuteNonQuery();
