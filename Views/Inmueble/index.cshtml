@@ -1,0 +1,14 @@
+@model IEnumerable<Inmueble>
+@{
+    ViewData["Title"] = "Inmuebles";
+}
+
+<h1>@ViewData["Title"]</h1>
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+<script src="https://kit.fontawesome.com/708362d465.js" crossorigin="anonymous"></script>
+
+<p>En esta sección se listarán todos los Inmuebles.</p>
+
+
+
+<a asp-action="agregar" class="btn btn-success">Crear nuevo</a>

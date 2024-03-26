@@ -1,0 +1,39 @@
+
+@model InmobiliariaBiolatti_LopezPujato.Models.Inmueble;
+@{
+    ViewData["Title"] = "Inmueble";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Alta de un Inmueble</p>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Alta">
+
+            <div id="datos" calss="col-md-4">
+                <label>Direccion: </label>
+                <input id="direccion">
+                <br>
+                <label>Ambientes: </label>
+                <input id="Aambientes">
+                <br>
+                <label>Superficie: </label>
+                <input id="superficie">
+                <br>
+                <label>latitud: </label>
+                <input id="latitud">
+                <br>
+                <label>Longitud: </label>
+                <input id="longitud">
+                <br>
+                <label>Codigo Propietario: </label>
+                <input id="idPropietario">
+                <br>
+			<div class="form-group">
+				<input type="submit" value="GUARDAR" class="btn btn-primary" />
+				<a asp-action="index" class="btn btn-primary">volver</a>
+			</div>
+        </form>
+    </div>
+</div>
