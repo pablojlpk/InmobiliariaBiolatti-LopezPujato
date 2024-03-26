@@ -107,15 +107,16 @@ public class RepositorioPropietario
     }
 
 
-
     public int Modifica(Propietario p)
     {
         int res = -1;
         using (var connection = new MySqlConnection(ConnectionString))
         {
             var sql = @$"UPDATE propietario
-            SET {nameof(Propietario.nombre)} =@{nameof(p.nombre)}, {nameof(Propietario.apellido)} =@{nameof(p.apellido)}, {nameof(Propietario.dni)} =@{nameof(p.dni)}, {nameof(Propietario.mail)} =@{nameof(p.mail)}, {nameof(Propietario.clave)} =@{nameof(p.clave)}
-            WHERE {nameof(Propietario.idpropietario)} =@{nameof(p.idpropietario)}";
+            SET {nameof(Propietario.nombre)} =@{nameof(Propietario.nombre)}, {nameof(Propietario.apellido)} =@{nameof(Propietario.apellido)},
+             {nameof(Propietario.dni)} =@{nameof(Propietario.dni)}, {nameof(Propietario.mail)} =@{nameof(Propietario.mail)}, 
+             {nameof(Propietario.clave)} =@{nameof(Propietario.clave)}
+            WHERE {nameof(Propietario.idpropietario)} =@{nameof(Propietario.idpropietario)}";
 
             using (var command = new MySqlCommand(sql, connection))
             {

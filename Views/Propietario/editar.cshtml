@@ -19,6 +19,11 @@ int? idpropietario = Model == null? 0 : Model.idpropietario;
 		<form asp-action="ModPropietario">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<div class="form-group">
+				<label class="control-label">Codigo</label>
+				<input asp-for="idpropietario" class="form-control" value="@idpropietario" readonly />
+				<span asp-validation-for="nombre" class="text-danger"></span>
+			</div>
+			<div class="form-group">
 				<label asp-for="nombre" class="control-label"></label>
 				<input asp-for="nombre" class="form-control" />
 				<span asp-validation-for="nombre" class="text-danger"></span>
