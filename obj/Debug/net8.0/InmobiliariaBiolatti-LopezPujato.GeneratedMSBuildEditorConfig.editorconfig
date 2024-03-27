@@ -42,10 +42,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlsaW5vXGVkaXRhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sistema/Documents/Github/InmobiliariaBiolatti-LopezPujato/Views/Inquilino/eliminar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlsaW5vXGVsaW1pbmFyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/sistema/Documents/Github/InmobiliariaBiolatti-LopezPujato/Views/Inquilino/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlsaW5vXGluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -56,10 +52,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/sistema/Documents/Github/InmobiliariaBiolatti-LopezPujato/Views/Propietario/editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cZWRpdGFyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/sistema/Documents/Github/InmobiliariaBiolatti-LopezPujato/Views/Propietario/eliminar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cZWxpbWluYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sistema/Documents/Github/InmobiliariaBiolatti-LopezPujato/Views/Propietario/index.cshtml]

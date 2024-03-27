@@ -2,13 +2,11 @@
 @{
     ViewData["Title"] = "Inquilinos";
 }
-<h1>@ViewData["Title"]</h1>
+<h1>@ViewData["Title"] </h1>
 <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
 <script src="https://kit.fontawesome.com/708362d465.js" crossorigin="anonymous"></script>
-
-
-<p>En esta sección se listarán los Inquilinos.</p>
-
+<br>
+<h4>Listado de Inquilinos</h4>
 <div class="row">
     <div class="col-md-8">
         <table class="table">
@@ -17,8 +15,8 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>mail</th>
-                    <th>clave</th>
                     <th>dni</th>
+                    <th>Acciones</th>
                     
                 </tr>
                 <tr>
@@ -28,7 +26,6 @@
                         <td>@item.nombre</td>
                         <td>@item.apellido</td>
                         <td>@item.mail</td>
-                        <td>@item.clave</td>
                         <td>@item.dni</td>
                         <td>
                             <a asp-action="Editar" asp-route-id="@item.idinquilino" class="fa-solid fa-pen-to-square" style="color:blue"></a> 
