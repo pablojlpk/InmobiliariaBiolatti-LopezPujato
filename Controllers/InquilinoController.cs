@@ -20,8 +20,15 @@ public class InquilinoController : Controller
         return View(lista);
     }
 
-    public IActionResult Privacy()
+
+public IActionResult agregar()
+{
+
+    return View();
+}
+    public IActionResult Create()
     {
+  
         return View();
     }
     

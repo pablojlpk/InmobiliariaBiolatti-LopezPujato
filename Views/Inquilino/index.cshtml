@@ -29,6 +29,10 @@
                         <td>@item.mail</td>
                         <td>@item.clave</td>
                         <td>@item.dni</td>
+                        <td>
+                            <i class="fa-solid fa-pen-to-square"></i> <a asp-action="Editar"></a> |
+                            <i class="fa-solid fa-trash" ></i> <a asp-action="Eliminar"></a>
+                        </td>
 
 
                     }
@@ -43,6 +47,5 @@
 </div>
 
 
-<a asp-action="Create" class="btn btn-success">Crear nuevo</a>
-<i class="fa-solid fa-pen-to-square"></i> <a asp-action="Editar">Editar</a> |
-<i class="fa-solid fa-trash"></i> <a asp-action="Eliminar">Eliminar</a>
+<a asp-action="Agregar" class="btn btn-success">Crear nuevo</a>
+
