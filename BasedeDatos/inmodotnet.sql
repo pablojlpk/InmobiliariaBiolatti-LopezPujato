@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-03-2024 a las 00:50:28
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 27-03-2024 a las 16:05:57
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,15 +37,15 @@ CREATE TABLE `inmuebles` (
   `idpropietario` int(11) NOT NULL,
   `nompropietario` varchar(100) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `inmuebles`
 --
 
 INSERT INTO `inmuebles` (`idinmieble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `nompropietario`, `borrado`) VALUES
-(1, 'virgen del carmen', 2, 200, '1235', '0', 0, '', 0),
-(2, 'virgen del carmen', 2, 200, '1235', '0', 0, '', 0);
+(1, 'virgen del carmen', 2, 200, 1235, 0, 0, '', 0),
+(2, 'virgen del carmen', 2, 200, 1235, 0, 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -61,7 +61,24 @@ CREATE TABLE `inquilino` (
   `clave` varchar(30) NOT NULL,
   `dni` int(8) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `inquilino`
+--
+
+INSERT INTO `inquilino` (`idinquilino`, `nombre`, `apellido`, `mail`, `clave`, `dni`, `borrado`) VALUES
+(1, 'pablo javier', 'lopez pujato', 'pp@pp.com', '123', 12321121, 0),
+(2, 'ana', 'biolcati', 'pp@pp.com', '12', 12, 1),
+(3, 'ana', 'biolcati', 'pp@pp.com', '23123', 1231, 1),
+(4, 'Bruno', 'Gentiletti', 'bbg@gmail.com.ar', '111', 12456789, 1),
+(5, 'ana', 'biolcati', 'pp@pp.com', '', 3123132, 0),
+(6, 'lopez', 'pujato', 'pp@pp.com', '213123', 12312123, 1),
+(7, 'ana', 'biolcati', 'pp@pp.com', '122qdd', 2312, 1),
+(8, 'ROBERTO ', 'GUIÑAZU MOLIN', 'rrmolina@gmail.com', 'QQ', 12312312, 0),
+(9, 'PEDRO', 'MOLINA CANDIOTI', 'pp@pp.com', '1', 12332111, 0),
+(10, '1', '1', '1', '1', 1, 1),
+(11, 'Matias2', 'Torres', 'mtorres@yahoo.com', '12', 12321112, 0);
 
 -- --------------------------------------------------------
 
@@ -77,7 +94,7 @@ CREATE TABLE `propietario` (
   `mail` varchar(30) NOT NULL,
   `clave` text NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `propietario`
@@ -137,7 +154,7 @@ ALTER TABLE `inmuebles`
 -- AUTO_INCREMENT de la tabla `inquilino`
 --
 ALTER TABLE `inquilino`
-  MODIFY `idinquilino` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idinquilino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `propietario`
