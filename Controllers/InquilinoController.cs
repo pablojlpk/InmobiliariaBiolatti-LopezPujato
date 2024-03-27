@@ -35,11 +35,27 @@ public IActionResult agregar()
         return RedirectToAction(nameof(Index));
     }
     
+    
+public IActionResult Editar(int id)
+    {
+        RepositorioInquilino ri= new RepositorioInquilino();
+
+        var inquilino = ri.GetInquilino(id);
+
+        return View(inquilino);
+    }
+
+public IActionResult ModInquilino(Inquilino i)
+    {
+        RepositorioInquilino ri = new RepositorioInquilino();
+        var res=ri.Modifica(i);
+        return RedirectToAction(nameof(Index));
+    }
+
     public IActionResult Eliminar(int id)
     {
         RepositorioInquilino ri = new RepositorioInquilino();
         var res=ri.Baja(id);
-        
         return RedirectToAction(nameof(Index));
     }
     

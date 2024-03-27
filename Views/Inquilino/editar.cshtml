@@ -1,56 +1,59 @@
+@model InmobiliariaBiolatti_LopezPujato.Models.Inquilino;
 @{
     ViewData["Title"] = "Inquilino";
+    int? idinquilino = Model == null? 0 : Model.idinquilino;
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Prueba Inquilino</p>
+<p>Modificacion Inquilino Inquilino</p>
 
-<p>En esta sección se listarán los propietarios.</p>
 
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
 
-            <div id="datos" calss="col-md-4">
-                <label>nombre: </label>
-                <input id="nombre">
-                <br>
-                <label>Apellido: </label>
-                <input id="apellido">
-                <br>
-                <label>Telefono: </label>
-                <input id="telefono">
-                <br>
-                <label>Dni: </label>
-                <input id="dni">
-                <br>
-                <label>Email: </label>
-                <input id="email">
-                <br>
-                <label>Dirección: </label>
-                <input id="direccion">
-                <br>
+   <div class="col-md-4">
+		<form asp-action="Modinquilino">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label class="control-label">Codigo</label>
+				<input asp-for="idinquilino" class="form-control" value="@idinquilino" readonly />
+				<span asp-validation-for="idinquilino" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="nombre" class="control-label"></label>
+				<input asp-for="nombre" class="form-control" />
+				<span asp-validation-for="nombre" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="apellido" class="control-label"></label>
+				<input asp-for="apellido" class="form-control" />
+				<span asp-validation-for="apellido" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="mail" class="control-label"></label>
+				<input asp-for="mail" class="form-control" />
+				<span asp-validation-for="mail" class="text-danger"></span>
+			</div>
+            <div class="form-group">
+				<label asp-for="dni" class="control-label"></label>
+				<input asp-for="dni" class="form-control" />
+				<span asp-validation-for="dni" class="number"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="clave" class="control-label"></label>
+				<input asp-for="clave" class="form-control" />
+				<span asp-validation-for="clave" class="text-danger"></span>
+			</div>
+			
+			<div class="form-group">
+				<input type="submit" value="GUARDAR" class="btn btn-primary" />
+				<a asp-action="index" class="btn btn-primary">volver</a>
+				
 
-        </form>
-    </div>
+
+			</div>
+			
+		</form>
+
 </div>
 
-    
-<button id="alta"> Alta </button>
-<button id="baja"> Baja </button>
-<button id="modifica"> Modificacion </button>
-<a asp-action="Create">Crear nuevo</a>
 
-<script>
-    const modifica = document.getElementById("modifica");
-    //modifica.addEventListener('click',Ejecutar());
-    modifica.addEventListener('click', function () {
-        console.log("ejecutar");
-    });
-
-    function Ejecutar() {
-        console.log("ejecutar");
-
-    }
-
-</script>
