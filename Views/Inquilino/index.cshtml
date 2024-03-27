@@ -24,6 +24,9 @@
                 <tr>
                     @foreach (var item in Model)
                     {
+                        <tr>
+
+                        
                         <td>@item.nombre</td>
                         <td>@item.apellido</td>
                         <td>@item.mail</td>
@@ -33,6 +36,8 @@
                             <i class="fa-solid fa-pen-to-square"></i> <a asp-action="Editar"></a> |
                             <i class="fa-solid fa-trash" ></i> <a asp-action="Eliminar"></a>
                         </td>
+                        <br>
+                        </tr>
 
 
                     }

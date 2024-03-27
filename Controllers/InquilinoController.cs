@@ -26,10 +26,12 @@ public IActionResult agregar()
 
     return View();
 }
-    public IActionResult Create()
+    public IActionResult Create(Inquilino i)
     {
+        RepositorioInquilino ri = new RepositorioInquilino();
+        var res=ri.AltaInquilino(i);
   
-        return View();
+        return RedirectToAction(nameof(Index));
     }
     
     

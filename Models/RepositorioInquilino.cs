@@ -55,7 +55,7 @@ public class RepositorioInquilino
     {
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = $"INSERT INTO inqulino (nombre, apellido, dni, mail, clave) VALUES ('{p.nombre}','{p.apellido}',{p.dni},'{p.mail}','{p.clave}')";
+            var sql = $"INSERT INTO inquilino (nombre, apellido, dni, mail, clave) VALUES ('{p.nombre}','{p.apellido}',{p.dni},'{p.mail}','{p.clave}')";
 
 
             using (var command = new MySqlCommand(sql, connection))
