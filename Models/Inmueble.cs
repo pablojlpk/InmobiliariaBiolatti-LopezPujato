@@ -6,6 +6,7 @@ public class Inmueble{
     public string? direccion { get; set; }
     public int? ambientes { get; set; }
     public int? superficie { get; set; }
+    public decimal? latitud { get; set; }
     public decimal? longitud { get; set; }
     public int? idpropietario { get; set; }
     public string? nompropietario { get; set; }

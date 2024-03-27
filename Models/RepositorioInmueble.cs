@@ -19,7 +19,7 @@ public class RepositorioInmueble
         var inmuebles = new List<Inmueble>();
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = $"Select * from inmueble where borrado=0;";
+            var sql = $"Select * from inmuebles where borrado=0;";
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();

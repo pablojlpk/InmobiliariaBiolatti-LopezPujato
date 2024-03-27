@@ -18,8 +18,12 @@ public class InmuebleController : Controller
 
     public IActionResult Index()
     {
+        RepositorioInmueble ri= new RepositorioInmueble();
 
-        return View();
+        var inmuebles = ri.GetInmuebles();
+
+
+        return View(inmuebles);
     }
     public IActionResult agregar()
     {

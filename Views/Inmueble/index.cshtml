@@ -19,6 +19,26 @@
                 <th>Latitud</th>
                 <th>Longitud</th>
                 <th>Propietario</th>
+                <tr>
+                @foreach(var item in Model)
+                {
+                   <tr>
+                    <td>@item.idinmueble</td>
+                    <td>@item.direccion</td>
+                    <td>@item.ambientes</td>
+                    <td>@item.superficie</td>
+                    <td>@item.latitud</td>
+                    <td>@item.longitud</td>
+                    <td>@item.idpropietario</td>
+                    <td>@item.nompropietario</td>
+                    </tr>
+
+
+
+                }
+                </tr>
+
+
             </tr>
         </thead>
     </table>
