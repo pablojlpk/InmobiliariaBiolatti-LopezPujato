@@ -1,4 +1,4 @@
-
+@model IEnumerable<Inquilino>
 @{
     ViewData["Title"] = "Inquilinos";
 }
@@ -16,19 +16,33 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>Teléfono</th>
-                    <th>DNI</th>
-                    <th>Email</th>
-                    <th>Dirección</th>
-                    <th>Acciones</th>
+                    <th>mail</th>
+                    <th>clave</th>
+                    <th>dni</th>
+                    
                 </tr>
+                <tr>
+                    @foreach (var item in Model)
+                    {
+                        <td>@item.nombre</td>
+                        <td>@item.apellido</td>
+                        <td>@item.mail</td>
+                        <td>@item.clave</td>
+                        <td>@item.dni</td>
+
+
+                    }
+                </tr>
+
+
             </thead>
-            
+
+
         </table>
     </div>
 </div>
 
-    
+
 <a asp-action="Create" class="btn btn-success">Crear nuevo</a>
 <i class="fa-solid fa-pen-to-square"></i> <a asp-action="Editar">Editar</a> |
 <i class="fa-solid fa-trash"></i> <a asp-action="Eliminar">Eliminar</a>

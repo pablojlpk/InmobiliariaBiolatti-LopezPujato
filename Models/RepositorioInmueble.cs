@@ -36,7 +36,7 @@ public class RepositorioInmueble
                             longitud = reader.GetDecimal(nameof(Inmueble.longitud)),
                             idpropietario = reader.GetInt32(nameof(Inmueble.idpropietario)),
                             nompropietario = null,
-                            borrado = reader.GetBoolean(nameof(Inmueble.borrado))
+                            //borrado = reader.GetBoolean(nameof(Inmueble.borrado))
                         });
                     }
                     connection.Close();

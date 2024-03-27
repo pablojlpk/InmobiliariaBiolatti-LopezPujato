@@ -14,7 +14,10 @@ public class InquilinoController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        RepositorioInquilino ri=new RepositorioInquilino();
+        var lista = ri.GetInquilinos();
+        
+        return View(lista);
     }
 
     public IActionResult Privacy()
