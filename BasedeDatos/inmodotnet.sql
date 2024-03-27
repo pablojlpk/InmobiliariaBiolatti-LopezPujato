@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-03-2024 a las 16:05:57
+-- Tiempo de generación: 27-03-2024 a las 17:56:40
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `inmuebles` (
-  `idinmieble` int(11) NOT NULL,
+  `idinmueble` int(11) NOT NULL,
   `direccion` varchar(100) NOT NULL,
   `ambientes` int(2) NOT NULL,
   `superficie` int(4) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `inmuebles` (
 -- Volcado de datos para la tabla `inmuebles`
 --
 
-INSERT INTO `inmuebles` (`idinmieble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `nompropietario`, `borrado`) VALUES
+INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `nompropietario`, `borrado`) VALUES
 (1, 'virgen del carmen', 2, 200, 1235, 0, 0, '', 0),
 (2, 'virgen del carmen', 2, 200, 1235, 0, 0, '', 0);
 
@@ -72,13 +72,15 @@ INSERT INTO `inquilino` (`idinquilino`, `nombre`, `apellido`, `mail`, `clave`, `
 (2, 'ana', 'biolcati', 'pp@pp.com', '12', 12, 1),
 (3, 'ana', 'biolcati', 'pp@pp.com', '23123', 1231, 1),
 (4, 'Bruno', 'Gentiletti', 'bbg@gmail.com.ar', '111', 12456789, 1),
-(5, 'ana', 'biolcati', 'pp@pp.com', '', 3123132, 0),
+(5, 'ana', 'Biolati', 'pp@pp.com', '', 3123132, 0),
 (6, 'lopez', 'pujato', 'pp@pp.com', '213123', 12312123, 1),
 (7, 'ana', 'biolcati', 'pp@pp.com', '122qdd', 2312, 1),
 (8, 'ROBERTO ', 'GUIÑAZU MOLIN', 'rrmolina@gmail.com', 'QQ', 12312312, 0),
 (9, 'PEDRO', 'MOLINA CANDIOTI', 'pp@pp.com', '1', 12332111, 0),
 (10, '1', '1', '1', '1', 1, 1),
-(11, 'Matias2', 'Torres', 'mtorres@yahoo.com', '12', 12321112, 0);
+(11, 'Matias2', 'Torres', 'mtorres@yahoo.com', '12', 12321112, 0),
+(12, 'Jacinta', 'Alvarez', 'jjalvarez@gmail.com', '', 12321221, 0),
+(13, 'Juan', 'Gomez', 'gggomez@pp.com', '', 21321123, 0);
 
 -- --------------------------------------------------------
 
@@ -107,15 +109,15 @@ INSERT INTO `propietario` (`idpropietario`, `nombre`, `apellido`, `dni`, `mail`,
 (11, 'Ignacio', 'Torres', 12328741, 'dsdsdf@sddfad.com', '1233', 0),
 (12, 'ANA', 'BIOLATTI', 123963254, 'analuz@gmail.com', '1234', 0),
 (14, 'Juan', 'Gonzalez', 12456789, 'ggonzale@hotmail.com', '23456789', 0),
-(15, 'Juan', 'Gonzalez', 54789123, 'rrgonzalez@gmail.com', '251', 0),
+(15, 'Pedro', 'Gonzalez', 54789123, 'rrgonzalez@gmail.com', '251', 0),
 (16, 'Pedro', 'Albornoz', 12328741, 'dsdsdf@sddfad.com', '1233', 1),
 (17, 'Marcelo Cesar', 'Lot', 11232131, '123123@1232-com', '1233', 1),
 (18, 'Rolando René', 'Guiñazu', 1232131231, '123123@1232-com', '1233', 0),
-(19, 'Ana', 'BIOLATTIs', 122163254, 'analuz@gmail.com', '1234', 0),
-(20, 'ANA2', 'BIOLATTI', 123963254, 'analuz@gmail.com', '1234', 0),
+(19, 'Ana', 'BIOLATTIs', 122163254, 'analuz@gmail.com', '1234', 1),
+(20, 'SILVIA', 'TORRES', 123963254, 'sstorres@gmail.com', '1234', 0),
 (21, 'marcelo cesar', 'Lot', 1232131231, '123123@1232-com', '1233', 1),
 (22, 'marcelo cesar', 'Lotufo', 1232131231, '123123@1232-com', '1233', 0),
-(23, 'Lorena', 'Crizado', 12432980, 'crizadol@gmail.com', '12111qw', 0),
+(23, 'LORENA', 'Crizado', 12432980, 'crizadol@gmail.com', '12111qw', 0),
 (24, '231', '452', 423, '432', '4234', 1);
 
 --
@@ -126,7 +128,7 @@ INSERT INTO `propietario` (`idpropietario`, `nombre`, `apellido`, `dni`, `mail`,
 -- Indices de la tabla `inmuebles`
 --
 ALTER TABLE `inmuebles`
-  ADD PRIMARY KEY (`idinmieble`);
+  ADD PRIMARY KEY (`idinmueble`);
 
 --
 -- Indices de la tabla `inquilino`
@@ -148,13 +150,13 @@ ALTER TABLE `propietario`
 -- AUTO_INCREMENT de la tabla `inmuebles`
 --
 ALTER TABLE `inmuebles`
-  MODIFY `idinmieble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `inquilino`
 --
 ALTER TABLE `inquilino`
-  MODIFY `idinquilino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idinquilino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `propietario`

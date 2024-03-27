@@ -41,6 +41,7 @@ public class PropietarioController : Controller
     {
         RepositorioPropietario rp = new RepositorioPropietario();
         var propietario = rp.GetPropietario(id);
+        
 
         return View(propietario);
     }
