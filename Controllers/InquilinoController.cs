@@ -26,6 +26,7 @@ public IActionResult agregar()
 
     return View();
 }
+    
     public IActionResult Create(Inquilino i)
     {
         RepositorioInquilino ri = new RepositorioInquilino();
@@ -34,6 +35,13 @@ public IActionResult agregar()
         return RedirectToAction(nameof(Index));
     }
     
+    public IActionResult Eliminar(int id)
+    {
+        RepositorioInquilino ri = new RepositorioInquilino();
+        var res=ri.Baja(id);
+        
+        return RedirectToAction(nameof(Index));
+    }
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

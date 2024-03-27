@@ -25,21 +25,17 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-
-                        
                         <td>@item.nombre</td>
                         <td>@item.apellido</td>
                         <td>@item.mail</td>
                         <td>@item.clave</td>
                         <td>@item.dni</td>
                         <td>
-                            <i class="fa-solid fa-pen-to-square"></i> <a asp-action="Editar"></a> |
-                            <i class="fa-solid fa-trash" ></i> <a asp-action="Eliminar"></a>
+                            <a asp-action="Editar" asp-route-id="@item.idinquilino" class="fa-solid fa-pen-to-square" style="color:blue"></a> 
+                            <a asp-action="Eliminar"asp-route-id="@item.idinquilino" class="fa-solid fa-trash" style="color:red"></a>
                         </td>
                         <br>
                         </tr>
-
-
                     }
                 </tr>
 

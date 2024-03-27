@@ -53,17 +53,19 @@ public class PropietarioController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
     public IActionResult Baja(int id){
         RepositorioPropietario rp = new RepositorioPropietario();
         rp.Baja(id);
         return RedirectToAction(nameof(Index));
     }
 
+
+
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
 
 }

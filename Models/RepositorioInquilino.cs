@@ -68,7 +68,26 @@ public class RepositorioInquilino
         return p;
     }
 
-  
+  public int Baja(int idinquilino)//funciona ok
+    {
+        int res = -1;
+        using (var connection = new MySqlConnection(ConnectionString))
+        {
+            var sql = @$"UPDATE inquilino
+            SET borrado = true
+            WHERE {nameof(Inquilino.idinquilino)} =@{nameof(Inquilino.idinquilino)}";
+
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue($"@{nameof(Inquilino.idinquilino)}", idinquilino);
+
+                connection.Open();
+                res = command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+        return res;
+    }
 
 
     ///final
