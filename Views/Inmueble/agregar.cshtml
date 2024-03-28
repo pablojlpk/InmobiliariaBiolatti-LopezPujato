@@ -6,34 +6,46 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>Alta de un Inmueble</p>
-
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Alta">
-
-            <div id="datos" calss="col-md-4">
-                <label>Direccion: </label>
-                <input id="direccion">
-                <br>
-                <label>Ambientes: </label>
-                <input id="Aambientes">
-                <br>
-                <label>Superficie: </label>
-                <input id="superficie">
-                <br>
-                <label>latitud: </label>
-                <input id="latitud">
-                <br>
-                <label>Longitud: </label>
-                <input id="longitud">
-                <br>
-                <label>Codigo Propietario: </label>
-                <input id="idPropietario">
-                <br>
+    
+<div class="col-md-4">
+		<form asp-action="Create" enctype="multipart/form-data">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="direccion" class="control-label"></label>
+				<input asp-for="direccion" class="form-control" />
+				<span asp-validation-for="direccion" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="ambientes" class="control-label"></label>
+				<input asp-for="ambientes" class="form-control" />
+				<span asp-validation-for="ambientes" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="latitud" class="control-label"></label>
+				<input asp-for="latitud" class="form-control" />
+				<span asp-validation-for="latitud" class="text-danger"></span>
+			</div>
+            <div class="form-group">
+				<label asp-for="longitud" class="control-label"></label>
+				<input asp-for="longitud" class="form-control" />
+				<span asp-validation-for="longitud" class="number"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="idpropietario" class="control-label"></label>
+				<input asp-for="idpropietario" class="form-control" />
+				<span asp-validation-for="idpropietario" class="text-danger"></span>
+			</div>
+			
 			<div class="form-group">
 				<input type="submit" value="GUARDAR" class="btn btn-primary" />
 				<a asp-action="index" class="btn btn-primary">volver</a>
+				
+
+
 			</div>
-        </form>
-    </div>
+			
+		</form>
+
 </div>
+

@@ -30,7 +30,12 @@ public class InmuebleController : Controller
         return View();
     }
 
-
+public IActionResult create(Inmueble i)
+{
+    RepositorioInmueble ri = new RepositorioInmueble();
+    ri.AltaInmueble(i);
+    return RedirectToAction(nameof(Index));
+}
 
 
 

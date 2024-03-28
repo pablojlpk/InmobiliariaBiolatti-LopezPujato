@@ -34,8 +34,8 @@ public class RepositorioInmueble
                             ambientes = reader.GetInt32(nameof(Inmueble.ambientes)),
                             superficie = reader.GetInt32(nameof(Inmueble.superficie)),
                             longitud = reader.GetDecimal(nameof(Inmueble.longitud)),
-                            idpropietario = reader.GetInt32(nameof(Inmueble.idpropietario)),
-                            nompropietario = null,
+                            propietario = null,
+                            nompropietario = "pablo",
                             //borrado = reader.GetBoolean(nameof(Inmueble.borrado))
                         });
                     }
@@ -46,6 +46,26 @@ public class RepositorioInmueble
         }
       return inmuebles;
     }
+
+
+
+    public Propietario AltaInmueble(Inmueble i) // funciona ok
+    {
+        using (var connection = new MySqlConnection(ConnectionString))
+        {
+            //var sql = $"INSERT INTO inmuebles (direccion,ambientes,superficie,longitud,idpropietario) VALUES ('{i.direccion}',{i.ambientes},{i.superficie},{i.longitud},{i.propietario.idpropietario})";
+
+
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+        return i;
+    }
+
 
 //final
 }
