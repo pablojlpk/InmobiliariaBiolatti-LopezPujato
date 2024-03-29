@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-03-2024 a las 17:56:40
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 29-03-2024 a las 20:29:45
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,20 +32,22 @@ CREATE TABLE `inmuebles` (
   `direccion` varchar(100) NOT NULL,
   `ambientes` int(2) NOT NULL,
   `superficie` int(4) NOT NULL,
-  `latitud` decimal(7,0) NOT NULL,
-  `longitud` decimal(7,0) NOT NULL,
+  `latitud` decimal(7,2) NOT NULL,
+  `longitud` decimal(7,2) NOT NULL,
   `idpropietario` int(11) NOT NULL,
   `nompropietario` varchar(100) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `inmuebles`
 --
 
 INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `nompropietario`, `borrado`) VALUES
-(1, 'virgen del carmen', 2, 200, 1235, 0, 0, '', 0),
-(2, 'virgen del carmen', 2, 200, 1235, 0, 0, '', 0);
+(1, 'virgen del carmen 10', 2, 200, '1.25', '1.25', 1, '', 0),
+(2, 'Rivadavia 538', 2, 200, '2.74', '0.00', 6, '', 0),
+(3, 'balcarce', 833, 30, '5.00', '1.00', 1, '', 0),
+(4, 'BALCARCE', 833, 30, '5.00', '1.00', 12, '', 0);
 
 -- --------------------------------------------------------
 
@@ -61,7 +63,7 @@ CREATE TABLE `inquilino` (
   `clave` varchar(30) NOT NULL,
   `dni` int(8) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `inquilino`
@@ -96,7 +98,7 @@ CREATE TABLE `propietario` (
   `mail` varchar(30) NOT NULL,
   `clave` text NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `propietario`
@@ -118,7 +120,10 @@ INSERT INTO `propietario` (`idpropietario`, `nombre`, `apellido`, `dni`, `mail`,
 (21, 'marcelo cesar', 'Lot', 1232131231, '123123@1232-com', '1233', 1),
 (22, 'marcelo cesar', 'Lotufo', 1232131231, '123123@1232-com', '1233', 0),
 (23, 'LORENA', 'Crizado', 12432980, 'crizadol@gmail.com', '12111qw', 0),
-(24, '231', '452', 423, '432', '4234', 1);
+(24, '231', '452', 423, '432', '4234', 1),
+(25, 'upper(ww)', 'ww', 12, '122q', '12', 1),
+(26, 'LP', 'ines', 12, 'pp@pp.com', '112', 0),
+(27, 'Q', 'Q', 1, '1', '', 1);
 
 --
 -- Índices para tablas volcadas
@@ -150,7 +155,7 @@ ALTER TABLE `propietario`
 -- AUTO_INCREMENT de la tabla `inmuebles`
 --
 ALTER TABLE `inmuebles`
-  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `inquilino`
@@ -162,7 +167,7 @@ ALTER TABLE `inquilino`
 -- AUTO_INCREMENT de la tabla `propietario`
 --
 ALTER TABLE `propietario`
-  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

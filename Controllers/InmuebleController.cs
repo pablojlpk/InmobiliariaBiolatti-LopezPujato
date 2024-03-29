@@ -26,7 +26,6 @@ public class InmuebleController : Controller
         return View(inmuebles);
     }
     public IActionResult agregar()
-
     {
         RepositorioPropietario rp = new RepositorioPropietario();
         ViewBag.Propietarios = rp.GetPropietarios();
@@ -36,11 +35,9 @@ public class InmuebleController : Controller
 public IActionResult create(Inmueble i)
 { 
  
+ RepositorioInmueble ri= new RepositorioInmueble();
+ var res=ri.AltaInmueble(i);
  
-   /*
-.gueble ri = new RepositorioInmueble();
-    ri.AltaInmueble(i);
- */
     return RedirectToAction(nameof(Index));
 }
 

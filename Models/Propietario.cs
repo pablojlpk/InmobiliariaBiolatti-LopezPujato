@@ -11,7 +11,7 @@ public class Propietario
     public bool? borrado { get; set; }
     public override string ToString()
     {
-        var res = $"{nombre} {apellido}";
+        var res = $"{apellido}, {nombre} ({dni})";
         return res;
     }
 }
