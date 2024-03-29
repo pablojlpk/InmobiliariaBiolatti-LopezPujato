@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-03-2024 a las 20:53:17
+-- Tiempo de generación: 29-03-2024 a las 21:19:13
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -62,7 +62,13 @@ INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `
 (1, 'virgen del carmen 10', 2, 200, '1.25', '1.25', 1, '', 0),
 (2, 'Rivadavia 538', 2, 200, '2.74', '0.00', 6, '', 0),
 (3, 'balcarce', 833, 30, '5.00', '1.00', 1, '', 0),
-(4, 'BALCARCE', 833, 30, '5.00', '1.00', 12, '', 0);
+(4, 'BALCARCE', 833, 30, '5.00', '1.00', 12, '', 0),
+(5, 'MONTEVIDEO', 200, 2, '0.00', '2.00', 11, '', 0),
+(6, 'IRIONDO 98', 2, 150, '0.00', '4422.00', 1, '', 0),
+(7, 'BUENOS AIRES 833', 2, 2, '0.00', '4422.00', 12, '', 0),
+(8, 'BUENOS AIRES 833', 3, 3, '0.00', '21.00', 1, '', 0),
+(9, 'MONTEVIDEO', 12, 2, '0.00', '2.00', 26, '', 0),
+(10, 'SAN MARTIN 232', 1, 122, '0.00', '2333.00', 1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -201,7 +207,7 @@ ALTER TABLE `contratos`
 -- AUTO_INCREMENT de la tabla `inmuebles`
 --
 ALTER TABLE `inmuebles`
-  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `inquilino`

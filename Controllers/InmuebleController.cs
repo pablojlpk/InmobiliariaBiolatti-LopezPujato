@@ -16,7 +16,7 @@ public class InmuebleController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public IActionResult Index() //funciona ok
     {
         RepositorioInmueble ri= new RepositorioInmueble();
 
@@ -25,14 +25,14 @@ public class InmuebleController : Controller
 
         return View(inmuebles);
     }
-    public IActionResult agregar()
+    public IActionResult agregar() //redirecciono ventana alta inmueble y armo listafunciona ok
     {
         RepositorioPropietario rp = new RepositorioPropietario();
         ViewBag.Propietarios = rp.GetPropietarios();
         
         return View();
     }
-public IActionResult create(Inmueble i)
+public IActionResult create(Inmueble i) //alta un nuevo inmueblefunciona ok
 { 
  
  RepositorioInmueble ri= new RepositorioInmueble();
@@ -42,12 +42,6 @@ public IActionResult create(Inmueble i)
 }
 
 
-
-
-    /// <summary>
-    /// ////
-    /// </summary>
-    /// <returns></returns>
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

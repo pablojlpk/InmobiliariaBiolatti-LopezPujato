@@ -21,7 +21,9 @@ public class RepositorioInmueble
         using (var connection = new MySqlConnection(ConnectionString))
         {
             //var sql = $"Select * from inmuebles where borrado=0;";
-            var sql = $"Select idinmueble, direccion, ambientes, superficie, latitud, longitud, p.idpropietario, p.nombre, p.apellido, p.dni from inmuebles i Inner join propietario p on i.idpropietario=p.idpropietario";
+            var sql = $"Select idinmueble, direccion, ambientes, superficie, latitud, longitud,  p.idpropietario, p.nombre, p.apellido, p.dni from inmuebles i Inner join propietario p on i.idpropietario=p.idpropietario";
+            
+
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();
@@ -38,6 +40,7 @@ public class RepositorioInmueble
                             latitud = reader.GetDecimal(nameof(Inmueble.latitud)),
                             longitud = reader.GetDecimal(nameof(Inmueble.longitud)),
                             idpropietario = reader.GetInt32(nameof(Inmueble.idpropietario)),
+                            
                             datospropietario = new Propietario
                             {
                                 idpropietario = reader.GetInt32(nameof(Propietario.idpropietario)),

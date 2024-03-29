@@ -23,6 +23,11 @@
 				<span asp-validation-for="ambientes" class="text-danger"></span>
 			</div>
 			<div class="form-group">
+				<label asp-for="superficie" class="control-label"></label>
+				<input asp-for="superficie" class="form-control" />
+				<span asp-validation-for="superficie" class="text-danger"></span>
+			</div>
+			<div class="form-group">
 				<label asp-for="latitud" class="control-label"></label>
 				<input asp-for="latitud" class="form-control" />
 				<span asp-validation-for="latitud" class="text-danger"></span>
@@ -32,11 +37,7 @@
 				<input asp-for="longitud" class="form-control" />
 				<span asp-validation-for="longitud" class="number"></span>
 			</div>
-			<div class="form-group">
-				<label asp-for="idpropietario" class="control-label"></label>
-				<input asp-for="idpropietario" class="form-control" />
-				<span asp-validation-for="idpropietario" class="number"></span>
-			</div>
+		
 			<div>
 				<label class="control-label">Propietario</label>
 				<select class="form-control" name="idpropietario">
@@ -46,7 +47,7 @@
 						<option value="@item.idpropietario">@item.ToString()</option>
 					}
 				</select>
-				<span asp-validation-for="idpropietario" class="text-danger"></span>
+				<span asp-validation-for="idpropietario" class="number"></span>
 			</div>
 			<div class="form-group">
 				<input type="submit" value="GUARDAR" class="btn btn-primary" />
