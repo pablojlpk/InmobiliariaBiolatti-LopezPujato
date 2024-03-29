@@ -24,11 +24,7 @@ public class PropietarioController : Controller
         return View(lista);
     }
 
-    public IActionResult Agregar()
-    {
 
-        return View();
-    }
 
     public IActionResult create(Propietario p)
     {
@@ -41,7 +37,7 @@ public class PropietarioController : Controller
     {
         RepositorioPropietario rp = new RepositorioPropietario();
         var propietario = rp.GetPropietario(id);
-        
+
 
         return View(propietario);
     }
@@ -50,18 +46,21 @@ public class PropietarioController : Controller
     public IActionResult ModPropietario(Propietario p)
     {
         RepositorioPropietario rp = new RepositorioPropietario();
-        var res=rp.Modifica(p);
+        var res = rp.Modifica(p);
         return RedirectToAction(nameof(Index));
     }
 
-    public IActionResult Baja(int id){
+    public IActionResult Baja(int id)
+    {
         RepositorioPropietario rp = new RepositorioPropietario();
         rp.Baja(id);
         return RedirectToAction(nameof(Index));
     }
 
-
-
+    public IActionResult Agregar()
+    {
+        return View();
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

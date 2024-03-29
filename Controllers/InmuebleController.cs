@@ -26,16 +26,24 @@ public class InmuebleController : Controller
         return View(inmuebles);
     }
     public IActionResult agregar()
+
     {
+        RepositorioPropietario rp = new RepositorioPropietario();
+        ViewBag.Propietarios = rp.GetPropietarios();
+        
         return View();
     }
-
 public IActionResult create(Inmueble i)
-{
-    RepositorioInmueble ri = new RepositorioInmueble();
+{ 
+ 
+ 
+   /*
+.gueble ri = new RepositorioInmueble();
     ri.AltaInmueble(i);
+ */
     return RedirectToAction(nameof(Index));
 }
+
 
 
 

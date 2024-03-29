@@ -1,14 +1,15 @@
-
 @model InmobiliariaBiolatti_LopezPujato.Models.Inmueble;
+
 @{
-    ViewData["Title"] = "Inmueble";
+	ViewData["Title"] = "Inmueble";
+	var ltaPropietarios = ViewBag.Propietarios;
 }
 <h1>@ViewData["Title"]</h1>
 
 <p>Alta de un Inmueble</p>
 <div class="row">
-    
-<div class="col-md-4">
+
+	<div class="col-md-4">
 		<form asp-action="Create" enctype="multipart/form-data">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<div class="form-group">
@@ -26,7 +27,7 @@
 				<input asp-for="latitud" class="form-control" />
 				<span asp-validation-for="latitud" class="text-danger"></span>
 			</div>
-            <div class="form-group">
+			<div class="form-group">
 				<label asp-for="longitud" class="control-label"></label>
 				<input asp-for="longitud" class="form-control" />
 				<span asp-validation-for="longitud" class="number"></span>
@@ -34,18 +35,27 @@
 			<div class="form-group">
 				<label asp-for="idpropietario" class="control-label"></label>
 				<input asp-for="idpropietario" class="form-control" />
+				<span asp-validation-for="idpropietario" class="number"></span>
+			</div>
+			<div>
+				<label class="control-label">Propietario</label>
+				<select class="form-control" name="idpropietario">
+
+					@foreach (var item in ltaPropietarios)
+					{
+						<option value="@item.idpropietario">@item.ToString()</option>
+					}
+				</select>
 				<span asp-validation-for="idpropietario" class="text-danger"></span>
 			</div>
-			
 			<div class="form-group">
 				<input type="submit" value="GUARDAR" class="btn btn-primary" />
 				<a asp-action="index" class="btn btn-primary">volver</a>
-				
+
 
 
 			</div>
-			
+
 		</form>
 
-</div>
-
+	</div>

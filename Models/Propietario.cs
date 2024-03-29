@@ -9,6 +9,11 @@ public class Propietario
     public string? mail { get; set; }
     public string? clave { get; set; }
     public bool? borrado { get; set; }
+    public override string ToString()
+    {
+        var res = $"{nombre} {apellido}";
+        return res;
+    }
 }
 
 
