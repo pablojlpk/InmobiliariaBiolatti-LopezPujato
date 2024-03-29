@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-03-2024 a las 20:29:45
+-- Tiempo de generación: 29-03-2024 a las 20:53:17
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `inmodotnet`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contratos`
+--
+
+CREATE TABLE `contratos` (
+  `idcontrato` int(11) NOT NULL,
+  `idinmueble` int(11) NOT NULL,
+  `idinquilino` int(11) NOT NULL,
+  `fdesde` date NOT NULL,
+  `fhasta` date NOT NULL,
+  `importes` decimal(8,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -87,6 +102,19 @@ INSERT INTO `inquilino` (`idinquilino`, `nombre`, `apellido`, `mail`, `clave`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pagos`
+--
+
+CREATE TABLE `pagos` (
+  `idpago` int(11) NOT NULL,
+  `idcontrato` int(11) NOT NULL,
+  `fpago` date NOT NULL,
+  `importe` decimal(7,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `propietario`
 --
 
@@ -130,6 +158,12 @@ INSERT INTO `propietario` (`idpropietario`, `nombre`, `apellido`, `dni`, `mail`,
 --
 
 --
+-- Indices de la tabla `contratos`
+--
+ALTER TABLE `contratos`
+  ADD PRIMARY KEY (`idcontrato`);
+
+--
 -- Indices de la tabla `inmuebles`
 --
 ALTER TABLE `inmuebles`
@@ -142,6 +176,12 @@ ALTER TABLE `inquilino`
   ADD PRIMARY KEY (`idinquilino`);
 
 --
+-- Indices de la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  ADD PRIMARY KEY (`idpago`);
+
+--
 -- Indices de la tabla `propietario`
 --
 ALTER TABLE `propietario`
@@ -150,6 +190,12 @@ ALTER TABLE `propietario`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `contratos`
+--
+ALTER TABLE `contratos`
+  MODIFY `idcontrato` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `inmuebles`
@@ -162,6 +208,12 @@ ALTER TABLE `inmuebles`
 --
 ALTER TABLE `inquilino`
   MODIFY `idinquilino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT de la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  MODIFY `idpago` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `propietario`
