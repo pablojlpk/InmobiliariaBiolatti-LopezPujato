@@ -50,7 +50,6 @@ public class RepositorioInquilino
         return inquilinos;
     }
 
-
     public Inquilino AltaInquilino(Inquilino p)
     {
         using (var connection = new MySqlConnection(ConnectionString))

@@ -47,12 +47,19 @@ public class InmuebleController : Controller
         return View(inmueble);
     }
 
-public IActionResult ModificaInmueble(Inmueble i)
-{
-    RepositorioInmueble ri= new RepositorioInmueble();
-    ri.ModificaInmueble(i);
-    return Redirect(nameof(Index));
-}
+    public IActionResult ModInmueble(Inmueble i)
+    {
+        RepositorioInmueble ri = new RepositorioInmueble();
+        ri.ModificaInmueble(i);
+        return RedirectToAction(nameof(Index));
+    }
+
+    public IActionResult Baja(int id)
+    {
+        RepositorioInmueble ri = new RepositorioInmueble();
+        ri.Baja(id);
+        return RedirectToAction(nameof(Index));
+    }
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

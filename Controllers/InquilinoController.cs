@@ -58,6 +58,8 @@ public IActionResult ModInquilino(Inquilino i)
         var res=ri.Baja(id);
         return RedirectToAction(nameof(Index));
     }
+
+
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
