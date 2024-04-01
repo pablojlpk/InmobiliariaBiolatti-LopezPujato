@@ -1,0 +1,39 @@
+@model IEnumerable<Contrato>
+@{
+    ViewData["Title"] = "Contratos";
+
+}
+
+<h1>@ViewData["Title"]</h1>
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+<script src="https://kit.fontawesome.com/708362d465.js" crossorigin="anonymous"></script>
+
+<p>En esta sección se listarán todos los Inmuebles.</p>
+
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Codigo</th>
+                <th>Cinmueble</th>
+                <th>cinquilino</th>
+                <th>inmueble</th>
+                <th>inquilino</th>
+                <th>Fecha Desde</th>
+                <th>Fecha Hata.</th>
+                <th>Importe</th>
+                
+       
+            <tr>
+                    
+            </tr>
+
+
+            </tr>
+
+        </thead>
+    </table>
+</div>
+
+<a asp-action="Agregar" class="btn btn-success">Crear nuevo</a>

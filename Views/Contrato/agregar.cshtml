@@ -1,0 +1,46 @@
+@model InmobiliariaBiolatti_LopezPujato.Models.Contrato;
+
+@{
+	ViewData["Title"] = "Contratos";
+	var ListaInmuebles = ViewBag.Inmuebles;
+	var ListaInquilinos = ViewBag.Inquilinos;
+
+	var ltaPropietarios = ViewBag.Propietarios;
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Alta de un Alta Contactos</p>
+<div class="row">
+
+	<div class="col-md-4">
+		<form asp-action="Create" enctype="multipart/form-data">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="importe" class="control-label"></label>
+				<input asp-for="importe" class="form-control" />
+				<span asp-validation-for="importe" class="decimal"></span>
+			</div>
+			<div>
+				<label class="control-label">Propietario</label>
+				<select class="form-control" name="idpropietario">
+
+					@foreach (var item in ListaInmuebles)
+					{
+						
+						<option value="@item.idinmueble">@item.direccion</option>
+					}
+				</select>
+				<span asp-validation-for="idinmueble" class="number"></span>
+			</div>
+			<br>
+			<div class="form-group">
+				<input type="submit" value="GUARDAR" class="btn btn-primary" />
+				<a asp-action="index" class="btn btn-primary">volver</a>
+
+
+
+			</div>
+
+		</form>
+
+	</div>
