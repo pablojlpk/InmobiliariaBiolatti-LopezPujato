@@ -20,16 +20,17 @@ RepositorioInquilino rinquilinos = new RepositorioInquilino();
     {
         _logger = logger;
     }
-
+ 
      public IActionResult Index()
     {
-       ViewBag.Inmuebles = rinmuebles.GetInmuebles();
-       ViewBag.Inquilinos = rinquilinos.GetInquilinos();
 
         return View();
     }
     public IActionResult agregar()
     {
+       ViewBag.Inmuebles = rinmuebles.GetInmuebles();
+       ViewBag.Inquilinos = rinquilinos.GetInquilinos();
+
         return View();
     }
 
