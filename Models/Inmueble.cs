@@ -12,5 +12,9 @@ public class Inmueble{
     public Propietario? datospropietario { get; set; }
  
     public bool? borrado { get; set; }
+    
+    public string ToString(){
+        return $"{direccion}, amb: {ambientes}, sup: {superficie}";
+    }
 
 }
