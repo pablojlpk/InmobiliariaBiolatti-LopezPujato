@@ -11,17 +11,17 @@ public class ContratoController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    
+
     RepositorioInmueble rinmuebles = new RepositorioInmueble();
-RepositorioInquilino rinquilinos = new RepositorioInquilino();
-    
+    RepositorioInquilino rinquilinos = new RepositorioInquilino();
+
 
     public ContratoController(ILogger<HomeController> logger)
     {
         _logger = logger;
     }
 
-     public IActionResult Index()
+    public IActionResult Index()
     {
 
 
@@ -29,12 +29,20 @@ RepositorioInquilino rinquilinos = new RepositorioInquilino();
     }
     public IActionResult Agregar()
     {
-              ViewBag.Inmuebles = rinmuebles.GetInmuebles();
-       ViewBag.Inquilinos = rinquilinos.GetInquilinos();    
+        ViewBag.Inmuebles = rinmuebles.GetInmuebles();
+        ViewBag.Inquilinos = rinquilinos.GetInquilinos();
         return View();
     }
 
-    
+    public IActionResult Create(Contrato c)
+    {
+
+        RepositorioContrato rc = new RepositorioContrato();
+        var res = rc.AltaContrato(c);
+        return RedirectToAction(nameof(Index));
+
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

@@ -9,4 +9,5 @@ public class Contrato{
     public DateTime? fdesde { get; set; }
     public DateTime? fhasta { get; set; }
     public decimal? importe { get; set; }
+    public bool? borrado { get; set; }
 }
