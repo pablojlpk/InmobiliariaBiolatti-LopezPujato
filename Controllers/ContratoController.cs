@@ -23,13 +23,14 @@ RepositorioInquilino rinquilinos = new RepositorioInquilino();
 
      public IActionResult Index()
     {
-       ViewBag.Inmuebles = rinmuebles.GetInmuebles();
-       ViewBag.Inquilinos = rinquilinos.GetInquilinos();
+
 
         return View();
     }
-    public IActionResult agregar()
+    public IActionResult Agregar()
     {
+              ViewBag.Inmuebles = rinmuebles.GetInmuebles();
+       ViewBag.Inquilinos = rinquilinos.GetInquilinos();    
         return View();
     }
 
