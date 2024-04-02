@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj": {}
+    "C:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj": {
+    "C:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
+        "projectUniqueName": "C:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
         "projectName": "InmobiliariaBiolatti-LopezPujato",
-        "projectPath": "c:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
+        "projectPath": "C:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
         "packagesPath": "C:\\Users\\Ana luz\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\obj\\",
+        "outputPath": "C:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ana luz\\AppData\\Roaming\\NuGet\\NuGet.Config"
