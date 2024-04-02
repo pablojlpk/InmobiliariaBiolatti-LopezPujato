@@ -18,11 +18,9 @@ public class RepositorioContrato
 
     public Contrato AltaContrato(Contrato c)
     {
-
         using (var connection = new MySqlConnection(ConnectionString))
         {
             var sql = $"INSERT INTO contratos (idinmueble, idinquilino, fdesde, fhasta, importe) VALUES ({c.idinmueble},{c.idinquilino},'{c.fdesde}','{c.fhasta}', {c.importe})";
-            
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();
@@ -32,6 +30,7 @@ public class RepositorioContrato
         }
         return c;
     }
+ 
 
     //final
 }
