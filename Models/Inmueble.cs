@@ -13,7 +13,8 @@ public class Inmueble{
  
     public bool? borrado { get; set; }
     
-    public string ToString(){
+    public override string ToString()
+    {
         return $"{direccion}, amb: {ambientes}, sup: {superficie}";
     }
 
