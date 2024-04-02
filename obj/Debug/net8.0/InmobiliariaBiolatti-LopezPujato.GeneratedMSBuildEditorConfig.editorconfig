@@ -9,87 +9,87 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = InmobiliariaBiolatti_LopezPujato
 build_property.RootNamespace = InmobiliariaBiolatti_LopezPujato
-build_property.ProjectDir = C:\Users\Ana luz\Desktop\InmobiliariaBiolatti-LopezPujato\
+build_property.ProjectDir = C:\Users\pablo\Desktop\InmobiliariaBiolatti-LopezPujato\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Ana luz\Desktop\InmobiliariaBiolatti-LopezPujato
+build_property.MSBuildProjectDirectory = C:\Users\pablo\Desktop\InmobiliariaBiolatti-LopezPujato
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Contrato/agregar.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Contrato/agregar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cYWdyZWdhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Contrato/index.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Contrato/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9caW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Home/Index.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Home/Privacy.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Inmueble/agregar.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Inmueble/agregar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5tdWVibGVcYWdyZWdhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Inmueble/editar.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Inmueble/editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5tdWVibGVcZWRpdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Inmueble/index.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Inmueble/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5tdWVibGVcaW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Inquilino/agregar.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Inquilino/agregar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlsaW5vXGFncmVnYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Inquilino/editar.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Inquilino/editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlsaW5vXGVkaXRhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Inquilino/index.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Inquilino/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlsaW5vXGluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Pago/index.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Pago/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb1xpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Propietario/agregar.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Propietario/agregar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cYWdyZWdhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Propietario/editar.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Propietario/editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cZWRpdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Propietario/index.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Propietario/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9caW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Shared/Error.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/_ViewImports.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/_ViewStart.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ana luz/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Shared/_Layout.cshtml]
+[C:/Users/pablo/Desktop/InmobiliariaBiolatti-LopezPujato/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-xzyjj0jqr6

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-03-2024 a las 21:19:13
+-- Tiempo de generación: 02-04-2024 a las 23:09:51
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -31,10 +31,25 @@ CREATE TABLE `contratos` (
   `idcontrato` int(11) NOT NULL,
   `idinmueble` int(11) NOT NULL,
   `idinquilino` int(11) NOT NULL,
-  `fdesde` date NOT NULL,
-  `fhasta` date NOT NULL,
-  `importes` decimal(8,2) NOT NULL
+  `fdesde` datetime NOT NULL,
+  `fhasta` datetime NOT NULL,
+  `importe` decimal(8,2) NOT NULL,
+  `borrado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `contratos`
+--
+
+INSERT INTO `contratos` (`idcontrato`, `idinmueble`, `idinquilino`, `fdesde`, `fhasta`, `importe`, `borrado`) VALUES
+(7, 2, 12, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '221.00', 0),
+(8, 8, 13, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '221.00', 0),
+(9, 3, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '221.00', 0),
+(10, 4, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2.00', 0),
+(11, 2, 12, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2533.00', 0),
+(12, 6, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '14.00', 0),
+(13, 4, 13, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '25033.00', 0),
+(14, 6, 13, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1.00', 0);
 
 -- --------------------------------------------------------
 
@@ -59,16 +74,18 @@ CREATE TABLE `inmuebles` (
 --
 
 INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `nompropietario`, `borrado`) VALUES
-(1, 'virgen del carmen 10', 2, 200, '1.25', '1.25', 1, '', 0),
+(1, 'virgen del carmen 1010', 2, 200, '1.25', '1.25', 12, '', 1),
 (2, 'Rivadavia 538', 2, 200, '2.74', '0.00', 6, '', 0),
-(3, 'balcarce', 833, 30, '5.00', '1.00', 1, '', 0),
+(3, 'BALCARCE', 820, 30, '5.00', '1.00', 12, '', 0),
 (4, 'BALCARCE', 833, 30, '5.00', '1.00', 12, '', 0),
 (5, 'MONTEVIDEO', 200, 2, '0.00', '2.00', 11, '', 0),
 (6, 'IRIONDO 98', 2, 150, '0.00', '4422.00', 1, '', 0),
-(7, 'BUENOS AIRES 833', 2, 2, '0.00', '4422.00', 12, '', 0),
-(8, 'BUENOS AIRES 833', 3, 3, '0.00', '21.00', 1, '', 0),
+(7, 'BUENOS AIRES 833', 2, 2, '0.00', '4422.00', 20, '', 0),
+(8, 'BUENOS AIRES 833', 3, 3, '0.00', '21.00', 12, '', 0),
 (9, 'MONTEVIDEO', 12, 2, '0.00', '2.00', 26, '', 0),
-(10, 'SAN MARTIN 232', 1, 122, '0.00', '2333.00', 1, '', 0);
+(10, 'SAN MARTIN 232', 1, 122, '225.00', '2333.00', 12, '', 0),
+(11, 'San Juan', 222, 121, '0.00', '22.00', 18, '', 0),
+(12, 'BUENOS AIRES 833', 2, 222, '0.00', '12.00', 28, '', 0);
 
 -- --------------------------------------------------------
 
@@ -103,7 +120,8 @@ INSERT INTO `inquilino` (`idinquilino`, `nombre`, `apellido`, `mail`, `clave`, `
 (10, '1', '1', '1', '1', 1, 1),
 (11, 'Matias2', 'Torres', 'mtorres@yahoo.com', '12', 12321112, 0),
 (12, 'Jacinta', 'Alvarez', 'jjalvarez@gmail.com', '', 12321221, 0),
-(13, 'Juan', 'Gomez', 'gggomez@pp.com', '', 21321123, 0);
+(13, 'Juan', 'Gomez', 'gggomez@pp.com', '', 21321123, 0),
+(14, 'Maria Adela', 'sanchez', 'ssanchez@gmail.com', '123', 12212111, 0);
 
 -- --------------------------------------------------------
 
@@ -115,7 +133,8 @@ CREATE TABLE `pagos` (
   `idpago` int(11) NOT NULL,
   `idcontrato` int(11) NOT NULL,
   `fpago` date NOT NULL,
-  `importe` decimal(7,2) NOT NULL
+  `importe` decimal(7,2) NOT NULL,
+  `borrado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -157,7 +176,8 @@ INSERT INTO `propietario` (`idpropietario`, `nombre`, `apellido`, `dni`, `mail`,
 (24, '231', '452', 423, '432', '4234', 1),
 (25, 'upper(ww)', 'ww', 12, '122q', '12', 1),
 (26, 'LP', 'ines', 12, 'pp@pp.com', '112', 0),
-(27, 'Q', 'Q', 1, '1', '', 1);
+(27, 'Q', 'Q', 1, '1', '', 1),
+(28, 'MANUEL', 'lopez pujato', 12332111, 'mm@gmail.com', '123', 0);
 
 --
 -- Índices para tablas volcadas
@@ -201,19 +221,19 @@ ALTER TABLE `propietario`
 -- AUTO_INCREMENT de la tabla `contratos`
 --
 ALTER TABLE `contratos`
-  MODIFY `idcontrato` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcontrato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `inmuebles`
 --
 ALTER TABLE `inmuebles`
-  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `inquilino`
 --
 ALTER TABLE `inquilino`
-  MODIFY `idinquilino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idinquilino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `pagos`
@@ -225,7 +245,7 @@ ALTER TABLE `pagos`
 -- AUTO_INCREMENT de la tabla `propietario`
 --
 ALTER TABLE `propietario`
-  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
