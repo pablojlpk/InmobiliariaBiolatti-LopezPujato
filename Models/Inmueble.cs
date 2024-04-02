@@ -12,5 +12,11 @@ public class Inmueble{
     public Propietario? datospropietario { get; set; }
  
     public bool? borrado { get; set; }
+    public override string ToString()
+    {
+        return $"{direccion}, amb: {ambientes}, superf: {superficie}";
+
+    
+    }
 
 }
