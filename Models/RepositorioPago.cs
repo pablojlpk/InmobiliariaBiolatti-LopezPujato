@@ -17,7 +17,7 @@ public class RepositorioPago
 
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = $"SELECT {nameof(Pago.idpago)}, {nameof(Pago.idcontrato)}, {nameof(Pago.Monto)}, {nameof(Pago.Afecha)} FROM pago where borrado=0 ORDER by Afecha ASC";
+            var sql = $"SELECT {nameof(Pago.idpago)}, {nameof(Pago.idcontrato)}, {nameof(Pago.importe)}, {nameof(Pago.fpago)} FROM pagos where borrado=0 ORDER by fpago ASC";
 
             using (var command = new MySqlCommand(sql, connection))
             {
@@ -30,8 +30,8 @@ public class RepositorioPago
                         {   
                             idpago = reader.GetInt32(nameof(Pago.idpago)),
                             idcontrato = reader.GetInt32(nameof(Pago.idcontrato)),
-                            Monto = reader.GetDecimal(nameof(Pago.Monto)),
-                            Afecha = reader.GetDateTime(nameof(Pago.Afecha))
+                            importe = reader.GetDecimal(nameof(Pago.importe)),
+                            fpago = reader.GetDateTime(nameof(Pago.fpago))
                         });
                     }
                     connection.Close();
@@ -63,7 +63,7 @@ public class RepositorioPago
         int res = -1;
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = $"INSERT INTO pago (idcontrato, Monto, Afecha) VALUES ({p.idcontrato},{p.Monto},'{p.Afecha}')";
+            var sql = $"INSERT INTO pago (idcontrato, Monto, Afecha) VALUES ({p.idcontrato},{p.importe},'{p.fpago}')";
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();
@@ -80,13 +80,13 @@ public class RepositorioPago
         int res = -1;
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = $"UPDATE pago SET idcontrato = {nameof(p.idcontrato)}, Monto = {nameof(p.Monto)}, Afecha = '{nameof(p.Afecha)}' WHERE {nameof(Pago.idpago)} = {nameof(p.idpago)}";
+            var sql = $"UPDATE pago SET idcontrato = {nameof(p.idcontrato)}, Monto = {nameof(p.importe)}, Afecha = '{nameof(p.fpago)}' WHERE {nameof(Pago.idpago)} = {nameof(p.idpago)}";
             using (var command = new MySqlCommand(sql, connection))
             {
                 command.Parameters.AddWithValue($"@{nameof(Pago.idpago)}", p.idpago);
                 command.Parameters.AddWithValue($"@{nameof(Pago.idcontrato)}", p.idcontrato);
-                command.Parameters.AddWithValue($"@{nameof(Pago.Monto)}", p.Monto);
-                command.Parameters.AddWithValue($"@{nameof(Pago.Afecha)}", p.Afecha);
+                command.Parameters.AddWithValue($"@{nameof(Pago.importe)}", p.importe);
+                command.Parameters.AddWithValue($"@{nameof(Pago.fpago)}", p.fpago);
                 connection.Open();
                 res = command.ExecuteNonQuery();
                 connection.Close();
