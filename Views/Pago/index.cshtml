@@ -1,12 +1,46 @@
+@model IEnumerable<InmobiliariaBiolatti_LopezPujato.Models.Contrato>
+@{
+    ViewData["Title"] = "Pagos";
+
+}
+
+<h1>@ViewData["Title"]</h1>
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+<script src="https://kit.fontawesome.com/708362d465.js" crossorigin="anonymous"></script>
+
+<h1>Gestion de pagos</h1>
 
 
+<hr>
 
-
-
-
-
-
-
-
-
-
+<table class="table">
+    <thead>
+        <tr>
+			<th>
+                @Html.DisplayNameFor(model => model.idinquilino)         
+            </th>
+   		 	<th>
+                @Html.DisplayNameFor(model => model.datosinmueble)
+            </th>
+			<th>Acciones</th>
+        </tr>
+    </thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+			 	<td>
+					//@Html.DisplayFor(modelItem => item.datosinquilino)
+                    //@Html.DisplayFor(modelItem => item.datosinquilino)
+				</td>
+		        <td>
+					@Html.DisplayFor(modelItem => item.datosinmueble)
+				</td>
+				<td>
+              	<a type="button" class="btn btn-warning" asp-action="VistaPago" asp-route-id="@item.idcontrato" title="Realizar pago"><span>Realizar pago</span></a>
+                <a type="button" class="btn btn-primary" asp-action="VistaDetalles" asp-route-id="@item.idcontrato" title="Detalles"><span>Detalles</span></a>
+				</td>
+			</tr>
+			}
+		</tbody>
+</table>
