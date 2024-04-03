@@ -15,9 +15,7 @@
         <thead>
             <tr>
 
-                <th>C.Contrato</th>
-                <th>C.Inmueble</th>
-                <th>c.Inquilino</th>
+                <th>C.C-In-In</th>
                 <th>Datos Inmueble</th>
                 <th>Nombre Inquilino</th>
                 <th>Fecha Desde</th>
@@ -30,17 +28,19 @@
                     {
                    <tr>
 
-                    <td>@item.idcontrato</td>
-                    <td>@item.idinmueble</td>
-                    <td>@item.idinquilino</td>
+                    <td>@item.idcontrato-@item.idinmueble-@item.idinquilino</td>
+                    
+                    
                     <td>@item.datosinmueble?.ToString()</td>
                     <td>@item.datosinquilino?.ToString()</td>
+                    <td>@item.fdesde</td>
+                    <td>@item.fhasta</td>
                     <td>@item.importe</td>
                     <td>
                     <td>
                         <a asp-action="Editar" asp-route-id="@item.idcontrato" class="fa-solid fa-pen-to-square"
                             style="color:blue"></a>
-                        <a asp-action="Baja" asp-route-id="@item.idcontrato" class="fa-solid fa-trash"
+                        <a asp-action="Eliminar" asp-route-id="@item.idcontrato" class="fa-solid fa-trash"
                             style="color:red"></a>
 
                     </td>

@@ -51,6 +51,14 @@ public class ContratoController : Controller
         return View(c);       
     }
 
+public IActionResult Eliminar(int id)
+{
+    RepositorioContrato rc = new RepositorioContrato();
+    rc.Eliminar(id);
+    return RedirectToAction(nameof(Index));
+}
+
+
 public IActionResult ModContrato(Contrato c){
     RepositorioContrato rc = new RepositorioContrato();
     rc.ModificaContrato(c);

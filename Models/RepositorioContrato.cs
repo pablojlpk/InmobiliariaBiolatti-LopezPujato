@@ -35,9 +35,7 @@ public class RepositorioContrato
 
     public Contrato GetContrato(int idcontrato)
     {
-
         Contrato c = new Contrato();
-
         using (var connection = new MySqlConnection(ConnectionString))
         {
             var sql = @$"SELECT c.idcontrato, c.idinmueble, c.idinquilino, c.fdesde, c.fhasta, c.importe,
@@ -65,10 +63,10 @@ public class RepositorioContrato
                             importe = reader.GetDecimal(nameof(Contrato.importe)),
                             datosinquilino = new Inquilino
                             {
-                               idinquilino = reader.GetInt32(nameof(Inquilino.idinquilino)),
-                               nombre = reader.GetString(nameof(Inquilino.nombre)),
-                               apellido = reader.GetString(nameof(Inquilino.apellido)),
-                               dni = reader.GetInt32(nameof(Inquilino.dni))
+                                idinquilino = reader.GetInt32(nameof(Inquilino.idinquilino)),
+                                nombre = reader.GetString(nameof(Inquilino.nombre)),
+                                apellido = reader.GetString(nameof(Inquilino.apellido)),
+                                dni = reader.GetInt32(nameof(Inquilino.dni))
                             },
                             datosinmueble = new Inmueble
                             {
@@ -170,6 +168,23 @@ public class RepositorioContrato
             }
         }
         return c;
+    }
+
+    public int Eliminar(int idcontrato)
+    {
+        int res = -1;
+        using (var connection = new MySqlConnection(ConnectionString))
+        {
+            var sql = @$"UPDATE contratos SET borrado = true WHERE {nameof(Contrato.idcontrato)} = @{nameof(Contrato.idcontrato)}";
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue($"@{nameof(Contrato.idcontrato)}", idcontrato);
+                connection.Open();
+                res = command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+        return res;
     }
 
     //final
