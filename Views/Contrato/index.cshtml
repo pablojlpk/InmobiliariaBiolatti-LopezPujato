@@ -33,14 +33,14 @@
                     <td>@item.idcontrato</td>
                     <td>@item.idinmueble</td>
                     <td>@item.idinquilino</td>
-                    <td>@item.datosinmueble.ToString()</td>
-                    <td>@item.datosinquilino.ToString()</td>
+                    <td>@item.datosinmueble?.ToString()</td>
+                    <td>@item.datosinquilino?.ToString()</td>
                     <td>@item.importe</td>
                     <td>
                     <td>
-                        <a asp-action="Editar" asp-route-id="@item.idinmueble" class="fa-solid fa-pen-to-square"
+                        <a asp-action="Editar" asp-route-id="@item.idcontrato" class="fa-solid fa-pen-to-square"
                             style="color:blue"></a>
-                        <a asp-action="Baja" asp-route-id="@item.idinmueble" class="fa-solid fa-trash"
+                        <a asp-action="Baja" asp-route-id="@item.idcontrato" class="fa-solid fa-trash"
                             style="color:red"></a>
 
                     </td>

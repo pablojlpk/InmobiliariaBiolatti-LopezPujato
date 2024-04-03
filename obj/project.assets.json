@@ -1843,19 +1843,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ana luz\\.nuget\\packages\\": {}
+    "C:\\Users\\pablo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
+      "projectUniqueName": "C:\\Users\\pablo\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
       "projectName": "InmobiliariaBiolatti-LopezPujato",
-      "projectPath": "C:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
-      "packagesPath": "C:\\Users\\Ana luz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\obj\\",
+      "projectPath": "C:\\Users\\pablo\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
+      "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pablo\\Desktop\\InmobiliariaBiolatti-LopezPujato\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Ana luz\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1912,7 +1912,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

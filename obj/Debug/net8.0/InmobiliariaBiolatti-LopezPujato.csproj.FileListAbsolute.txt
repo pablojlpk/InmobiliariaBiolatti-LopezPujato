@@ -168,3 +168,5 @@ C:\Users\sistema\Documents\Github\InmobiliariaBiolatti-LopezPujato\obj\Debug\net
 C:\Users\sistema\Documents\Github\InmobiliariaBiolatti-LopezPujato\obj\Debug\net8.0\ref\InmobiliariaBiolatti-LopezPujato.dll
 C:\Users\Ana luz\Desktop\InmobiliariaBiolatti-LopezPujato\bin\Debug\net8.0\PagedList.dll
 C:\Users\Ana luz\Desktop\InmobiliariaBiolatti-LopezPujato\bin\Debug\net8.0\PagedList.Mvc.dll
+C:\Users\pablo\Desktop\InmobiliariaBiolatti-LopezPujato\bin\Debug\net8.0\PagedList.dll
+C:\Users\pablo\Desktop\InmobiliariaBiolatti-LopezPujato\bin\Debug\net8.0\PagedList.Mvc.dll

@@ -33,7 +33,7 @@ public class RepositorioContrato
     }
 
 
-    public Contrato GetContrato(int id)
+    public Contrato GetContrato(int idcontrato)
     {
 
         Contrato c = new Contrato();
@@ -41,58 +41,66 @@ public class RepositorioContrato
         using (var connection = new MySqlConnection(ConnectionString))
         {
 
-            //var sql = $"SELECT * FROM contratos WHERE idcontrato = {id}";
-            var sql = $@"SELECT {nameof(Contrato.idcontrato)}, {nameof(Contrato.idinmueble)}, {nameof(Contrato.idinquilino)}, {nameof(Contrato.fdesde)}, {nameof(Contrato.fhasta)}, {nameof(Contrato.importe)},
+            var sql = $"SELECT * FROM contratos WHERE {nameof(Contrato.idcontrato)} = {idcontrato}";
+
+            var sql2 = $@"SELECT {nameof(Contrato.idcontrato)}, {nameof(Contrato.idinmueble)},
+            {nameof(Contrato.idinquilino)}, {nameof(Contrato.fdesde)},
+            {nameof(Contrato.fhasta)}, {nameof(Contrato.importe)},
             i.nombre ,i.apellido, i.dni,
             m.direccion, m.superficie, m.ambientes
             FROM contratos c
             JOIN inquilino i ON c.idinquilino = i.idinquilino
             JOIN inmuebles m ON c.idinmueble = m.idinmueble
-            WHERE c.borrado = 0 and c.idcontrato = {id}";
+            WHERE c.borrado = 0 and c.idcontrato = {idcontrato}";
+
+            
+
+            //var sql = $@"SELECT * FROM contratos WHERE idcontrato = {id}";
 
             using (var command = new MySqlCommand(sql, connection))
             {
+                command.Parameters.AddWithValue($"@idcontrato", idcontrato);
                 connection.Open();
                 using (var reader = command.ExecuteReader())
                 {
-                    while (reader.Read())
+                    if (reader.Read())
                     {
-
-                        c.idcontrato = reader.GetInt32(nameof(Contrato.idcontrato));
-                        c.idinmueble = reader.GetInt32(nameof(Contrato.idinmueble));
-                        c.idinquilino = reader.GetInt32(nameof(Contrato.idinquilino));
-                        c.fdesde = reader.GetDateTime(nameof(Contrato.fdesde));
-                        c.fhasta = reader.GetDateTime(nameof(Contrato.fhasta));
-                        c.importe = reader.GetDecimal(nameof(Contrato.importe));
-                        c.datosinmueble = new Inmueble
+                        c = new Contrato
                         {
-                            idinmueble = reader.GetInt32(nameof(Inmueble.idinmueble)),
-                            direccion = reader.GetString(nameof(Inmueble.direccion)),
-                            superficie = reader.GetInt32(nameof(Inmueble.superficie)),
-                            ambientes = reader.GetInt32(nameof(Inmueble.ambientes)),
+                            idcontrato = reader.GetInt32(nameof(Contrato.idcontrato)),
+                            idinmueble = reader.GetInt32(nameof(Contrato.idinmueble)),
+                            idinquilino = reader.GetInt32(nameof(Contrato.idinquilino)),
+                            fdesde = reader.GetDateTime(nameof(Contrato.fdesde)),
+                            fhasta = reader.GetDateTime(nameof(Contrato.fhasta)),
+                            importe = reader.GetDecimal(nameof(Contrato.importe)),
+                           /*
+                            datosinmueble = new Inmueble
+                            {
+                                idinmueble = reader.GetInt32(nameof(Inmueble.idinmueble)),
+                                direccion = reader.GetString(nameof(Inmueble.direccion)),
+                                superficie = reader.GetInt32(nameof(Inmueble.superficie)),
+                                ambientes = reader.GetInt32(nameof(Inmueble.ambientes))
 
-                        };
-
-                        c.datosinquilino = new Inquilino
-                        {
-                            idinquilino = reader.GetInt32(nameof(Inquilino.idinquilino)),
-                            nombre = reader.GetString(nameof(Inquilino.nombre)),
-                            apellido = reader.GetString(nameof(Inquilino.apellido)),
-                            dni = reader.GetInt32(nameof(Inquilino.dni)),
-
+                            },
+                            datosinquilino = new Inquilino
+                            {
+                                idinquilino = reader.GetInt32(nameof(Inquilino.idinquilino)),
+                                nombre = reader.GetString(nameof(Inquilino.nombre)),
+                                apellido = reader.GetString(nameof(Inquilino.apellido)),
+                                dni = reader.GetInt32(nameof(Inquilino.dni))
+                            },
+                            */
+                            
                         };
                     }
+                    connection.Close();
                 }
 
-                connection.Close();
-
             }
-
-            return c;
-
         }
-
+        return c;
     }
+
 
     public List<Contrato> GetContratos()
     {
@@ -156,6 +164,27 @@ public class RepositorioContrato
         return contratos;
     }
 
+    public Contrato ModificaContrato(Contrato c)
+    {
+        using (var connection = new MySqlConnection(ConnectionString))
+        {
+            var sql = @$"UPDATE contratos SET {nameof(Contrato.idinmueble)} =@{nameof(Contrato.idinmueble)},
+             {nameof(Contrato.idinquilino)} =@{nameof(Contrato.idinquilino)},
+             {nameof(Contrato.importe)} =@{nameof(Contrato.importe)}
+              WHERE {nameof(Contrato.idcontrato)} =@{nameof(Contrato.idcontrato)}";
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue($"@{nameof(Contrato.idcontrato)}", c.idcontrato);
+                command.Parameters.AddWithValue($"@{nameof(Contrato.idinmueble)}", "1");
+                command.Parameters.AddWithValue($"@{nameof(Contrato.idinquilino)}", c.idinquilino);
+                command.Parameters.AddWithValue($"@{nameof(Contrato.importe)}", c.importe);
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+        return c;
+    }
 
     //final
 

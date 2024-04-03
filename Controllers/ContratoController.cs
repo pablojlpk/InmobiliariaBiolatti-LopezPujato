@@ -11,27 +11,27 @@ public class ContratoController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    
+
     RepositorioInmueble rinmuebles = new RepositorioInmueble();
-RepositorioInquilino rinquilinos = new RepositorioInquilino();
-    
+    RepositorioInquilino rinquilinos = new RepositorioInquilino();
+
 
     public ContratoController(ILogger<HomeController> logger)
     {
         _logger = logger;
     }
- 
-     public IActionResult Index()
+
+    public IActionResult Index()
     {
         RepositorioContrato rc = new RepositorioContrato();
         var contratos = rc.GetContratos();
         return View(contratos);
-        
+
     }
     public IActionResult agregar()
     {
-       ViewBag.Inmuebles = rinmuebles.GetInmuebles();
-       ViewBag.Inquilinos = rinquilinos.GetInquilinos();
+        ViewBag.Inmuebles = rinmuebles.GetInmuebles();
+        ViewBag.Inquilinos = rinquilinos.GetInquilinos();
         return View();
     }
     public IActionResult Create(Contrato c)
@@ -41,8 +41,27 @@ RepositorioInquilino rinquilinos = new RepositorioInquilino();
         return RedirectToAction(nameof(Index));
     }
 
+    public IActionResult Editar(int id)
+    {
+       ViewBag.Inmuebles = rinmuebles.GetInmuebles();
+        ViewBag.Inquilinos = rinquilinos.GetInquilinos();
+        
+        Contrato c = new Contrato();
+        c = new RepositorioContrato().GetContrato(id);
+        
 
-    
+  
+
+        return View(c);
+        
+    }
+
+public IActionResult ModContrato(Contrato c){
+    RepositorioContrato rc = new RepositorioContrato();
+    rc.ModificaContrato(c);
+    return RedirectToAction(nameof(Index));
+}
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
