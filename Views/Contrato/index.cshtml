@@ -14,24 +14,47 @@
     <table class="table">
         <thead>
             <tr>
-                
-                <th>Codigo</th>
-                <th>Cinmueble</th>
-                <th>cinquilino</th>
-                <th>inmueble</th>
-                <th>inquilino</th>
+
+                <th>C.Contrato</th>
+                <th>C.Inmueble</th>
+                <th>c.Inquilino</th>
+                <th>Datos Inmueble</th>
+                <th>Nombre Inquilino</th>
                 <th>Fecha Desde</th>
-                <th>Fecha Hata.</th>
+                <th>Fecha Hasta.</th>
                 <th>Importe</th>
-                
-       
+                <th></th>
             <tr>
+
+                    @foreach (var item in Model)
+                    {
+                   <tr>
+
+                    <td>@item.idcontrato</td>
+                    <td>@item.idinmueble</td>
+                    <td>@item.idinquilino</td>
+                    <td>@item.datosinmueble.ToString()</td>
+                    <td>@item.datosinquilino.ToString()</td>
+                    <td>@item.importe</td>
+                    <td>
+                    <td>
+                        <a asp-action="Editar" asp-route-id="@item.idinmueble" class="fa-solid fa-pen-to-square"
+                            style="color:blue"></a>
+                        <a asp-action="Baja" asp-route-id="@item.idinmueble" class="fa-solid fa-trash"
+                            style="color:red"></a>
+
+                    </td>
+                    </tr>
+
+
                     
-            </tr>
+                    }
 
 
             </tr>
 
+
+            </tr>
         </thead>
     </table>
 </div>

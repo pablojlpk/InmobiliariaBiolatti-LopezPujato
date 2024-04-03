@@ -23,14 +23,15 @@ RepositorioInquilino rinquilinos = new RepositorioInquilino();
  
      public IActionResult Index()
     {
-
-        return View();
+        RepositorioContrato rc = new RepositorioContrato();
+        var contratos = rc.GetContratos();
+        return View(contratos);
+        
     }
     public IActionResult agregar()
     {
        ViewBag.Inmuebles = rinmuebles.GetInmuebles();
        ViewBag.Inquilinos = rinquilinos.GetInquilinos();
-
         return View();
     }
     public IActionResult Create(Contrato c)
@@ -39,6 +40,7 @@ RepositorioInquilino rinquilinos = new RepositorioInquilino();
         rc.AltaContrato(c);
         return RedirectToAction(nameof(Index));
     }
+
 
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -2,7 +2,6 @@ namespace InmobiliariaBiolatti_LopezPujato.Models;
 
 public class Contrato
 {
-    
     public int? idcontrato { get; set; }
     public int? idinquilino { get; set; }
     public Inquilino? datosinquilino { get; set; }
