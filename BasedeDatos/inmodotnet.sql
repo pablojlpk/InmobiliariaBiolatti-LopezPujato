@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-04-2024 a las 14:29:43
+-- Tiempo de generación: 03-04-2024 a las 14:45:12
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -33,8 +33,16 @@ CREATE TABLE `contratos` (
   `idinquilino` int(11) NOT NULL,
   `fdesde` date NOT NULL,
   `fhasta` date NOT NULL,
-  `importe` decimal(8,2) NOT NULL
+  `importe` decimal(8,2) NOT NULL,
+  `borrado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `contratos`
+--
+
+INSERT INTO `contratos` (`idcontrato`, `idinmueble`, `idinquilino`, `fdesde`, `fhasta`, `importe`, `borrado`) VALUES
+(1, 1, 12, '0000-00-00', '0000-00-00', 250.33, 0);
 
 -- --------------------------------------------------------
 
@@ -201,7 +209,7 @@ ALTER TABLE `propietario`
 -- AUTO_INCREMENT de la tabla `contratos`
 --
 ALTER TABLE `contratos`
-  MODIFY `idcontrato` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcontrato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `inmuebles`
