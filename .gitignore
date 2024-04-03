@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 .vscode/*
+obj/Debug/net8.0/project.razor.vscode.bin
