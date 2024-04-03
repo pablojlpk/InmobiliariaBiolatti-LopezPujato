@@ -23,8 +23,8 @@
 
 					@foreach (var item in ListaInmuebles)
 					{
-
-						<option value="@item.idinmueble">@item.ToString()</option>
+						//<option value="@item.idinmueble">@item.ToString()</option>
+							@:<option @(item.idinmueble==Model.idinmueble ? "selected" : "") value="@item.idinmueble">@item.ToString()</option>
 					}
 				</select>
 				<span asp-validation-for="idinmueble" class="number"></span>
@@ -36,7 +36,8 @@
 
 				@foreach (var item in ListaInquilinos)
 				{
-					<option value="@item.idinquilino">@item.ToString()</option>
+					//<option value="@item.idinquilino">@item.ToString()</option>
+					@:<option @(item.idinquilino==Model.idinquilino ? "selected" : "") value="@item.idinquilino">@item.ToString()</option>
 				}
 			</select>
 			<span asp-validation-for="idinquilino" class="number"></span>

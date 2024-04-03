@@ -48,12 +48,7 @@ public class ContratoController : Controller
         
         Contrato c = new Contrato();
         c = new RepositorioContrato().GetContrato(id);
-        
-
-  
-
-        return View(c);
-        
+        return View(c);       
     }
 
 public IActionResult ModContrato(Contrato c){

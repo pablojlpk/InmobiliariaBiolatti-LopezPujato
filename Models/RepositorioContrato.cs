@@ -40,23 +40,13 @@ public class RepositorioContrato
 
         using (var connection = new MySqlConnection(ConnectionString))
         {
-
-            var sql = $"SELECT * FROM contratos WHERE {nameof(Contrato.idcontrato)} = {idcontrato}";
-
-            var sql2 = $@"SELECT {nameof(Contrato.idcontrato)}, {nameof(Contrato.idinmueble)},
-            {nameof(Contrato.idinquilino)}, {nameof(Contrato.fdesde)},
-            {nameof(Contrato.fhasta)}, {nameof(Contrato.importe)},
-            i.nombre ,i.apellido, i.dni,
-            m.direccion, m.superficie, m.ambientes
-            FROM contratos c
-            JOIN inquilino i ON c.idinquilino = i.idinquilino
-            JOIN inmuebles m ON c.idinmueble = m.idinmueble
-            WHERE c.borrado = 0 and c.idcontrato = {idcontrato}";
-
-            
-
-            //var sql = $@"SELECT * FROM contratos WHERE idcontrato = {id}";
-
+            var sql = @$"SELECT c.idcontrato, c.idinmueble, c.idinquilino, c.fdesde, c.fhasta, c.importe,
+              i.idinquilino, i.nombre, i.apellido, i.dni,
+              m.direccion, m.superficie, m.ambientes
+        FROM contratos c
+        INNER JOIN inquilino i on c.idinquilino=i.idinquilino
+        inner join inmuebles m on c.idinmueble=m.idinmueble
+        WHERE i.borrado=false and c.idcontrato = @idcontrato";
             using (var command = new MySqlCommand(sql, connection))
             {
                 command.Parameters.AddWithValue($"@idcontrato", idcontrato);
@@ -73,24 +63,20 @@ public class RepositorioContrato
                             fdesde = reader.GetDateTime(nameof(Contrato.fdesde)),
                             fhasta = reader.GetDateTime(nameof(Contrato.fhasta)),
                             importe = reader.GetDecimal(nameof(Contrato.importe)),
-                           /*
+                            datosinquilino = new Inquilino
+                            {
+                               idinquilino = reader.GetInt32(nameof(Inquilino.idinquilino)),
+                               nombre = reader.GetString(nameof(Inquilino.nombre)),
+                               apellido = reader.GetString(nameof(Inquilino.apellido)),
+                               dni = reader.GetInt32(nameof(Inquilino.dni))
+                            },
                             datosinmueble = new Inmueble
                             {
                                 idinmueble = reader.GetInt32(nameof(Inmueble.idinmueble)),
                                 direccion = reader.GetString(nameof(Inmueble.direccion)),
                                 superficie = reader.GetInt32(nameof(Inmueble.superficie)),
                                 ambientes = reader.GetInt32(nameof(Inmueble.ambientes))
-
-                            },
-                            datosinquilino = new Inquilino
-                            {
-                                idinquilino = reader.GetInt32(nameof(Inquilino.idinquilino)),
-                                nombre = reader.GetString(nameof(Inquilino.nombre)),
-                                apellido = reader.GetString(nameof(Inquilino.apellido)),
-                                dni = reader.GetInt32(nameof(Inquilino.dni))
-                            },
-                            */
-                            
+                            }
                         };
                     }
                     connection.Close();
