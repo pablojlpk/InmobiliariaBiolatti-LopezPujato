@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-03-2024 a las 21:19:13
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 03-04-2024 a las 14:29:43
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,8 +33,8 @@ CREATE TABLE `contratos` (
   `idinquilino` int(11) NOT NULL,
   `fdesde` date NOT NULL,
   `fhasta` date NOT NULL,
-  `importes` decimal(8,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `importe` decimal(8,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -52,23 +52,23 @@ CREATE TABLE `inmuebles` (
   `idpropietario` int(11) NOT NULL,
   `nompropietario` varchar(100) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `inmuebles`
 --
 
 INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `nompropietario`, `borrado`) VALUES
-(1, 'virgen del carmen 10', 2, 200, '1.25', '1.25', 1, '', 0),
-(2, 'Rivadavia 538', 2, 200, '2.74', '0.00', 6, '', 0),
-(3, 'balcarce', 833, 30, '5.00', '1.00', 1, '', 0),
-(4, 'BALCARCE', 833, 30, '5.00', '1.00', 12, '', 0),
-(5, 'MONTEVIDEO', 200, 2, '0.00', '2.00', 11, '', 0),
-(6, 'IRIONDO 98', 2, 150, '0.00', '4422.00', 1, '', 0),
-(7, 'BUENOS AIRES 833', 2, 2, '0.00', '4422.00', 12, '', 0),
-(8, 'BUENOS AIRES 833', 3, 3, '0.00', '21.00', 1, '', 0),
-(9, 'MONTEVIDEO', 12, 2, '0.00', '2.00', 26, '', 0),
-(10, 'SAN MARTIN 232', 1, 122, '0.00', '2333.00', 1, '', 0);
+(1, 'virgen del carmen 10', 2, 200, 1.25, 1.25, 1, '', 0),
+(2, 'Rivadavia 538', 2, 200, 2.74, 0.00, 6, '', 0),
+(3, 'balcarce', 833, 30, 5.00, 1.00, 1, '', 0),
+(4, 'BALCARCE', 833, 30, 5.00, 1.00, 12, '', 0),
+(5, 'MONTEVIDEO', 200, 2, 0.00, 2.00, 11, '', 0),
+(6, 'IRIONDO 98', 2, 150, 0.00, 4422.00, 1, '', 0),
+(7, 'BUENOS AIRES 833', 2, 2, 0.00, 4422.00, 12, '', 0),
+(8, 'BUENOS AIRES 833', 3, 3, 0.00, 21.00, 1, '', 0),
+(9, 'MONTEVIDEO', 12, 2, 0.00, 2.00, 26, '', 0),
+(10, 'SAN MARTIN 232', 1, 122, 0.00, 2333.00, 1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -84,7 +84,7 @@ CREATE TABLE `inquilino` (
   `clave` varchar(30) NOT NULL,
   `dni` int(8) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `inquilino`
@@ -116,7 +116,7 @@ CREATE TABLE `pagos` (
   `idcontrato` int(11) NOT NULL,
   `fpago` date NOT NULL,
   `importe` decimal(7,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -132,7 +132,7 @@ CREATE TABLE `propietario` (
   `mail` varchar(30) NOT NULL,
   `clave` text NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `propietario`

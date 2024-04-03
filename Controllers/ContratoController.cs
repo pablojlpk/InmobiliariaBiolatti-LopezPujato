@@ -33,6 +33,12 @@ RepositorioInquilino rinquilinos = new RepositorioInquilino();
 
         return View();
     }
+    public IActionResult Create(Contrato c)
+    {
+        RepositorioContrato rc = new RepositorioContrato();
+        rc.AltaContrato(c);
+        return RedirectToAction(nameof(Index));
+    }
 
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
