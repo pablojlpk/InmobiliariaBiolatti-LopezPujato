@@ -37,7 +37,9 @@ public class ContratoController : Controller
     public IActionResult Create(Contrato c)
     {
         RepositorioContrato rc = new RepositorioContrato();
+        
         rc.AltaContrato(c);
+
         return RedirectToAction(nameof(Index));
     }
 
@@ -65,6 +67,14 @@ public IActionResult ModContrato(Contrato c){
     return RedirectToAction(nameof(Index));
 }
 
+public IActionResult Detalle(int id)
+{
+    ViewBag.Inmuebles = rinmuebles.GetInmuebles();
+    ViewBag.Inquilinos = rinquilinos.GetInquilinos();
+    Contrato c = new Contrato();
+    c = new RepositorioContrato().GetContrato(id);
+    return View(c);
+}
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

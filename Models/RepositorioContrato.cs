@@ -21,11 +21,20 @@ public class RepositorioContrato
         using (var connection = new MySqlConnection(ConnectionString))
         {
             var sql = $"INSERT INTO contratos (idinmueble, idinquilino, fdesde, fhasta, importe) VALUES ({c.idinmueble},{c.idinquilino},'{c.fdesde}','{c.fhasta}', {c.importe})";
+            
+            var sql2 = @"INSERT INTO contratos (idinmueble, idinquilino, fdesde, fhasta, importe)
+             VALUES (@idinmueble,@idinquilino,@fdesde,@fhasta, @importe);";
 
-            using (var command = new MySqlCommand(sql, connection))
+            using (var command = new MySqlCommand(sql2, connection))
             {
+                command.CommandType = CommandType.Text;
+                command.Parameters.AddWithValue("@idinmueble", c.idinmueble);
+                command.Parameters.AddWithValue("@idinquilino", c.idinquilino);
+                command.Parameters.AddWithValue("@fdesde", c.fdesde);
+                command.Parameters.AddWithValue("@fhasta", c.fhasta);
+                command.Parameters.AddWithValue("@importe", c.importe);
                 connection.Open();
-                command.ExecuteNonQuery();
+                command.ExecuteScalar();
                 connection.Close();
             }
         }
@@ -91,16 +100,8 @@ public class RepositorioContrato
         List<Contrato> contratos = new List<Contrato>();
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql2 = $@"SELECT {nameof(Contrato.idcontrato)}, {nameof(Contrato.idinmueble)}, {nameof(Contrato.idinquilino)},
-             {nameof(Contrato.fdesde)}, {nameof(Contrato.fhasta)}, {nameof(Contrato.importe)},
-            i.nombre ,i.apellido, i.dni,
-            m.direccion, m.superficie, m.ambientes
-            FROM contratos c
-            JOIN inquilino i ON c.idinquilino = i.idinquilino
-            JOIN inmuebles m ON c.idinmueble = m.idinmueble
-            WHERE c.borrado = 0";
 
-            var sql = $@"SELECT c.idcontrato, c.idinmueble, c.idinquilino,
+            var sql = $@"SELECT c.idcontrato, c.idinmueble, c.idinquilino,c.fdesde, c.fhasta,
              c.importe,
             i.nombre ,i.apellido, i.dni,
             m.direccion, m.superficie, m.ambientes
@@ -121,8 +122,8 @@ public class RepositorioContrato
                             idcontrato = reader.GetInt32(nameof(Contrato.idcontrato)),
                             idinmueble = reader.GetInt32(nameof(Contrato.idinmueble)),
                             idinquilino = reader.GetInt32(nameof(Contrato.idinquilino)),
-                            //fdesde = reader.GetDateTime(nameof(Contrato.fdesde)),
-                            //fhasta = reader.GetDateTime(nameof(Contrato.fhasta)),
+                            fdesde = reader.GetDateTime(nameof(Contrato.fdesde)),
+                            fhasta = reader.GetDateTime(nameof(Contrato.fhasta)),
                             importe = reader.GetDecimal(nameof(Contrato.importe)),
                             datosinmueble = new Inmueble
                             {

@@ -50,7 +50,7 @@
 
 					@foreach (var item in ltaPropietarios)
 					{
-						<option value="@item.idpropietario">@item.ToString()</option>
+						@:<option @(item.idpropietario==Model.idpropietario ? "selected" : "") value="@item.idpropietario">@item.ToString()</option>
 					}
 				</select>
 				<span asp-validation-for="idpropietario" class="number" ></span>
