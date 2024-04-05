@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "T3bbaHUQRpW6WXqHEJFyE1a4nZMLxiq9VZMAgiIdahCpx4kSgJ8T7NCLXEPLckPBCoS6t/4P50aIuELYvHyYuA==",
+  "dgSpecHash": "Qvku6lOW/TH9wJHtIT+Jl+i3FImxE0mY+VhNDU68SadksqCZ4krnOhtqlwPDOnxGYVnSz7sVyCSM215LfS4/Pw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
+  "projectFilePath": "c:\\Users\\Ana luz\\Desktop\\InmobiliariaBiolatti-LopezPujato\\InmobiliariaBiolatti-LopezPujato.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ana luz\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\Ana luz\\.nuget\\packages\\google.protobuf\\3.25.1\\google.protobuf.3.25.1.nupkg.sha512",

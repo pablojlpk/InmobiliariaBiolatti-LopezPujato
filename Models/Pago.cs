@@ -20,9 +20,6 @@ public class Pago{
         public bool borrado { get; set; }
 
 
-        public override string ToString(){
-            var res =$" {datosContrato}";
-            return res;
-        }
+
 
 }
