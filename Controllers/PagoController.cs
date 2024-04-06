@@ -78,6 +78,20 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
             ViewBag.Contratos = rcontratos.GetContratos();
             return View(p);
         }
-        
 
-    }}
+    public IActionResult eliminar(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var pago = repositorioPago.GetPago(id.Value);
+        if (pago == null)
+        {
+            return NotFound();
+        }
+
+        ViewBag.Contratos = rcontratos.GetContratos();
+        return View(pago);
+    }}}

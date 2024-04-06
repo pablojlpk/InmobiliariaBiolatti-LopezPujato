@@ -1,0 +1,42 @@
+@model InmobiliariaBiolatti_LopezPujato.Models.Pago
+
+@{
+    ViewData["Title"] = "Eliminar Pago";
+    var listaContratos = ViewBag.Contratos;
+}
+
+<h1>Eliminar Pago</h1>
+<div class="col-md-4">
+    <form asp-action="Delete">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="idpago" class="control-label">ID del Pago</label>
+            <input asp-for="idpago" class="form-control" readonly />
+            <span asp-validation-for="idpago" class="number"></span>
+        </div>
+        <div>
+            <label class="control-label">Contrato</label>
+            <select class="form-control" asp-for="idcontrato" disabled>
+                @foreach (var contrato in listaContratos)
+                {
+                    <option value="@contrato.idcontrato">@contrato.ToString()</option>
+                }
+            </select>
+            <span asp-validation-for="idcontrato" class="number"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="fpago" class="control-label">Fecha de Pago</label>
+            <input asp-for="fpago" class="form-control" readonly />
+            <span asp-validation-for="fpago" class="date"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="importe" class="control-label">Importe</label>
+            <input asp-for="importe" class="form-control" readonly />
+            <span asp-validation-for="importe" class="number"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="ELIMINAR" class="btn btn-danger"/>
+            <a asp-action="Index" class="btn btn-primary">Volver</a>
+        </div>
+    </form>
+</div>

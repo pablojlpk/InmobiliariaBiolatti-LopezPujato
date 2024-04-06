@@ -71,24 +71,24 @@ namespace InmobiliariaBiolatti_LopezPujato.Models
             return pago;
         }
 
-        public int Baja(int idpago)
-        {
-            int res = -1;
-            using (var connection = new MySqlConnection(ConnectionString))
+                    public int eliminar(int idpago)
             {
-                var sql = $"DELETE FROM PAGOS WHERE {nameof(Pago.idpago)} = @idpago";
-                using (var command = new MySqlCommand(sql, connection))
+                int res = -1;
+                using (var connection = new MySqlConnection(ConnectionString))
                 {
-                    command.Parameters.AddWithValue("@idpago", idpago);
+                    var sql = $"UPDATE PAGOS SET borrado = 1 WHERE {nameof(Pago.idpago)} = @idpago";
+                    using (var command = new MySqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@idpago", idpago);
 
-                    connection.Open();
-                    res = command.ExecuteNonQuery();
-                    connection.Close();
+                        connection.Open();
+                        res = command.ExecuteNonQuery();
+                        connection.Close();
+                    }
                 }
-            }
-            return res;
+                return res;
+}
 
-        }
 
         public int altaPago(Pago p)
         {
