@@ -30,18 +30,13 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
             return View();
         }
         public IActionResult detalle(int id)
-        {
-            ViewBag.Contratos = rcontratos.GetContratos();
-            Pago p = new Pago();
-            p = new RepositorioPago().GetPago(id);
-            return View(p);
-        }
+            {
+                Pago p = new RepositorioPago().GetPago(id);
+                Contrato contrato = rcontratos.GetContrato(p.idcontrato);
+                p.datosContrato = contrato;
+                return View(p);
+            }
 
-
-        
-
-
-        
 
         [HttpPost]
         [ValidateAntiForgeryToken]

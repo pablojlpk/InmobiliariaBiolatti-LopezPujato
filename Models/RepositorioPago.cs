@@ -13,32 +13,45 @@ namespace InmobiliariaBiolatti_LopezPujato.Models
         }
 
         public IList<Pago> GetPagos()
+{
+    var pagos = new List<Pago>();
+
+    using (var connection = new MySqlConnection(ConnectionString))
+    {
+        var sql = $"SELECT {nameof(Pago.idpago)}, {nameof(Pago.idcontrato)}, {nameof(Pago.importe)}, {nameof(Pago.fpago)} FROM PAGOS WHERE borrado = 0 ORDER BY fpago ASC";
+
+        using var command = new MySqlCommand(sql, connection);
+        connection.Open();
+        using (var reader = command.ExecuteReader())
         {
-            var pagos = new List<Pago>();
-
-            using (var connection = new MySqlConnection(ConnectionString))
+            while (reader.Read())
             {
-                var sql = $"SELECT {nameof(Pago.idpago)}, {nameof(Pago.idcontrato)}, {nameof(Pago.importe)}, {nameof(Pago.fpago)} FROM PAGOS WHERE borrado = 0 ORDER BY fpago ASC";
-
-                using var command = new MySqlCommand(sql, connection);
-                connection.Open();
-                using (var reader = command.ExecuteReader())
+                var pago = new Pago
                 {
-                    while (reader.Read())
-                    {
-                        pagos.Add(new Pago
-                        {
-                            idpago = reader.GetInt32(nameof(Pago.idpago)),
-                            idcontrato = reader.GetInt32(nameof(Pago.idcontrato)),
-                            importe = reader.GetDecimal(nameof(Pago.importe)),
-                            fpago = reader.GetDateTime(nameof(Pago.fpago))
-                        });
-                    }
-                }
-                connection.Close();
+                    idpago = reader.GetInt32(nameof(Pago.idpago)),
+                    idcontrato = reader.GetInt32(nameof(Pago.idcontrato)),
+                    importe = reader.GetDecimal(nameof(Pago.importe)),
+                    fpago = reader.GetDateTime(nameof(Pago.fpago))
+                };
+
+                // Obtener los detalles del contrato asociado y asignarlos a la propiedad datosContrato
+                pago.datosContrato = ObtenerDetallesContrato(pago.idcontrato);
+
+                pagos.Add(pago);
             }
-            return pagos;
         }
+        connection.Close();
+    }
+    return pagos;
+}
+
+
+private Contrato ObtenerDetallesContrato(int idContrato)
+{
+    // Lógica para obtener los detalles del contrato según su ID
+    RepositorioContrato repositorioContrato = new RepositorioContrato();
+    return repositorioContrato.GetContrato(idContrato);
+}
 
         public Pago GetPago(int id)
         {

@@ -19,12 +19,8 @@ public class Pago{
         public DateTime fpago { get; set; }
         public bool borrado { get; set; }
 
-         public override string ToString()
-    {
-        return $"{datosContrato}";
 
     
-    }
 
 
 

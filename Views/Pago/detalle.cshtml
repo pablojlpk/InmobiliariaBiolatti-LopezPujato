@@ -11,17 +11,28 @@
     <br>
     <table class="table">
         <thead>
-            <th><h2>Pago nro</h2></th>
-            <th>Fecha de Pago</th>
-            <th>Importe</th>
+            <tr>
+                <th>Pago nro</th>
+                <th>Fecha de Pago</th>
+                <th>Importe</th>
+            </tr>
         </thead>
-        <td><h5>@Model.idpago</h5></td>
-        <td>@Model.fpago.ToShortDateString()</td>
-        <td>@Model.importe</td>
+        <tbody>
+            <tr>
+                <td>@Model.idpago</td>
+                <td>@Model.fpago.ToShortDateString()</td>
+                <td>@Model.importe</td>
+            </tr>
+        </tbody>
     </table>
-    <p><strong>Contrato: </strong></p>
-    <p><strong>Datos del Contrato: </strong></p>
+    <h4>Datos del Contrato</h4>
     <br>
+    <p><strong>Nombre del Inquilino:</strong> @Model.datosContrato?.datosinquilino</p>
+    <p><strong>Datos del Inmueble:</strong> @Model.datosContrato?.datosinmueble</p>
+    <p><strong>Fecha Desde:</strong> @Model.datosContrato?.fdesde</p>
+    <p><strong>Fecha Hasta:</strong> @Model.datosContrato?.fhasta</p>
+
 </div>
 
 <a asp-action="Index" class="btn btn-primary">Volver</a>
+
