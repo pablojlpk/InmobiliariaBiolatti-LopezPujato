@@ -12,11 +12,15 @@ public class Pago{
         
 		[Display(Name = "Contrato")]
 		public int idcontrato { get; set; }
-        public Contrato? Contrato{ get; set; }
+        public Contrato? datosContrato{ get; set; }
 		public decimal importe{ get; set; }
         
         [DataType(DataType.Date)]
         public DateTime fpago { get; set; }
         public bool borrado { get; set; }
+
+
+
+
 
 }

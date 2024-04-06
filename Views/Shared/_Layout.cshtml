@@ -3,37 +3,59 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - InmobiliariaBiolatti_LopezPujato</title>
+    <title>Inmobiliaria - InmobiliariaBiolatti_LopezPujato</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/InmobiliariaBiolatti_LopezPujato.styles.css" asp-append-version="true" />
+    <style>
+        .navbar-brand {
+            font-size: 2,5em; /* Ajustar tamaño de la fuente */
+            font-weight: bold; /* Ajustar peso de la fuente */
+            color: #FFF !important; /* Cambiar color del texto */
+        }
+
+        .navbar-nav .nav-link {
+            margin-right: 20px; /* Añadir espacio entre elementos */
+            color: #FFF !important;
+        }
+
+        .navbar-expand-lg {
+            height: 100px; /* Ajustar altura de la barra */
+        }
+
+        .footer {
+            background-color: black;
+            color: white !important;
+            padding: 40px 0;
+        }
+
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: black;">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">InmobiliariaBiolatti_LopezPujato</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Inmobiliaria</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Propietario" asp-action="index">Propietarios</a>
+                            <a class="nav-link" asp-area="" asp-controller="Propietario" asp-action="index">Propietarios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Inquilino" asp-action="index">Inquilinos</a>
+                            <a class="nav-link" asp-area="" asp-controller="Inquilino" asp-action="index">Inquilinos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Inmueble" asp-action="index">Inmuebles</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Contrato" asp-action="index">Contratos</a>
+                            <a class="nav-link" asp-area="" asp-controller="Inmueble" asp-action="index">Inmuebles</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Pago" asp-action="index">Pagos</a>
+                            <a class="nav-link" asp-area="" asp-controller="Contrato" asp-action="index">Contratos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Pago" asp-action="index">Pagos</a>
                         </li>
                     </ul>
                 </div>
@@ -48,7 +70,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - InmobiliariaBiolatti_LopezPujato - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - InmobiliariaBiolatti_LopezPujato - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -57,3 +79,6 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+
+
