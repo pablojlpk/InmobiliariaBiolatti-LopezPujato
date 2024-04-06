@@ -20,24 +20,22 @@ namespace InmobiliariaBiolatti_LopezPujato.Models
             {
                 var sql = $"SELECT {nameof(Pago.idpago)}, {nameof(Pago.idcontrato)}, {nameof(Pago.importe)}, {nameof(Pago.fpago)} FROM PAGOS WHERE borrado = 0 ORDER BY fpago ASC";
 
-                using (var command = new MySqlCommand(sql, connection))
+                using var command = new MySqlCommand(sql, connection);
+                connection.Open();
+                using (var reader = command.ExecuteReader())
                 {
-                    connection.Open();
-                    using (var reader = command.ExecuteReader())
+                    while (reader.Read())
                     {
-                        while (reader.Read())
+                        pagos.Add(new Pago
                         {
-                            pagos.Add(new Pago
-                            {
-                                idpago = reader.GetInt32(nameof(Pago.idpago)),
-                                idcontrato = reader.GetInt32(nameof(Pago.idcontrato)),
-                                importe = reader.GetDecimal(nameof(Pago.importe)),
-                                fpago = reader.GetDateTime(nameof(Pago.fpago))
-                            });
-                        }
+                            idpago = reader.GetInt32(nameof(Pago.idpago)),
+                            idcontrato = reader.GetInt32(nameof(Pago.idcontrato)),
+                            importe = reader.GetDecimal(nameof(Pago.importe)),
+                            fpago = reader.GetDateTime(nameof(Pago.fpago))
+                        });
                     }
-                    connection.Close();
                 }
+                connection.Close();
             }
             return pagos;
         }
