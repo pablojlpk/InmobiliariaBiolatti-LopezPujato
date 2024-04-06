@@ -7,6 +7,7 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
     public class PagoController : Controller
     {
         private readonly ILogger<PagoController> _logger;
+        RepositorioPago repositorioPago=new RepositorioPago();
         RepositorioContrato rcontratos = new RepositorioContrato();
         RepositorioInmueble rinmuebles = new RepositorioInmueble();
         RepositorioInquilino rinquilinos = new RepositorioInquilino();
@@ -28,14 +29,19 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
             ViewBag.Contratos = rcontratos.GetContratos();
             return View();
         }
-        public IActionResult detalle()
+        public IActionResult detalle(int id)
         {
             ViewBag.Contratos = rcontratos.GetContratos();
             Pago p = new Pago();
-            p =new RepositorioPago.GetPago();
-
+            p = new RepositorioPago().GetPago(id);
             return View(p);
         }
+
+
+        
+
+
+        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
