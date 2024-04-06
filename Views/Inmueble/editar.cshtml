@@ -1,0 +1,66 @@
+@model InmobiliariaBiolatti_LopezPujato.Models.Inmueble;
+
+@{
+	ViewData["Title"] = "Inmueble";
+	int idinmueble = Model == null ? 0:Model.idinmueble;
+	var ltaPropietarios = ViewBag.Propietarios;
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Alta de un Inmueble</p>
+<div class="row">
+
+	<div class="col-md-4">
+		<form asp-action="ModInmueble" enctype="multipart/form-data">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="idinmueble" class="control-label"></label>
+				<input asp-for="idinmueble" class="form-control" readonly/>
+				<span asp-validation-for="idinmueble" class="number" ></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="direccion" class="control-label"></label>
+				<input asp-for="direccion" class="form-control" />
+				<span asp-validation-for="direccion" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="ambientes" class="control-label"></label>
+				<input asp-for="ambientes" class="form-control" />
+				<span asp-validation-for="ambientes" class="number"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="superficie" class="control-label"></label>
+				<input asp-for="superficie" class="form-control" />
+				<span asp-validation-for="superficie" class="decimal"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="latitud" class="control-label"></label>
+				<input asp-for="latitud" class="form-control" />
+				<span asp-validation-for="latitud" class="decimal"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="longitud" class="control-label"></label>
+				<input asp-for="longitud" class="form-control" />
+				<span asp-validation-for="longitud" class="decimal"></span>
+			</div>
+		
+			<div>
+				<label class="control-label">Propietario</label>
+				<select class="form-control" name="idpropietario">
+
+					@foreach (var item in ltaPropietarios)
+					{
+						@:<option @(item.idpropietario==Model.idpropietario ? "selected" : "") value="@item.idpropietario">@item.ToString()</option>
+					}
+				</select>
+				<span asp-validation-for="idpropietario" class="number" ></span>
+			</div>
+			<div class="form-group">
+				<br>
+				<input type="submit" value="GUARDAR" class="btn btn-primary" />
+				<a asp-action="index" class="btn btn-primary">Volver</a>
+			</div>
+
+		</form>
+
+	</div>

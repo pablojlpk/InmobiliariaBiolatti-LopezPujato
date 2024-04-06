@@ -1,0 +1,41 @@
+@model InmobiliariaBiolatti_LopezPujato.Models.Contrato;
+@{
+	ViewData["Title"] = "Contratos";
+	var ListaInmuebles = ViewBag.Inmuebles;
+	var ListaInquilinos = ViewBag.Inquilinos;
+
+	int? idcontrato = Model == null ? 0 : Model.idcontrato;
+}
+<h2>Detalle Contrato</h2>
+<br>
+<div class="col-md-40">
+	<h4>Datos del Inmueble</h4>
+	<br>
+	<table class="table">
+		<thead>
+			<th><h2>Contrato nro</h2></th>
+			<th>Desde</th>
+			<th>Hasta</th>
+		</thead>
+		<td><h5>@Model.idcontrato</h5></td>
+		<td>@Model.fdesde</td>
+		<td>@Model.fhasta</td>
+	</table>
+	<p><strong>Codigo Inmueble: </strong>@Model.datosinmueble.idinmueble</p>
+	<p><strong>Dirección: </strong>@Model.datosinmueble.direccion</p>
+	<p><strong>Superficie: </strong>@Model.datosinmueble.superficie</p>
+	<p><strong>Ambientes: </strong>@Model.datosinmueble.ambientes</p>
+	
+	<h4>Datos del Inquilino</h4>
+	<br>
+	<p><strong>Apellido: </strong>@Model.datosinquilino.apellido</p>
+	<p><strong>Nombre: </strong>@Model.datosinquilino.nombre</p>
+	<p><strong>DNI: </strong>@Model.datosinquilino.dni</p>
+	<br>
+	
+
+
+</div>
+
+
+<a asp-action="index" class="btn btn-primary">volver</a>

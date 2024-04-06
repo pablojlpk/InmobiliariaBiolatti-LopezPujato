@@ -1,0 +1,60 @@
+@model InmobiliariaBiolatti_LopezPujato.Models.Propietario;
+@{
+	ViewData["Title"] = "Editar Propietario";
+int? idpropietario = Model == null? 0 : Model.idpropietario;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>EDITANDO DATOS ....  </p>
+<br>
+
+<div class="row">
+   
+<div class="col-md-4">
+		<form asp-action="ModPropietario">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label class="control-label">Codigo</label>
+				<input asp-for="idpropietario" class="form-control" value="@idpropietario" readonly />
+				<span asp-validation-for="idpropietario" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="nombre" class="control-label"></label>
+				<input asp-for="nombre" class="form-control" />
+				<span asp-validation-for="nombre" class="text-danger" ></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="apellido" class="control-label"></label>
+				<input asp-for="apellido" class="form-control" />
+				<span asp-validation-for="apellido" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="mail" class="control-label"></label>
+				<input asp-for="mail" class="form-control" />
+				<span asp-validation-for="mail" class="text-danger"></span>
+			</div>
+            <div class="form-group">
+				<label asp-for="dni" class="control-label"></label>
+				<input asp-for="dni" class="form-control"  />
+				<span asp-validation-for="dni" class="number"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="clave" class="control-label"></label>
+				<input asp-for="clave" class="form-control"  />
+				<span asp-validation-for="clave" class="text-danger"></span>
+			</div>
+			
+			<div class="form-group">
+				<input type="submit" value="GUARDAR" class="btn btn-primary" />
+				<a asp-action="index" class="btn btn-primary">volver</a>
+				
+
+
+			</div>
+			
+		</form>
+
+</div>
+
+
