@@ -1,0 +1,27 @@
+@model InmobiliariaBiolatti_LopezPujato.Models.Pago
+
+@{
+    ViewData["Title"] = "Detalle de Pago";
+}
+
+<h2>@ViewData["Title"]</h2>
+<br>
+<div class="col-md-40">
+    <h4>Datos del Pago</h4>
+    <br>
+    <table class="table">
+        <thead>
+            <th><h2>Pago nro</h2></th>
+            <th>Fecha de Pago</th>
+            <th>Importe</th>
+        </thead>
+        <td><h5>@Model.idpago</h5></td>
+        <td>@Model.fpago.ToShortDateString()</td>
+        <td>@Model.importe</td>
+    </table>
+    <p><strong>Contrato: </strong>@Model.datosContrato.idcontrato</p>
+    <p><strong>Datos del Contrato: </strong>@Model.datosContrato.ToString()</p>
+    <br>
+</div>
+
+<a asp-action="Index" class="btn btn-primary">Volver</a>

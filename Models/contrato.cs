@@ -15,4 +15,6 @@ public class Contrato
     [DataType(DataType.Date)]
     public DateTime? fhasta { get; set; }
     public decimal? importe { get; set; }
+
+    
 }
