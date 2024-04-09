@@ -1,0 +1,51 @@
+@model IEnumerable<Usuario>
+@{
+    ViewData["Title"] = "Usuario";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>LISTA usuarios.</p>
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+<script src="https://kit.fontawesome.com/708362d465.js" crossorigin="anonymous"></script>
+
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>codigo</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Permiso</th>
+                    <th>Acciones</th>
+                </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.IdUsuario</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.Apellido</td>
+                            <td>@item.Email</td>
+                            <td>@item.Permiso</td>
+                            
+                            
+                            <td>
+                            
+                            <a asp-action="Editar" asp-route-id="@item.IdUsuario" class="fa-solid fa-pen-to-square" style="color:blue"></a> 
+                            <a asp-action="Baja"asp-route-id="@item.IdUsuario" class="fa-solid fa-trash" style="color:red"></a>
+                            </td>
+                        
+
+                        </tr>
+
+                    }
+               
+                <br>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<a asp-action="Agregar" class="btn btn-success">Crear nuevo</a>

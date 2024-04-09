@@ -4,6 +4,7 @@ using InmobiliariaBiolatti_LopezPujato.Models;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using ZstdSharp.Unsafe;
 using System.Reflection.Metadata.Ecma335;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -53,6 +54,7 @@ public class ContratoController : Controller
         return View(c);       
     }
 
+//[Authorize(Policy = "Administrador")]
 public IActionResult Eliminar(int id)
 {
     RepositorioContrato rc = new RepositorioContrato();
