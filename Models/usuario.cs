@@ -35,9 +35,6 @@ public class Usuario
     
     public string RolNombre => Permiso >0 ? ((enRoles)Permiso).ToString() : "";
 
-    
-    
-    
     public static IDictionary<int, string> ObtenerRoles()
     {
         SortedDictionary<int, string> roles = new SortedDictionary<int, string>();
@@ -48,8 +45,8 @@ public class Usuario
             roles.Add((int)rol, Enum.GetName(tipoEnumRol, rol));
         }
         return roles;
-
     }
+
     public override string ToString()
     {
         return $"{Apellido}, {Nombre}-({IdUsuario})";
