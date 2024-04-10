@@ -16,8 +16,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options => {
-        options.LoginPath = "/Home/Login";// item para login
-        options.LogoutPath = "/Home/Logout";//item para logout
+        options.LoginPath = "/usuario/Login";// item para login
+        options.LogoutPath = "/usuario/Logout";//item para logout
         options.AccessDeniedPath = "/Home/Restringido"; //item para req. restringidos
 
     });
@@ -27,8 +27,8 @@ builder.Services.AddAuthorization(options =>  //requiero politicas
 {
     options.AddPolicy("Administrador", policy =>
      policy.RequireRole("Administrador"));
-     //options.AddPolicy("Empleado", policy =>
-    // policy.RequireRole("Empleado"));
+     options.AddPolicy("Empleado", policy =>
+     policy.RequireRole("Empleado"));
      //no activo la policy de empleado ya que solamente tengo dos roles en este ejemplo
 });
 

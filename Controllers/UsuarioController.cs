@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using InmobiliariaBiolatti_LopezPujato.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -17,6 +18,7 @@ public class UsuarioController : Controller
 
     RepositorioUsuario repusu = new RepositorioUsuario();
 
+//[Authorize(Policy = "Administrador")]
     public IActionResult Index()
     {
         var lista = repusu.GetUsuarios();
@@ -33,6 +35,11 @@ public class UsuarioController : Controller
     {
         ViewBag.Roles = Usuario.ObtenerRoles();
         return View();
+    }
+    public IActionResult Alta(Usuario u)
+    {
+        repusu.AltaUsuario(u);
+        return RedirectToAction("Index");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

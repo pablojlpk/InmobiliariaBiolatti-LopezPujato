@@ -20,7 +20,7 @@ public class RepositorioContrato
 
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = $"INSERT INTO contratos (idinmueble, idinquilino, fdesde, fhasta, importe) VALUES ({c.idinmueble},{c.idinquilino},'{c.fdesde}','{c.fhasta}', {c.importe})";
+            
             
             var sql2 = @"INSERT INTO contratos (idinmueble, idinquilino, fdesde, fhasta, importe)
              VALUES (@idinmueble,@idinquilino,@fdesde,@fhasta, @importe);";
