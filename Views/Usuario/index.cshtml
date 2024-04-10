@@ -28,7 +28,9 @@
                             <td>@item.Nombre</td>
                             <td>@item.Apellido</td>
                             <td>@item.Email</td>
-                            <td>@item.Permiso</td>
+                            <td>@Html.DisplayFor(modelItem => item.RolNombre)</td>
+                            
+                            
                             
                             
                             <td>
@@ -48,4 +50,4 @@
     </div>
 </div>
 
-<a asp-action="Agregar" class="btn btn-success">Crear nuevo</a>
+<a asp-action="create" class="btn btn-success">Crear nuevo</a>

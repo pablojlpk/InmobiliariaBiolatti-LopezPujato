@@ -4,6 +4,8 @@ using InmobiliariaBiolatti_LopezPujato.Models;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
+
+
 public class UsuarioController : Controller
 {
     private readonly ILogger<UsuarioController> _logger;
@@ -13,16 +15,26 @@ public class UsuarioController : Controller
         _logger = logger;
     }
 
+    RepositorioUsuario repusu = new RepositorioUsuario();
+
     public IActionResult Index()
     {
-        
-        return View();
+        var lista = repusu.GetUsuarios();
+        return View(lista);
     }
 
+    
     public IActionResult Login()
     {
         return View();
     }
+    
+    public IActionResult create()
+    {
+        ViewBag.Roles = Usuario.ObtenerRoles();
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
