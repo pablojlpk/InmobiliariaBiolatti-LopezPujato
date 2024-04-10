@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-04-2024 a las 18:06:28
+-- Tiempo de generación: 10-04-2024 a las 18:10:34
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -210,6 +210,16 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`IdUsuario`, `Nombre`, `Apellido`, `Email`, `Clave`, `Borrado`, `Permiso`, `AvatarUrl`) VALUES
+(1, 'Pablo ', 'Lopez Pujato', 'pablo@pp.com', '1234', 0, 1, ''),
+(2, 'Ana', 'Biolatti', 'ana@gmail.com', '1234', 0, 1, ''),
+(3, 'usuario', 'Estandar', 'usuario@gmail.com', 'usuario', 0, 2, ''),
+(4, 'Marcelo', 'Gomez', 'mmgomez@gmail.com', 'asdfqwe', 0, 2, '');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -291,7 +301,7 @@ ALTER TABLE `propietario`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `IdUsuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
