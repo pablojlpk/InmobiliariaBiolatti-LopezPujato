@@ -7,7 +7,7 @@
 
 <h1>Eliminar Pago</h1>
 <div class="col-md-4">
-    <form asp-action="Delete">
+    <form asp-action="AnularPago">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="idpago" class="control-label">ID del Pago</label>
@@ -35,7 +35,7 @@
             <span asp-validation-for="importe" class="number"></span>
         </div>
         <div class="form-group">
-            <input type="submit" value="ELIMINAR" class="btn btn-danger"/>
+            <input type="submit"  value="ANULAR" class="btn btn-danger"/>
             <a asp-action="Index" class="btn btn-primary">Volver</a>
         </div>
     </form>

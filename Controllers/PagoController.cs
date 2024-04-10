@@ -7,7 +7,7 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
     public class PagoController : Controller
     {
         private readonly ILogger<PagoController> _logger;
-        RepositorioPago repositorioPago=new RepositorioPago();
+        RepositorioPago repositorioPago = new RepositorioPago();
         RepositorioContrato rcontratos = new RepositorioContrato();
         RepositorioInmueble rinmuebles = new RepositorioInmueble();
         RepositorioInquilino rinquilinos = new RepositorioInquilino();
@@ -26,16 +26,17 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
 
         public IActionResult agregar()
         {
+
             ViewBag.Contratos = rcontratos.GetContratos();
             return View();
         }
         public IActionResult detalle(int id)
-            {
-                Pago p = new RepositorioPago().GetPago(id);
-                Contrato contrato = rcontratos.GetContrato(p.idcontrato);
-                p.datosContrato = contrato;
-                return View(p);
-            }
+        {
+            Pago p = new RepositorioPago().GetPago(id);
+            Contrato contrato = rcontratos.GetContrato(p.idcontrato);
+            p.datosContrato = contrato;
+            return View(p);
+        }
 
 
         [HttpPost]
@@ -50,6 +51,7 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
             }
             ViewBag.Contratos = rcontratos.GetContratos();
             return View(p);
+
         }
 
         public IActionResult Editar(int id)
@@ -74,19 +76,31 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
             return View(p);
         }
 
-    public IActionResult eliminar(int? id)
-    {
-        if (id == null)
+        public IActionResult AnularPago(int idpago)
         {
-            return NotFound();
+            repositorioPago.Anular(idpago);
+            return RedirectToAction(nameof(Index));
         }
 
-        var pago = repositorioPago.GetPago(id.Value);
-        if (pago == null)
-        {
-            return NotFound();
-        }
+        public IActionResult anular(int? id)
 
-        ViewBag.Contratos = rcontratos.GetContratos();
-        return View(pago);
-    }}}
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pago = repositorioPago.GetPago(id.Value);
+            if (pago == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.Contratos = rcontratos.GetContratos();
+            return View(pago);
+        }
+    }
+}
+
+
+

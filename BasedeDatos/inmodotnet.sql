@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-04-2024 a las 21:53:11
+-- Tiempo de generación: 10-04-2024 a las 05:04:55
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -136,17 +136,20 @@ CREATE TABLE `pagos` (
   `idcontrato` int(11) NOT NULL,
   `fpago` date NOT NULL,
   `importe` decimal(7,2) NOT NULL,
-  `borrado` tinyint(1) NOT NULL
+  `borrado` tinyint(1) NOT NULL,
+  `anulado` tinyint(1) NOT NULL,
+  `detalles` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `pagos`
 --
 
-INSERT INTO `pagos` (`idpago`, `idcontrato`, `fpago`, `importe`, `borrado`) VALUES
-(1, 8, '2020-10-10', '25000.33', 0),
-(2, 9, '1916-10-19', '15110.33', 0),
-(3, 12, '2024-12-31', '5000.33', 0);
+INSERT INTO `pagos` (`idpago`, `idcontrato`, `fpago`, `importe`, `borrado`, `anulado`, `detalles`) VALUES
+(1, 8, '2020-10-10', '25000.33', 0, 0, '0'),
+(2, 2, '1916-10-19', '15110.33', 0, 0, '0'),
+(3, 12, '2024-12-31', '5000.33', 0, 1, '0'),
+(13, 13, '2024-04-09', '1919.00', 0, 1, '0');
 
 -- --------------------------------------------------------
 
@@ -285,7 +288,7 @@ ALTER TABLE `inquilino`
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `idpago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idpago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `propietario`

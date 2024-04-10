@@ -19,7 +19,9 @@
                     <th>Fecha de Inicio del Contrato</th>
                     <th>Fecha de Pago</th>
                     <th>Importe</th>
+                    <th>Anulado</th>
                     <th>Acciones</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -30,10 +32,11 @@
                         <td>@item.datosContrato.datosinquilino</td>
                         <td>@item.datosContrato.fdesde</td>
                         <td>@item.fpago.ToShortDateString()</td>
-                        <td>@item.importe.ToString("C")</td>
+                        <td>@item.importe.ToString()</td>
+                        <td>@item.anulado</td>
                         <td>
                             <a asp-action="Editar" asp-route-id="@item.idpago" class="fa-solid fa-pen-to-square" style="color:blue"></a>
-                            <a asp-action="Eliminar" asp-route-id="@item.idpago" class="fa-solid fa-trash" style="color:red"></a>     
+                            <a asp-action="anular" asp-route-id="@item.idpago" class="fa-solid fa-trash" style="color:red"></a>     
                             <a asp-action="Detalle" asp-route-id="@item.idpago" class="fa-solid fa-file" style="color:green"></a>
                         </td>
                     </tr>
@@ -47,4 +50,3 @@
 
 
 
-///holaaaaaaaa

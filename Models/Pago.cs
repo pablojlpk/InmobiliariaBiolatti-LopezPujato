@@ -3,6 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InmobiliariaBiolatti_LopezPujato.Models;
 
+//var listapagos = new List<string>();
+//public int numero=0;
+
+
 public class Pago{ 
     [Key]
 		[Display(Name = "Identificador")]
@@ -19,11 +23,9 @@ public class Pago{
         public DateTime fpago { get; set; }
         public bool borrado { get; set; }
 
+        public bool anulado { get; set; }
 
-    
-
-
-
+       
 
 
 }

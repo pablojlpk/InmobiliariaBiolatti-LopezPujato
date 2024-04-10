@@ -2,11 +2,12 @@
 @{
     ViewData["Title"] = "Agregar Pago";
     var listaContratos = ViewBag.Contratos;
+    var ListaPagos = ViewBag.ListaPagos;
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<form asp-action="Agregar" method="post">
+<form asp-action="Create" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     
     <div class="form-group">
