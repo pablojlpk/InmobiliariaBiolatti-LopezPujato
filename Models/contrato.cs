@@ -16,5 +16,8 @@ public class Contrato
     public DateTime? fhasta { get; set; }
     public decimal? importe { get; set; }
 
-    
+    public override string ToString()
+    {
+        return $"Cod-Cont: {idcontrato}, Cod. Inq: {idinquilino}, Inmueble:  {datosinmueble.direccion}";
+    }   
 }
