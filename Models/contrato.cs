@@ -18,6 +18,6 @@ public class Contrato
 
     public override string ToString()
     {
-        return $"C.C.: {idcontrato},  C.Inm.:{idinmueble}-{datosinmueble.direccion} Cod. Inq: {idinquilino}-{datosinquilino.apellido}, {datosinquilino.nombre}";
+        return $"C.C.:{idcontrato},  C.Inm.:{idinmueble}-{datosinmueble.direccion} Cod. Inq: {idinquilino}-{datosinquilino.apellido}, {datosinquilino.nombre}";
     }   
 }
