@@ -45,6 +45,18 @@ public class UsuarioController : Controller
         return View(repusu.GetUsuario(id));
     }
 
+    public ActionResult editar(int id)
+    {
+        ViewBag.Roles = Usuario.ObtenerRoles();
+        return View(repusu.GetUsuario(id));
+    }
+    public ActionResult EditarUsuario(Usuario u)
+    {
+        u.Clave = Usuario.hashearClave(u.Clave);
+        RepositorioUsuario ru = new RepositorioUsuario();
+        ru.ModificaUsuario(u);
+        return RedirectToAction("Index");
+    }
 
     [HttpGet]
     /*[Authorize(Policy = "Administrador")]*/
@@ -102,7 +114,7 @@ public class UsuarioController : Controller
             if (ModelState.IsValid)
             {
                 usuario.Clave = Usuario.hashearClave(usuario.Clave);
-                var claveIngresada=usuario.Clave;
+                var claveIngresada = usuario.Clave;
                 var nbreRnd = Guid.NewGuid();
                 repusu.AltaUsuario(usuario);
 

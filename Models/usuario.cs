@@ -27,8 +27,8 @@ public class Usuario
 
     [Required, DataType(DataType.Password)]
     public string? Clave { get; set; }="";
-
     public string? AvatarUrl { get; set; } = "";
+
     [NotMapped]
     public IFormFile? AvatarFile { get; set; }
 
