@@ -102,6 +102,7 @@ public class UsuarioController : Controller
             if (ModelState.IsValid)
             {
                 usuario.Clave = Usuario.hashearClave(usuario.Clave);
+                var claveIngresada=usuario.Clave;
                 var nbreRnd = Guid.NewGuid();
                 repusu.AltaUsuario(usuario);
 

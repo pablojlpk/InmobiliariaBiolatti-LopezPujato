@@ -22,20 +22,12 @@ public class HomeController : Controller
     public IActionResult Index(LoginView usuariologin) //LOGIN USUARIO AUTENTIFICADO
     {
         RepositorioUsuario ru = new RepositorioUsuario();
-
         string hashed = Usuario.hashearClave(usuariologin.Clave);
-                    
-
-
-
-
-
-
         var obtengoUsuario = ru.ObtenerUsuarioLogin(usuariologin.Email, hashed);
         //ru.ObtenerUsuarioPorEmail(usuariologin.Email);
         var Mensaje = "";
         var vista = "login";
-        if (usuariologin.Email == "")
+        if (Usuario.hashearClave(usuariologin.Email) == Usuario.hashearClave(""))
         {
             Mensaje = "";
         }
@@ -44,18 +36,22 @@ public class HomeController : Controller
             Mensaje = "Mail o contraseña Incorrecta";
             ViewBag.Mensaje = Mensaje;
         }
-        else
+        else//ingresa el usuario logueado correctamente
         {
 
             vista = "index";
+            altaClaims(obtengoUsuario);
         }
         return View(vista);
     }
+
+
 
     public IActionResult Privacy()
     {
         return View();
     }
+
 
     /*
 public IActionResult Login()
@@ -111,4 +107,49 @@ public IActionResult Login()
                 return View();
             }
         }*/
+
+
+
+    //-------
+    [HttpPost]
+ 
+ public async Task<IActionResult> altaClaims(Usuario usuario)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
+                else
+                {
+                    
+                    var claims = new List<Claim>{
+                        new Claim(ClaimTypes.Name, usuario.ToString()),
+                        new Claim(ClaimTypes.PrimarySid, usuario.IdUsuario.ToString()),
+                        new Claim(ClaimTypes.UserData, usuario.AvatarUrl ?? ""),
+                        new Claim(ClaimTypes.Email, usuario.Email),
+                        new Claim(ClaimTypes.Role, usuario.RolNombre),
+                    };
+                    var claimsIdentity = new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity)
+                        );
+
+                    return RedirectToAction("Index", "Home");
+                    
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View();
+            }
+        }
+
+    //-------
+
+
+
 }
