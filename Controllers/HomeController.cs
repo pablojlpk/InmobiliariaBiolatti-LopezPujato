@@ -19,10 +19,37 @@ public class HomeController : Controller
     }
     RepositorioUsuario repusu = new RepositorioUsuario();
 
-    public IActionResult Index()
+    public IActionResult Index(LoginView usuariologin) //LOGIN USUARIO AUTENTIFICADO
     {
-        //return RedirectToAction("login", "Usuario");
-        return View();
+        RepositorioUsuario ru = new RepositorioUsuario();
+
+        string hashed = Usuario.hashearClave(usuariologin.Clave);
+                    
+
+
+
+
+
+
+        var obtengoUsuario = ru.ObtenerUsuarioLogin(usuariologin.Email, hashed);
+        //ru.ObtenerUsuarioPorEmail(usuariologin.Email);
+        var Mensaje = "";
+        var vista = "login";
+        if (usuariologin.Email == "")
+        {
+            Mensaje = "";
+        }
+        else if (obtengoUsuario == null)
+        {
+            Mensaje = "Mail o contraseña Incorrecta";
+            ViewBag.Mensaje = Mensaje;
+        }
+        else
+        {
+
+            vista = "index";
+        }
+        return View(vista);
     }
 
     public IActionResult Privacy()
