@@ -16,7 +16,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options => {
-        options.LoginPath = "/usuario/Login";// item para login
+        options.LoginPath = "/Home/Login";// item para login
         options.LogoutPath = "/usuario/Logout";//item para logout
         options.AccessDeniedPath = "/Home/Restringido"; //item para req. restringidos
 
@@ -49,8 +49,13 @@ var claims = new List<Claim>
 
 var app = builder.Build();
 
+app.UseHttpsRedirection();
+app.UseStaticFiles();
 
+app.UseRouting();
 
+app.UseAuthentication();
+app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -60,12 +65,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
 
 
 app.MapControllerRoute(

@@ -1,0 +1,37 @@
+@model InmobiliariaBiolatti_LopezPujato.Models.Usuario
+
+@{
+    ViewData["Title"] = "Detalle de Usuario";
+}
+
+<h2>@ViewData["Title"]</h2>
+<br>
+<div class="col-md-40">
+    <h4>Datos del Usuario</h4>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>codigo</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Permiso</th>
+                    <th>Avatar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.IdUsuario</td>
+                <td>@Model.Nombre</td>
+                <td>@Model.Apellido</td>
+                <td>@Model.Email</td>
+                <td>@Model.Permiso</td>
+                <td>@Model.AvatarFile</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<a asp-action="Index" class="btn btn-primary">Volver</a>

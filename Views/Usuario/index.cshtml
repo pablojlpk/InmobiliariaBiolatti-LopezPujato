@@ -35,8 +35,9 @@
                             
                             <td>
                             
-                            <a asp-action="Editar" asp-route-id="@item.IdUsuario" class="fa-solid fa-pen-to-square" style="color:blue"></a> 
+                            <a asp-action="EditarAdministrador" asp-route-id="@item.IdUsuario" class="fa-solid fa-pen-to-square" style="color:blue"></a> 
                             <a asp-action="Baja"asp-route-id="@item.IdUsuario" class="fa-solid fa-trash" style="color:red"></a>
+                             <a asp-action="Detalle" asp-route-id="@item.IdUsuario" class="fa-solid fa-file" style="color:green"></a>
                             </td>
                         
 
@@ -50,4 +51,4 @@
     </div>
 </div>
 
-<a asp-action="create" class="btn btn-success">Crear nuevo</a>
+<a asp-action="Create" class="btn btn-success">Crear nuevo</a>
