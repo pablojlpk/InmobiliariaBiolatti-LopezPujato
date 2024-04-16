@@ -99,32 +99,6 @@ public class RepositorioUsuario
         return res;
     }
 
-
-
-    public int Modificacion(Usuario usuario)
-    {
-        int res;
-        using (MySqlConnection conn = new MySqlConnection(ConnectionString))
-        {
-            var sql = @$"UPDATE Usuarios SET {nameof(Usuario.Nombre)} = @Nombre, {nameof(Usuario.Apellido)} = @Apellido, {nameof(Usuario.Email)} = @Email, {nameof(Usuario.Clave)} = @Clave,{nameof(Usuario.Permiso)} = @Permiso,{nameof(Usuario.AvatarUrl)} = @AvatarURLWHERE {nameof(Usuario.IdUsuario)} = @IdUsuario";
-            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
-            {
-                cmd.Parameters.AddWithValue("@IdUsuario", usuario.IdUsuario);
-                cmd.Parameters.AddWithValue("@Nombre", usuario.Nombre);
-                cmd.Parameters.AddWithValue("@Apellido", usuario.Apellido);
-                cmd.Parameters.AddWithValue("@Email", usuario.Email);
-                cmd.Parameters.AddWithValue("@Clave", usuario.Clave);
-                cmd.Parameters.AddWithValue("@Permiso", usuario.Permiso);
-                cmd.Parameters.AddWithValue("@AvatarURL", string.IsNullOrEmpty(usuario.AvatarUrl) ? (object)DBNull.Value : usuario.AvatarUrl);
-                conn.Open();
-                res = cmd.ExecuteNonQuery();
-                Console.WriteLine(usuario.IdUsuario);
-                conn.Close();
-            }
-            return res;
-        }
-    }
-
     public Usuario ModificaUsuario(Usuario usuario)
     {
         using (MySqlConnection connection = new MySqlConnection(ConnectionString))
@@ -155,39 +129,6 @@ public class RepositorioUsuario
 
     }
 
-
-
-    public Usuario? ObtenerUsuarioPorEmail(string Email)
-    {
-        using var conn = new MySqlConnection(ConnectionString);
-        var sql = @$"SELECT {nameof(Usuario.IdUsuario)},{nameof(Usuario.Nombre)},{nameof(Usuario.Apellido)},
-    {nameof(Usuario.Email)},{nameof(Usuario.Clave)},{nameof(Usuario.Permiso)},{nameof(Usuario.AvatarUrl)}
-     FROM usuarios WHERE {nameof(Usuario.Email)} = @Email";
-        Usuario? usuario = null;
-        using (MySqlCommand cmd = new MySqlCommand(sql, conn))
-        {
-            cmd.Parameters.AddWithValue("@Email", Email);
-            conn.Open();
-            using (MySqlDataReader reader = cmd.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    usuario = new Usuario
-                    {
-                        IdUsuario = reader.GetInt32(nameof(Usuario.IdUsuario)),
-                        Nombre = reader.GetString(nameof(Usuario.Nombre)),
-                        Apellido = reader.GetString(nameof(Usuario.Apellido)),
-                        Email = reader.GetString(nameof(Usuario.Email)),
-                        Clave = reader.GetString(nameof(Usuario.Clave)),
-                        Permiso = reader.GetInt32(nameof(Usuario.Permiso)),
-                        AvatarUrl = reader[nameof(Usuario.AvatarUrl)] != DBNull.Value ? reader.GetString(nameof(Usuario.AvatarUrl)) : ""
-                    };
-                }
-            }
-            conn.Close();
-        }
-        return usuario;
-    }
 
 
     public Usuario? ObtenerUsuarioLogin(string Email, string Clave)

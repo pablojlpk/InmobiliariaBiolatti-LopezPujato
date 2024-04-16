@@ -24,7 +24,7 @@ public class UsuarioController : Controller
 
     RepositorioUsuario repusu = new RepositorioUsuario();
 
-    /*[Authorize(Policy = "Administrador")]*/
+    [Authorize(Policy = "Administrador")]
     public IActionResult Index()
     {
         var lista = repusu.GetUsuarios();
@@ -39,12 +39,6 @@ public class UsuarioController : Controller
 
     [HttpGet]
     /*[Authorize(Roles = "Administrador")]*/
-    public ActionResult EditarAdministrador(int id)
-    {
-        ViewBag.Roles = Usuario.ObtenerRoles();
-        return View(repusu.GetUsuario(id));
-    }
-
     public ActionResult editar(int id)
     {
         ViewBag.Roles = Usuario.ObtenerRoles();
@@ -128,7 +122,7 @@ public class UsuarioController : Controller
                     // Actualizar la ruta de la imagen redimensionada en la propiedad AvatarURL del usuario
                     usuario.AvatarUrl = resizedImagePath;
 
-                    repusu.Modificacion(usuario);
+                    repusu.ModificaUsuario(usuario);
                     TempData["Id"] = usuario.IdUsuario;
                     return RedirectToAction(nameof(Index));
                 }
@@ -149,51 +143,7 @@ public class UsuarioController : Controller
         }
     }
 
-    [HttpPost]
-    public async Task<ActionResult> EditarAdministrador(int id, Usuario usuario, IFormFile? avatarFile)
-    {
-        try
-        {
-            if (ModelState.IsValid)
-            {
-                Usuario? usu = repusu.GetUsuario(id);
-                if (usu != null)
-                {
-                    usu.Nombre = usuario.Nombre;
-                    usu.Apellido = usuario.Apellido;
-                    usu.Email = usuario.Email;
-                    usu.Permiso = usuario.Permiso;
-                    if (avatarFile != null)
-                    {
-                        var resizedImagePath = await AvatarAsync(usu, avatarFile);
-                        if (resizedImagePath == null)
-                        {
-                            return View(usuario);
-                        }
-                        usu.AvatarUrl = resizedImagePath;
-                    }
-                    usu.Clave = Usuario.hashearClave(usuario.Clave);
-                    repusu.Modificacion(usu);
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ViewBag.Roles = Usuario.ObtenerRoles();
-                    return View(repusu.GetUsuario(id));
-                }
-            }
-            else
-            {
-                ViewBag.Roles = Usuario.ObtenerRoles();
-                return View(repusu.GetUsuario(id));
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message.ToString());
-            return RedirectToAction("EditarAdministrador", new { id = id });
-        }
-    }
+    
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
