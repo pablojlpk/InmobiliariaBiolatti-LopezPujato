@@ -18,6 +18,7 @@
                     <th>Apellido</th>
                     <th>Email</th>
                     <th>Permiso</th>
+                    <th>Avatar</th>
                     <th>Acciones</th>
                 </tr>
 
@@ -29,6 +30,8 @@
                             <td>@item.Apellido</td>
                             <td>@item.Email</td>
                             <td>@Html.DisplayFor(modelItem => item.RolNombre)</td>
+                            <td><img src="@item.AvatarUrl" alt="" class="rounded-circle"
+                                                style="width: 30px; height: 30px;" /></td>
                             
                             
                             

@@ -1,5 +1,8 @@
-﻿﻿<!DOCTYPE html>
+﻿﻿@using System.Security.Claims
+<!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,18 +12,23 @@
     <link rel="stylesheet" href="~/InmobiliariaBiolatti_LopezPujato.styles.css" asp-append-version="true" />
     <style>
         .navbar-brand {
-            font-size: 2,5em; /* Ajustar tamaño de la fuente */
-            font-weight: bold; /* Ajustar peso de la fuente */
-            color: #FFF !important; /* Cambiar color del texto */
+            font-size: 2, 5em;
+            /* Ajustar tamaño de la fuente */
+            font-weight: bold;
+            /* Ajustar peso de la fuente */
+            color: #FFF !important;
+            /* Cambiar color del texto */
         }
 
         .navbar-nav .nav-link {
-            margin-right: 20px; /* Añadir espacio entre elementos */
+            margin-right: 20px;
+            /* Añadir espacio entre elementos */
             color: #FFF !important;
         }
 
         .navbar-expand-lg {
-            height: 100px; /* Ajustar altura de la barra */
+            height: 100px;
+            /* Ajustar altura de la barra */
         }
 
         .footer {
@@ -28,19 +36,19 @@
             color: white !important;
             padding: 40px 0;
         }
-
     </style>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: black;">
             <div class="container-fluid">
-                 @if (!User.Identity.IsAuthenticated)
+                @if (!User.Identity.IsAuthenticated)
                 {
                     <!-- Navbar para usuarios no autenticados -->
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Inmobiliaria</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -49,44 +57,92 @@
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login" >Login</a>
                             </li>
                         </ul>
                     </div>
                 }
-                else{
+                else
+                {
 
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Inmobiliaria</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Propietario" asp-action="index">Propietarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Inquilino" asp-action="index">Inquilinos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Inmueble" asp-action="index">Inmuebles</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Contrato" asp-action="index">Contratos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Pago" asp-action="index">Pagos</a>
-                        </li>
-                        @if (User.IsInRole("Administrador"))
-                        {
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Inmobiliaria</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+
                             <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Usuario" asp-action="index">Usuario</a>
+                                <a class="nav-link" asp-area="" asp-controller="Propietario"
+                                    asp-action="index">Propietarios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Inquilino" asp-action="index">Inquilinos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Inmueble" asp-action="index">Inmuebles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Contrato" asp-action="index">Contratos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Pago" asp-action="index">Pagos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="HOME" asp-action="salir">SALIR</a>
+                            </li>
+
+
+                            <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        var avatarUrl = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData)?.Value;
+                                        if (!string.IsNullOrEmpty(avatarUrl))
+                                        {
+                                            <img src="@avatarUrl" alt="Av" class="rounded-circle"
+                                                style="width: 30px; height: 30px;" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/guest.jpg" alt="Avatar predeterminado" class="rounded-circle"
+                                                style="width: 30px; height: 30px;" />
+                                        }
+                                        <span class="ml-2">Bienvenido @User.Identity.Name</span>
+                                    }
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end"
+                                    aria-labelledby="navbarDropdownMenuLink">
+                                    @{
+                                        // Obtener el valor de la Claim PrimarySid
+                                        var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid);
+                                        var userId = userIdClaim?.Value;
+                                    }
+                                </ul>
+                            </div>
                         </li>
-                        }
-                    </ul>
-                </div>
+
+
+
+
+
+
+
+
+                            @if (User.IsInRole("Administrador"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Usuario" asp-action="index">Usuario</a>
+                                </li>
+                            }
+
+
+
+                        </ul>
+                    </div>
                 }
             </div>
         </nav>
@@ -100,7 +156,8 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - InmobiliariaBiolatti_LopezPujato - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white">Privacy</a>
+            &copy; 2024 - InmobiliariaBiolatti_LopezPujato - <a asp-area="" asp-controller="Home" asp-action="Privacy"
+                class="text-white">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -108,4 +165,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
+

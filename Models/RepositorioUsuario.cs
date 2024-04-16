@@ -7,7 +7,6 @@ public class RepositorioUsuario
     readonly string ConnectionString = "Server=localhost;Database=inmodotnet;User=root;Password=;";
     public RepositorioUsuario()
     {
-
     }
     public IList<Usuario> GetUsuarios()// funciona ok
     {
@@ -103,12 +102,11 @@ public class RepositorioUsuario
     {
         using (MySqlConnection connection = new MySqlConnection(ConnectionString))
         {
-
-
-            var sql = @$"UPDATE usuarios
-         SET {nameof(Usuario.IdUsuario)} = @IdUsuario, {nameof(Usuario.Nombre)} = @Nombre, {nameof(Usuario.Apellido)} = @Apellido,
-         {nameof(Usuario.Email)} = @Email, {nameof(Usuario.Clave)} = @Clave,
-         {nameof(Usuario.AvatarUrl)} = @AvatarURL, {nameof(Usuario.Permiso)} = @Permiso
+         var sql = @$"UPDATE usuarios
+         SET {nameof(Usuario.IdUsuario)} = @IdUsuario, {nameof(Usuario.Nombre)} = @Nombre,
+          {nameof(Usuario.Apellido)} = @Apellido, {nameof(Usuario.Email)} = @Email,
+          {nameof(Usuario.Clave)} = @Clave, {nameof(Usuario.AvatarUrl)} = @AvatarUrl,
+           {nameof(Usuario.Permiso)} = @Permiso
           WHERE {nameof(Usuario.IdUsuario)} = @IdUsuario";
 
             using (MySqlCommand command = new MySqlCommand(sql, connection))
@@ -118,8 +116,8 @@ public class RepositorioUsuario
                 command.Parameters.AddWithValue("@Apellido", usuario.Apellido);
                 command.Parameters.AddWithValue("@Email", usuario.Email);
                 command.Parameters.AddWithValue("@Clave", usuario.Clave);
-                command.Parameters.AddWithValue("@AvatarURL", string.IsNullOrEmpty(usuario.AvatarUrl) ? (object)DBNull.Value : usuario.AvatarUrl);
                 command.Parameters.AddWithValue("@Permiso", usuario.Permiso);
+                command.Parameters.AddWithValue("@AvatarUrl",string.IsNullOrEmpty(usuario.AvatarUrl) ? (object)DBNull.Value : usuario.AvatarUrl);
                 connection.Open();
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -163,7 +161,4 @@ public class RepositorioUsuario
         }
         return usuario;
     }
-
-
-
 }

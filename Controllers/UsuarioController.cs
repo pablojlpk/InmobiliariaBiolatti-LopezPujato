@@ -48,7 +48,9 @@ public class UsuarioController : Controller
     {
         u.Clave = Usuario.hashearClave(u.Clave);
         RepositorioUsuario ru = new RepositorioUsuario();
+        
         ru.ModificaUsuario(u);
+        //        return RedirectToAction("Index");
         return RedirectToAction("Index");
     }
 
@@ -143,7 +145,7 @@ public class UsuarioController : Controller
         }
     }
 
-    
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
