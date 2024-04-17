@@ -23,12 +23,15 @@ public class UsuarioController : Controller
     }
 
     RepositorioUsuario repusu = new RepositorioUsuario();
+    RepositorioAuditoria ra = new RepositorioAuditoria();
 
     [Authorize(Policy = "Administrador")]
     public IActionResult Index()
     {
         var lista = repusu.GetUsuarios();
+        ra.AltaAuditoria(1,"consulta-","usuarios");
         return View(lista);
+
     }
 
     public IActionResult Detalle(int id)

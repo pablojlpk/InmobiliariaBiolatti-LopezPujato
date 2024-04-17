@@ -63,12 +63,9 @@ public class RepositorioInmueble
 
     public Inmueble AltaInmueble(Inmueble i) // funciona ok
     {
-
         using (var connection = new MySqlConnection(ConnectionString))
         {
             var sql = $"INSERT INTO inmuebles (direccion,ambientes,superficie,latitud,longitud,idpropietario) VALUES ('{i.direccion}',{i.ambientes},{i.superficie},{i.latitud},{i.longitud},{i.idpropietario})";
-
-
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();

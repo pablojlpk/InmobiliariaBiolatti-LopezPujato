@@ -1,9 +1,40 @@
-@model IEnumerable<Inquilino>
+@model IEnumerable<Auditoria>
 @{
-    ViewData["Title"] = "Inquilinos";
+    ViewData["Title"] = "Auditoria";
 }
 <h1>@ViewData["Title"] </h1>
 <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
 <script src="https://kit.fontawesome.com/708362d465.js" crossorigin="anonymous"></script>
 <br>
 <p>AUDITORIA</p>
+
+
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Cod.Aud.</th>
+                    <th>Cod.U.</th>
+                    <th>Fecha</th>
+                    <th>Observaciones</th>
+                    
+                </tr>
+                <tr>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.IdAuditoria</td>
+                        <td>@item.IdUsuario</td>
+                        <td>@item.Fecha</td>
+                        <td>@item.Observaciones</td>
+                    
+                    </tr>
+                    }
+                </tr>
+                <br>
+            </thead>
+        </table>
+    </div>
+</div>
+

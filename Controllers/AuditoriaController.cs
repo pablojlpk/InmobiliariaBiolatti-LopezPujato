@@ -7,6 +7,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Text;
+using ZstdSharp.Unsafe;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -20,11 +21,14 @@ public class AuditoriaController : Controller
     }
     
 
-
+RepositorioAuditoria ra= new RepositorioAuditoria();
+    
     public IActionResult Index() 
     {
+        var lista=ra.obtenerAuditorias();
 
-        return View();
+return View(lista);
+        
     }
 
 }
