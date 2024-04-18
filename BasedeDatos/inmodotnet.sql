@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-04-2024 a las 16:15:20
+-- Tiempo de generación: 18-04-2024 a las 17:27:24
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -50,7 +50,12 @@ INSERT INTO `auditorias` (`IdAuditoria`, `IdUsuario`, `Fecha`, `Observaciones`) 
 (118, 26, '2024-04-18 11:12:29', 'Usuario:lopez pujato, pablo-(26)-Acción: MULTA Modulo: Pagos'),
 (119, 26, '2024-04-18 11:13:08', 'Usuario:lopez pujato, pablo-(26)-Acción: Modificar Modulo: Pagos'),
 (120, 26, '2024-04-18 11:13:28', 'Usuario:lopez pujato, pablo-(26)-Acción: Editar Modulo: Inquilinos'),
-(121, 26, '2024-04-18 11:13:40', 'Usuario:lopez pujato, pablo-(26)-Acción: cierre Sesión Modulo: usuarios');
+(121, 26, '2024-04-18 11:13:40', 'Usuario:lopez pujato, pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
+(122, 26, '2024-04-18 12:12:27', 'Usuario:lopez pujato, pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(123, 26, '2024-04-18 12:22:10', 'Usuario:lopez pujato, pablo-(26)-Acción: Editar Modulo: usuarios'),
+(124, 26, '2024-04-18 12:22:35', 'Usuario:lopez pujato, pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
+(125, 29, '2024-04-18 12:22:44', 'Usuario:Lopez Pujato, Pablo perfil Emplreado pr-(29)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(126, 29, '2024-04-18 12:23:05', 'Usuario:Lopez Pujato, Pablo perfil Emplreado pr-(29)-Acción: cierre Sesión Modulo: usuarios');
 
 -- --------------------------------------------------------
 
@@ -265,19 +270,19 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`IdUsuario`, `Nombre`, `Apellido`, `Email`, `Clave`, `Borrado`, `Permiso`, `AvatarUrl`) VALUES
-(21, 'ana luz', 'biolatti', 'analuzbiolatti@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_27.png'),
-(22, 'lopez', 'pablo', 'usuariopablo@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_27.png'),
-(23, 'juan', 'perez', 'juanperez@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_34.jpg'),
-(24, 'manuel', 'torres', 'manu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52I', 0, 2, '/update\\avatar_33.png'),
-(25, 'lulu', 'lopez', 'lulu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_27.png'),
-(26, 'pablo', 'lopez pujato', 'pp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, NULL),
-(27, 'lulu', 'lulu', 'lulu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52I', 0, 2, '/update\\avatar_32.png'),
-(28, 'facundo', 'Lopez Pujato', 'facu@gmail.cm', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 0, NULL),
-(29, 'plpp', 'Lopez Pujato', 'pp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_30.jpg'),
+(21, 'Ana Luz', 'Biolatti', 'analuzbiolatti@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_27.png'),
+(22, 'Lopez', 'Pablo', 'usuariopablo@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_27.png'),
+(23, 'Juan', 'Perez', 'juanperez@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_34.jpg'),
+(24, 'Manuel', 'Torres', 'manu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=\n', 0, 2, '/update\\avatar_33.png'),
+(25, 'Lulu', 'Lopez', 'lulu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_27.png'),
+(26, 'Pablo', 'Lopez Pujato', 'pp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, NULL),
+(27, 'Lulu', 'Gutierrez', 'lulu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=\n', 0, 2, '/update\\avatar_32.png'),
+(28, 'Facundo', 'Lopez Pujato', 'facu@gmail.cm', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 0, NULL),
+(29, 'Pablo perfil Emplreado pr', 'Lopez Pujato', 'ppp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, NULL),
 (30, 'GOMEZ', 'JUAN', 'jj@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_30.jpg'),
-(31, 'facundo', 'Lopez Pujato', 'facu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_32.png'),
-(32, '132123', 'mariano', 'pp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_32.png'),
-(33, 'ddddd', 'usuarioultimo', 'qq@qq.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_33.png'),
+(31, 'Facundo', 'Lopez Pujato', 'facu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_32.png'),
+(32, 'Esteban', 'Quito', 'pp@correo.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_32.png'),
+(33, 'Usuario', 'usuarioultimo', 'qq@qq.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_33.png'),
 (34, 'Edurdo', 'Rosso', 'eduardoroso@lacosta.com', 'pcHk3H69xHDoCvdWoCjwf1h2QhmcXOst+pZwT/TEYLo=', 0, 1, NULL);
 
 --
@@ -338,7 +343,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `auditorias`
 --
 ALTER TABLE `auditorias`
-  MODIFY `IdAuditoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `IdAuditoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT de la tabla `contratos`

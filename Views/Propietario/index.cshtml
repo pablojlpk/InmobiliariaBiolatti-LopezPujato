@@ -1,3 +1,4 @@
+@using System.Security.Claims
 @model IEnumerable<Propietario>
 @{
     ViewData["Title"] = "Propietario";
@@ -19,33 +20,43 @@
                     <th>DNI</th>
                     <th>Email</th>
                     <th>Acciones</th>
+                    using System.Security.Claims;
+
+                    using System.Security.Claims;
+
                 </tr>
-                
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@item.idpropietario</td>
-                            <td>@item.nombre</td>
-                            <td>@item.apellido</td>
-                            <td>@item.dni</td>
-                            <td>@item.mail</td>
-                            
-                            
-                            <td>
-                            
-                            <a asp-action="Editar" asp-route-id="@item.idpropietario" class="fa-solid fa-pen-to-square" style="color:blue"></a> 
-                            <a asp-action="Baja"asp-route-id="@item.idpropietario" class="fa-solid fa-trash" style="color:red"></a>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.idpropietario</td>
+                        <td>@item.nombre</td>
+                        <td>@item.apellido</td>
+                        <td>@item.dni</td>
+                        <td>@item.mail</td>
+
+
+                        <td>
+
+                            <a asp-action="Editar" asp-route-id="@item.idpropietario" class="fa-solid fa-pen-to-square"
+                                style="color:blue"></a>
+
+                            @if (User.IsInRole("Administrador"))
+                            {
+                                    <a asp-action="Baja" asp-route-id="@item.idpropietario" class="fa-solid fa-trash"
+                                        style="color:red"></a>
+                                }
                             </td>
-                        
-                        
+
+
                         </tr>
 
-                    }
-               
-                <br>
-            </thead>
-        </table>
-    </div>
-</div>
+                            }
 
-<a asp-action="Agregar" class="btn btn-success">Crear nuevo</a>
+                    <br>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <a asp-action="Agregar" class="btn btn-success">Crear nuevo</a>

@@ -25,11 +25,11 @@
 
                     @foreach (var item in Model)
                     {
-                   <tr>
+                <tr>
 
                     <td>@item.idcontrato-@item.idinmueble-@item.idinquilino</td>
-                    
-                    
+
+
                     <td>@item.datosinmueble?.ToString()</td>
                     <td>@item.datosinquilino?.ToString()</td>
                     <td>@item.fhasta</td>
@@ -38,16 +38,19 @@
                     <td>
                         <a asp-action="Editar" asp-route-id="@item.idcontrato" class="fa-solid fa-pen-to-square"
                             style="color:blue"></a>
-                        <a asp-action="Eliminar" asp-route-id="@item.idcontrato" class="fa-solid fa-trash"
-                            style="color:red"></a>
-                        <a asp-action="Detalle" asp-route-id="@item.idcontrato" class="fa-solid fa-file" style="color: green"
-                            style="color:blue"></a>
+                                    @if (User.IsInRole("Administrador"))
+                                    {
+                            <a asp-action="Eliminar" asp-route-id="@item.idcontrato" class="fa-solid fa-trash"
+                                style="color:red"></a>
+                                    }
+                        <a asp-action="Detalle" asp-route-id="@item.idcontrato" class="fa-solid fa-file"
+                            style="color: green" style="color:blue"></a>
 
                     </td>
-                    </tr>
+                </tr>
 
 
-                    
+
                     }
 
 
