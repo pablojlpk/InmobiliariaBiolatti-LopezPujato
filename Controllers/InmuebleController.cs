@@ -4,6 +4,7 @@ using InmobiliariaBiolatti_LopezPujato.Models;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using ZstdSharp.Unsafe;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Claims;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -15,6 +16,9 @@ public class InmuebleController : Controller
     {
         _logger = logger;
     }
+    RepositorioAuditoria ra = new RepositorioAuditoria();
+            //audit
+        
 
     public IActionResult Index() //funciona ok
     {
@@ -31,6 +35,11 @@ public class InmuebleController : Controller
     }
     public IActionResult create(Inmueble i) //alta un nuevo inmueblefunciona ok
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Modificar");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Inmuebles");
+        //
 
         RepositorioInmueble ri = new RepositorioInmueble();
         var res = ri.AltaInmueble(i);
@@ -49,6 +58,11 @@ public class InmuebleController : Controller
 
     public IActionResult ModInmueble(Inmueble i)
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Editar");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Inmuebles");
+        //
         RepositorioInmueble ri = new RepositorioInmueble();
         ri.ModificaInmueble(i);
         return RedirectToAction(nameof(Index));
@@ -56,6 +70,11 @@ public class InmuebleController : Controller
 
     public IActionResult Baja(int id)
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Baja");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Inmuebles");
+        //
         RepositorioInmueble ri = new RepositorioInmueble();
         ri.Baja(id);
         return RedirectToAction(nameof(Index));

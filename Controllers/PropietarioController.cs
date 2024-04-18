@@ -4,6 +4,7 @@ using InmobiliariaBiolatti_LopezPujato.Models;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using ZstdSharp.Unsafe;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Claims;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -15,7 +16,7 @@ public class PropietarioController : Controller
     {
         _logger = logger;
     }
-
+    RepositorioAuditoria ra = new RepositorioAuditoria();
     public IActionResult Index()
     {
         RepositorioPropietario rp = new RepositorioPropietario();
@@ -28,6 +29,11 @@ public class PropietarioController : Controller
 
     public IActionResult create(Propietario p)
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Alta");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Propietarios");
+        //
         RepositorioPropietario rp = new RepositorioPropietario();
         rp.AltaPropietario(p);
         return RedirectToAction(nameof(Index));
@@ -35,6 +41,11 @@ public class PropietarioController : Controller
 
     public IActionResult Editar(int id)
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Editar");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Propietarios");
+        //
         RepositorioPropietario rp = new RepositorioPropietario();
         var propietario = rp.GetPropietario(id);
 
@@ -45,6 +56,11 @@ public class PropietarioController : Controller
 
     public IActionResult ModPropietario(Propietario p)
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Modificar");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Propietarios");
+        //
         RepositorioPropietario rp = new RepositorioPropietario();
         var res = rp.Modifica(p);
         return RedirectToAction(nameof(Index));
@@ -52,6 +68,11 @@ public class PropietarioController : Controller
 
     public IActionResult Baja(int id)
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Baja");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Propietarios");
+        //
         RepositorioPropietario rp = new RepositorioPropietario();
         rp.Baja(id);
         return RedirectToAction(nameof(Index));

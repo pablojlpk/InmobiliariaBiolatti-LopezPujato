@@ -19,7 +19,16 @@ public class HomeController : Controller
         _logger = logger;
     }
     RepositorioUsuario repusu = new RepositorioUsuario();
+    RepositorioAuditoria ra = new RepositorioAuditoria();
 
+public IActionResult bienvenido(){
+          //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "ACCESO CORRECTO");
+        ra.AltaAuditoria(idus, detalle, " Modulo: LOGIN");
+        //
+    return View("index");
+}
 
     public IActionResult Index() //LOGIN USUARIO AUTENTIFICADO
     {
@@ -56,19 +65,24 @@ public class HomeController : Controller
                     ViewBag.Mensaje = Mensaje;
                     return View();
                 }
+                 
                 var claims = new List<Claim>{
                         new Claim(ClaimTypes.Name, usuario.ToString()),
                         new Claim(ClaimTypes.PrimarySid, usuario.IdUsuario.ToString()),
                         new Claim(ClaimTypes.UserData, usuario.AvatarUrl ?? ""),
                         new Claim(ClaimTypes.Email, usuario.Email),
                         new Claim(ClaimTypes.Role, usuario.RolNombre),
+
                     };
+
+
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 await HttpContext.SignInAsync(
                     CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity)
+                    
                     );
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("bienvenido", "Home");
             }
         }
         catch (Exception ex)
@@ -81,6 +95,11 @@ public class HomeController : Controller
 
     public async Task<ActionResult> salir()
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "cierre Sesión");
+        ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
+        //
       
              await HttpContext.SignOutAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme);

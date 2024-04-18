@@ -11,7 +11,7 @@ public class RepositorioAuditoria
 
     }
 
-    public int AltaAuditoria(int idusuario,string detalle, string modulo)
+    public int AltaAuditoria(string idusuario,string detalle, string modulo)
     {
         int res = -1;
 
@@ -24,7 +24,7 @@ public class RepositorioAuditoria
             using (var command = new MySqlCommand(sql, connection))
             {
                 command.CommandType = CommandType.Text;
-                command.Parameters.AddWithValue($@"{nameof(Auditoria.IdUsuario)}", idusuario);
+                command.Parameters.AddWithValue($@"{nameof(Auditoria.IdUsuario)}", Convert.ToInt32(idusuario));
                 command.Parameters.AddWithValue("@Fecha", DateTime.Now);
                 command.Parameters.AddWithValue("@Observaciones", detalle + modulo);
                 connection.Open();
@@ -46,7 +46,7 @@ public class RepositorioAuditoria
             var sql = $@"SELECT {nameof(Auditoria.IdAuditoria)},
             {nameof(Auditoria.IdUsuario)}, {nameof(Auditoria.Fecha)},
             {nameof(Auditoria.Observaciones)}
-            FROM auditorias where 1 ORDER by fecha ASC;";
+            FROM auditorias where 1 ORDER by fecha DESC;";
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();
@@ -72,4 +72,7 @@ public class RepositorioAuditoria
     }
 
 
+public string ArmarDetalle(string usuario, string accion){
+    return ("Usuario:"+usuario+"-Acción: "+accion);
+}
 }

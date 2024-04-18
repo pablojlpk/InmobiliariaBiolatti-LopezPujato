@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.TagHelpers;
 using ZstdSharp.Unsafe;
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -21,6 +22,7 @@ public class ContratoController : Controller
     {
         _logger = logger;
     }
+    RepositorioAuditoria ra = new RepositorioAuditoria();
 
     public IActionResult Index()
     {
@@ -37,8 +39,13 @@ public class ContratoController : Controller
     }
     public IActionResult Create(Contrato c)
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Alta");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Contrato");
+        //
+
         RepositorioContrato rc = new RepositorioContrato();
-        
         rc.AltaContrato(c);
 
         return RedirectToAction(nameof(Index));
@@ -57,6 +64,11 @@ public class ContratoController : Controller
 //[Authorize(Policy = "Administrador")]
 public IActionResult Eliminar(int id)
 {
+    //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Baja");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Contrato");
+        //
     RepositorioContrato rc = new RepositorioContrato();
     rc.Eliminar(id);
     return RedirectToAction(nameof(Index));
@@ -64,6 +76,11 @@ public IActionResult Eliminar(int id)
 
 
 public IActionResult ModContrato(Contrato c){
+    //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Modificar");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Contrato");
+        //
     RepositorioContrato rc = new RepositorioContrato();
     rc.ModificaContrato(c);
     return RedirectToAction(nameof(Index));

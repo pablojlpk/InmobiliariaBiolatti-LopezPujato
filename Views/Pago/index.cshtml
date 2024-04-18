@@ -20,6 +20,7 @@
                     <th>Fecha de Pago</th>
                     <th>Importe</th>
                     <th>Anulado</th>
+                    <th>Detalle</th>
                     <th>Acciones</th>
                     
                 </tr>
@@ -34,6 +35,7 @@
                         <td>@item.fpago.ToShortDateString()</td>
                         <td>@item.importe.ToString()</td>
                         <td>@item.anulado</td>
+                        <td>@item.detalle</td>
                         <td>
                             <a asp-action="Editar" asp-route-id="@item.idpago" class="fa-solid fa-pen-to-square" style="color:blue"></a>
                             <a asp-action="anular" asp-route-id="@item.idpago" class="fa-solid fa-trash" style="color:red"></a>     
@@ -46,7 +48,7 @@
     </div>
 </div>
 <a asp-action="Agregar" class="btn btn-success">Crear nuevo</a>
-<a asp-action="Agregar" class="btn btn-success">Cargar Multa</a>
+<a asp-action="multa" class="btn btn-success">Cargar Multa</a>
 
 
 

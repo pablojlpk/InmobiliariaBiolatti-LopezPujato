@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using InmobiliariaBiolatti_LopezPujato.Models;
+using System.Security.Claims;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 public class InquilinoController : Controller
@@ -11,7 +12,7 @@ public class InquilinoController : Controller
     {
         _logger = logger;
     }
-
+RepositorioAuditoria ra = new RepositorioAuditoria();
     public IActionResult Index()
     {
         RepositorioInquilino ri=new RepositorioInquilino();
@@ -29,6 +30,11 @@ public IActionResult agregar()
     
     public IActionResult Create(Inquilino i)
     {
+     //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Alta");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Inquilinos");
+        //
         RepositorioInquilino ri = new RepositorioInquilino();
         var res=ri.AltaInquilino(i);
   
@@ -47,6 +53,11 @@ public IActionResult Editar(int id)
 
 public IActionResult ModInquilino(Inquilino i)
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Editar");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Inquilinos");
+        //
         RepositorioInquilino ri = new RepositorioInquilino();
         var res=ri.Modifica(i);
         return RedirectToAction(nameof(Index));
@@ -54,6 +65,11 @@ public IActionResult ModInquilino(Inquilino i)
 
     public IActionResult Eliminar(int id)
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Baja");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Inquilinos");
+        //
         RepositorioInquilino ri = new RepositorioInquilino();
         var res=ri.Baja(id);
         return RedirectToAction(nameof(Index));

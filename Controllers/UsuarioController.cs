@@ -25,14 +25,15 @@ public class UsuarioController : Controller
     RepositorioUsuario repusu = new RepositorioUsuario();
     RepositorioAuditoria ra = new RepositorioAuditoria();
 
+
     [Authorize(Policy = "Administrador")]
     public IActionResult Index()
     {
         var lista = repusu.GetUsuarios();
-        ra.AltaAuditoria(1,"consulta-","usuarios");
-        return View(lista);
 
+        return View(lista);
     }
+
 
     public IActionResult Detalle(int id)
     {
@@ -44,14 +45,22 @@ public class UsuarioController : Controller
     /*[Authorize(Roles = "Administrador")]*/
     public ActionResult editar(int id)
     {
+        //audit
+
         ViewBag.Roles = Usuario.ObtenerRoles();
+
         return View(repusu.GetUsuario(id));
     }
     public ActionResult EditarUsuario(Usuario u)
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Editar");
+        ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
+        //
         u.Clave = Usuario.hashearClave(u.Clave);
         RepositorioUsuario ru = new RepositorioUsuario();
-        
+
         ru.ModificaUsuario(u);
         //        return RedirectToAction("Index");
         return RedirectToAction("Index");
@@ -61,6 +70,11 @@ public class UsuarioController : Controller
     /*[Authorize(Policy = "Administrador")]*/
     public IActionResult Create()
     {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Alta");
+        ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
+        //
         ViewBag.Roles = Usuario.ObtenerRoles();
         return View();
     }
@@ -112,6 +126,11 @@ public class UsuarioController : Controller
         {
             if (ModelState.IsValid)
             {
+                //audit
+                var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+                var detalle = ra.ArmarDetalle(User.Identity.Name, "Alta");
+                ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
+                //
                 usuario.Clave = Usuario.hashearClave(usuario.Clave);
                 var claveIngresada = usuario.Clave;
                 var nbreRnd = Guid.NewGuid();

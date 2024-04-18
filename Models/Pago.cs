@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.SignalR;
 
 namespace InmobiliariaBiolatti_LopezPujato.Models;
 
@@ -24,8 +25,6 @@ public class Pago{
         public bool borrado { get; set; }
 
         public bool anulado { get; set; }
-
-       
-
+        public String? detalle {get; set; }="";
 
 }
