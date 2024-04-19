@@ -4,6 +4,7 @@
 	ViewData["Title"] = "Inmueble";
 	int idinmueble = Model == null ? 0:Model.idinmueble;
 	var ltaPropietarios = ViewBag.Propietarios;
+	var tipoinmueble = ViewBag.TipoInmueble;
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -55,6 +56,25 @@
 				</select>
 				<span asp-validation-for="idpropietario" class="number" ></span>
 			</div>
+
+
+       <div class="form-group">
+                                <label class="control-label">Tipo</label>
+                                <select class="form-control" name="tipoinmueble">
+                                    @foreach (var kvp in tipoinmueble)
+                                        @if (kvp == Model.tipoinmueble)
+                                        {
+                                            <option selected value="@kvp">@kvp</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@kvp">@kvp</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+
+
 			<div class="form-group">
 				<br>
 				<input type="submit" value="GUARDAR" class="btn btn-primary" />

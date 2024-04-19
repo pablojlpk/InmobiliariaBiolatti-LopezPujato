@@ -17,8 +17,8 @@ public class InmuebleController : Controller
         _logger = logger;
     }
     RepositorioAuditoria ra = new RepositorioAuditoria();
-            //audit
-        
+    //audit
+
 
     public IActionResult Index() //funciona ok
     {
@@ -31,20 +31,29 @@ public class InmuebleController : Controller
         RepositorioPropietario rp = new RepositorioPropietario();
         ViewBag.Propietarios = rp.GetPropietarios();
 
+        ViewBag.tipoinmueble = Inmueble.TipoInmueble();
+
         return View();
     }
     public IActionResult create(Inmueble i) //alta un nuevo inmueblefunciona ok
     {
-        //audit
-        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
-        var detalle = ra.ArmarDetalle(User.Identity.Name, "Modificar");
-        ra.AltaAuditoria(idus, detalle, " Modulo: Inmuebles");
-        //
+            if (ModelState.IsValid)
+            {
+         
+                //audit
+                var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+                var detalle = ra.ArmarDetalle(User.Identity.Name, "Modificar");
+                ra.AltaAuditoria(idus, detalle, " Modulo: Inmuebles");
+                //
 
-        RepositorioInmueble ri = new RepositorioInmueble();
-        var res = ri.AltaInmueble(i);
+                RepositorioInmueble ri = new RepositorioInmueble();
+                var res = ri.AltaInmueble(i);
 
-        return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
+            }
+
+        return View(agregar);
+
     }
 
     public IActionResult Editar(int id) //funciona ok
@@ -53,6 +62,7 @@ public class InmuebleController : Controller
         var inmueble = ri.GetInmueble(id);
         RepositorioPropietario rprop = new RepositorioPropietario();
         ViewBag.Propietarios = rprop.GetPropietarios();
+        ViewBag.tipoinmueble = Inmueble.TipoInmueble();
         return View(inmueble);
     }
 

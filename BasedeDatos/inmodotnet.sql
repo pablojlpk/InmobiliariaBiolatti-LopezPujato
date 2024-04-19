@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-04-2024 a las 17:27:24
+-- Tiempo de generación: 19-04-2024 a las 17:57:10
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -55,7 +55,73 @@ INSERT INTO `auditorias` (`IdAuditoria`, `IdUsuario`, `Fecha`, `Observaciones`) 
 (123, 26, '2024-04-18 12:22:10', 'Usuario:lopez pujato, pablo-(26)-Acción: Editar Modulo: usuarios'),
 (124, 26, '2024-04-18 12:22:35', 'Usuario:lopez pujato, pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
 (125, 29, '2024-04-18 12:22:44', 'Usuario:Lopez Pujato, Pablo perfil Emplreado pr-(29)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
-(126, 29, '2024-04-18 12:23:05', 'Usuario:Lopez Pujato, Pablo perfil Emplreado pr-(29)-Acción: cierre Sesión Modulo: usuarios');
+(126, 29, '2024-04-18 12:23:05', 'Usuario:Lopez Pujato, Pablo perfil Emplreado pr-(29)-Acción: cierre Sesión Modulo: usuarios'),
+(127, 26, '2024-04-19 08:39:21', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(128, 26, '2024-04-19 08:41:38', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: usuarios'),
+(129, 26, '2024-04-19 08:42:11', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
+(130, 29, '2024-04-19 08:42:51', 'Usuario:Lopez Pujato, Pablo perfil Emplreado pr-(29)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(131, 29, '2024-04-19 08:42:59', 'Usuario:Lopez Pujato, Pablo perfil Emplreado pr-(29)-Acción: Editar Modulo: Propietarios'),
+(132, 29, '2024-04-19 08:43:05', 'Usuario:Lopez Pujato, Pablo perfil Emplreado pr-(29)-Acción: cierre Sesión Modulo: usuarios'),
+(133, 26, '2024-04-19 08:43:13', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(134, 26, '2024-04-19 09:41:42', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
+(135, 26, '2024-04-19 09:41:50', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(136, 26, '2024-04-19 09:53:13', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(137, 26, '2024-04-19 10:02:25', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(138, 26, '2024-04-19 10:04:01', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(139, 26, '2024-04-19 10:12:00', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(140, 26, '2024-04-19 10:12:08', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
+(141, 26, '2024-04-19 10:12:17', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(142, 26, '2024-04-19 10:12:28', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(143, 26, '2024-04-19 10:31:17', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
+(144, 26, '2024-04-19 10:31:37', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(145, 26, '2024-04-19 10:32:51', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: Propietarios'),
+(146, 26, '2024-04-19 10:33:01', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Propietarios'),
+(147, 26, '2024-04-19 10:34:03', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: Contrato'),
+(148, 26, '2024-04-19 10:34:21', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: Contrato'),
+(149, 26, '2024-04-19 10:39:09', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
+(150, 29, '2024-04-19 10:39:16', 'Usuario:Lopez Pujato, Pablo perfil Emplreado pr-(29)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(151, 29, '2024-04-19 10:39:57', 'Usuario:Lopez Pujato, Pablo perfil Emplreado pr-(29)-Acción: Editar Modulo: Propietarios'),
+(152, 29, '2024-04-19 10:45:19', 'Usuario:Lopez Pujato, Pablo perfil Emplreado pr-(29)-Acción: cierre Sesión Modulo: usuarios'),
+(153, 26, '2024-04-19 10:45:25', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(154, 26, '2024-04-19 10:45:32', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: usuarios'),
+(155, 26, '2024-04-19 10:45:53', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: usuarios'),
+(156, 26, '2024-04-19 10:45:58', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: usuarios'),
+(157, 26, '2024-04-19 10:46:16', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: usuarios'),
+(158, 26, '2024-04-19 10:46:16', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: usuarios'),
+(159, 26, '2024-04-19 10:46:23', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: usuarios'),
+(160, 26, '2024-04-19 10:46:30', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: usuarios'),
+(161, 26, '2024-04-19 10:46:41', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(162, 26, '2024-04-19 10:46:48', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(163, 26, '2024-04-19 10:46:55', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(164, 26, '2024-04-19 10:47:04', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(165, 26, '2024-04-19 10:47:13', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(166, 26, '2024-04-19 10:47:17', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(167, 26, '2024-04-19 10:47:27', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(168, 26, '2024-04-19 10:47:34', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(169, 26, '2024-04-19 10:54:43', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(170, 26, '2024-04-19 10:54:49', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(171, 26, '2024-04-19 10:54:53', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(172, 26, '2024-04-19 11:18:42', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Modificar Modulo: Inmuebles'),
+(173, 26, '2024-04-19 11:19:28', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Modificar Modulo: Inmuebles'),
+(174, 26, '2024-04-19 11:20:59', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Modificar Modulo: Inmuebles'),
+(175, 26, '2024-04-19 11:30:16', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Modificar Modulo: Inmuebles'),
+(176, 26, '2024-04-19 11:30:43', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Modificar Modulo: Inmuebles'),
+(177, 26, '2024-04-19 11:56:19', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Modificar Modulo: Inmuebles'),
+(178, 26, '2024-04-19 12:10:20', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: Propietarios'),
+(179, 26, '2024-04-19 12:10:54', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: Inquilinos'),
+(180, 26, '2024-04-19 12:11:27', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Modificar Modulo: Inmuebles'),
+(181, 26, '2024-04-19 12:14:22', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Modificar Modulo: Inmuebles'),
+(182, 26, '2024-04-19 12:14:55', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Modificar Modulo: Inmuebles'),
+(183, 26, '2024-04-19 12:15:08', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Modificar Modulo: Inmuebles'),
+(184, 26, '2024-04-19 12:15:54', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(185, 26, '2024-04-19 12:16:07', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Editar Modulo: Inmuebles'),
+(186, 26, '2024-04-19 12:16:56', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: Contrato'),
+(187, 26, '2024-04-19 12:20:57', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(188, 26, '2024-04-19 12:24:24', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(189, 26, '2024-04-19 12:24:28', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(190, 26, '2024-04-19 12:55:31', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: usuarios'),
+(191, 26, '2024-04-19 12:56:13', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: usuarios'),
+(192, 26, '2024-04-19 12:56:33', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: cierre Sesión Modulo: usuarios');
 
 -- --------------------------------------------------------
 
@@ -93,7 +159,9 @@ INSERT INTO `contratos` (`idcontrato`, `idinmueble`, `idinquilino`, `fdesde`, `f
 (13, 7, 12, '2024-04-10', '2024-09-12', 25422.00, 0),
 (14, 11, 11, '2024-04-19', '2024-06-20', 55000.00, 0),
 (15, 10, 8, '2024-04-25', '2024-05-30', 22.00, 0),
-(16, 6, 12, '2024-05-01', '2024-08-18', 211111.00, 0);
+(16, 6, 12, '2024-05-01', '2024-08-18', 211111.00, 0),
+(17, 10, 1, '2024-04-18', '2024-04-25', 454656.00, 0),
+(18, 13, 12, '2024-04-12', '2024-06-13', 255541.22, 0);
 
 -- --------------------------------------------------------
 
@@ -109,6 +177,7 @@ CREATE TABLE `inmuebles` (
   `latitud` decimal(7,2) NOT NULL,
   `longitud` decimal(7,2) NOT NULL,
   `idpropietario` int(11) NOT NULL,
+  `tipoinmueble` varchar(20) NOT NULL,
   `nompropietario` varchar(100) NOT NULL,
   `borrado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -117,20 +186,21 @@ CREATE TABLE `inmuebles` (
 -- Volcado de datos para la tabla `inmuebles`
 --
 
-INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `nompropietario`, `borrado`) VALUES
-(1, 'virgen del carmen 10', 2, 200, 1.25, 1.25, 1, '', 0),
-(2, 'Rivadavia 538', 2, 200, 2.74, 0.00, 6, '', 0),
-(3, 'balcarce', 833, 30, 5.00, 1.00, 1, '', 1),
-(4, 'BALCARCE', 833, 30, 5.00, 1.00, 12, '', 0),
-(5, 'MONTEVIDEO', 200, 2, 1.50, 2.00, 20, '', 0),
-(6, 'IRIONDO 98', 2, 150, 2.22, 4422.00, 1, '', 0),
-(7, 'Lafinur 2350', 2, 2, 0.00, 4422.00, 11, '', 0),
-(8, 'BUENOS AIRES 833', 3, 3, 3.55, 21.00, 1, '', 0),
-(9, 'MONTEVIDEO', 12, 2, 0.00, 2.00, 26, '', 0),
-(10, 'SAN MARTIN 232', 1, 122, 0.00, 2333.00, 1, '', 0),
-(11, 'montevideo 885', 12, 123, 0.00, 45.32, 1, '', 0),
-(12, 'montevideo 1121', 123, 123, 22.33, 25.21, 1, '', 0),
-(13, 'rivadavia 538', 2, 1000, 225.22, 35.33, 6, '', 0);
+INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `tipoinmueble`, `nompropietario`, `borrado`) VALUES
+(1, 'virgen del carmen 10', 2, 200, 1.25, 1.25, 1, 'Casa', '', 0),
+(2, 'Rivadavia 538', 2, 200, 2.74, 0.00, 6, 'Departamento', '', 0),
+(3, 'balcarce', 833, 30, 5.00, 1.00, 1, '', '', 1),
+(4, 'BALCARCE', 833, 30, 5.00, 1.00, 12, 'Departamento', '', 0),
+(5, 'MONTEVIDEO', 200, 2, 1.50, 2.00, 20, 'Local', '', 0),
+(6, 'IRIONDO 98', 2, 150, 2.22, 4422.00, 1, 'Depósito', '', 0),
+(7, 'Lafinur 2350', 2, 2, 0.00, 4422.00, 11, 'Casa', '', 0),
+(8, 'BUENOS AIRES 833', 3, 3, 3.55, 21.00, 1, 'Departamento', '', 0),
+(9, 'MONTEVIDEO', 12, 2, 0.00, 2.00, 12, 'Departamento', '', 0),
+(10, 'SAN MARTIN 232', 1, 122, 0.00, 2333.00, 1, 'Casa', '', 0),
+(11, 'montevideo 885', 12, 123, 0.00, 45.32, 1, 'Local', '', 0),
+(12, 'montevideo 1121', 123, 123, 22.33, 25.21, 1, 'Comercio', '', 0),
+(13, 'rivadavia 538', 2, 1000, 225.22, 35.33, 6, 'Local', '', 0),
+(14, 'SAN MARTÍN 234', 2, 120, 15.22, 1544.22, 1, 'Comercio', '', 0);
 
 -- --------------------------------------------------------
 
@@ -168,7 +238,8 @@ INSERT INTO `inquilino` (`idinquilino`, `nombre`, `apellido`, `mail`, `clave`, `
 (13, 'Juan', 'Gomez', 'gggomez@pp.com', '', 21321123, 0),
 (14, 'ROBERTO', 'SPOSITO', 'rr@gmail.com', '123', 43212342, 0),
 (15, 'gomez', 'juan', '123@pp.com', '11', 234, 1),
-(16, 'Juan', 'Gomez', 'pp@pp.com', '123', 99123432, 0);
+(16, 'Juan', 'Gomez', 'pp@pp.com', '123', 99123432, 0),
+(17, 'Hernesto', 'Capobianco', 'hernesto@gmail.com', '123', 12776543, 0);
 
 -- --------------------------------------------------------
 
@@ -246,7 +317,9 @@ INSERT INTO `propietario` (`idpropietario`, `nombre`, `apellido`, `dni`, `mail`,
 (25, 'upper(ww)', 'ww', 12, '122q', '12', 1),
 (26, 'lopez', 'ines', 12, 'pp@pp.com', '112', 1),
 (27, 'Q', 'Q', 1, '1', '', 1),
-(28, 'LORENA', 'CRUZADO', 99999123, 'llcruzado@gmail.com', '123', 0);
+(28, 'LORENA', 'CRUZADO', 99999123, 'llcruzado@gmail.com', '123', 0),
+(29, 'PABLO JAVIER', 'KJKL', 21332121, 'pp@pp.com', '123', 0),
+(30, 'LEOPOLDO', 'GUTIIERREZ', 12321654, 'leopoldo@gmail.com', '123', 0);
 
 -- --------------------------------------------------------
 
@@ -275,15 +348,18 @@ INSERT INTO `usuarios` (`IdUsuario`, `Nombre`, `Apellido`, `Email`, `Clave`, `Bo
 (23, 'Juan', 'Perez', 'juanperez@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_34.jpg'),
 (24, 'Manuel', 'Torres', 'manu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=\n', 0, 2, '/update\\avatar_33.png'),
 (25, 'Lulu', 'Lopez', 'lulu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_27.png'),
-(26, 'Pablo', 'Lopez Pujato', 'pp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, NULL),
+(26, 'Pablo', 'Lopez Pujato', 'pp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_26.png'),
 (27, 'Lulu', 'Gutierrez', 'lulu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=\n', 0, 2, '/update\\avatar_32.png'),
 (28, 'Facundo', 'Lopez Pujato', 'facu@gmail.cm', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 0, NULL),
 (29, 'Pablo perfil Emplreado pr', 'Lopez Pujato', 'ppp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, NULL),
 (30, 'GOMEZ', 'JUAN', 'jj@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_30.jpg'),
 (31, 'Facundo', 'Lopez Pujato', 'facu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_32.png'),
-(32, 'Esteban', 'Quito', 'pp@correo.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_32.png'),
+(32, 'Esteban', 'Quito', 'pp@correo.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, NULL),
 (33, 'Usuario', 'usuarioultimo', 'qq@qq.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_33.png'),
-(34, 'Edurdo', 'Rosso', 'eduardoroso@lacosta.com', 'pcHk3H69xHDoCvdWoCjwf1h2QhmcXOst+pZwT/TEYLo=', 0, 1, NULL);
+(34, 'Edurdo', 'Rosso', 'eduardoroso@lacosta.com', 'pcHk3H69xHDoCvdWoCjwf1h2QhmcXOst+pZwT/TEYLo=', 0, 1, NULL),
+(35, 'Pablo', 'Gomez', '99999999', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, NULL),
+(36, 'Marcelo', 'Gomez', '123', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_36.png'),
+(37, 'Esteban', 'Martinez', 'pemamartinez@correo.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_37.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -293,7 +369,8 @@ INSERT INTO `usuarios` (`IdUsuario`, `Nombre`, `Apellido`, `Email`, `Clave`, `Bo
 -- Indices de la tabla `auditorias`
 --
 ALTER TABLE `auditorias`
-  ADD PRIMARY KEY (`IdAuditoria`);
+  ADD PRIMARY KEY (`IdAuditoria`),
+  ADD KEY `IdUsuario` (`IdUsuario`);
 
 --
 -- Indices de la tabla `contratos`
@@ -343,25 +420,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `auditorias`
 --
 ALTER TABLE `auditorias`
-  MODIFY `IdAuditoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `IdAuditoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 
 --
 -- AUTO_INCREMENT de la tabla `contratos`
 --
 ALTER TABLE `contratos`
-  MODIFY `idcontrato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idcontrato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `inmuebles`
 --
 ALTER TABLE `inmuebles`
-  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `inquilino`
 --
 ALTER TABLE `inquilino`
-  MODIFY `idinquilino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idinquilino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `pagos`
@@ -373,17 +450,23 @@ ALTER TABLE `pagos`
 -- AUTO_INCREMENT de la tabla `propietario`
 --
 ALTER TABLE `propietario`
-  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `IdUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `IdUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `auditorias`
+--
+ALTER TABLE `auditorias`
+  ADD CONSTRAINT `auditorias_ibfk_1` FOREIGN KEY (`IdUsuario`) REFERENCES `usuarios` (`IdUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `contratos`

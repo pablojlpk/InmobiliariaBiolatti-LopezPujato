@@ -22,7 +22,7 @@ public class RepositorioInmueble
         using (var connection = new MySqlConnection(ConnectionString))
         {
             //var sql = $"Select * from inmuebles where borrado=0;";
-            var sql = $"Select idinmueble, direccion, ambientes, superficie, latitud, longitud,  p.idpropietario, p.nombre, p.apellido, p.dni from inmuebles i Inner join propietario p on i.idpropietario=p.idpropietario where i.borrado=0";
+            var sql = $"Select idinmueble, direccion, ambientes, superficie, latitud, longitud, tipoinmueble, p.idpropietario, p.nombre, p.apellido, p.dni from inmuebles i Inner join propietario p on i.idpropietario=p.idpropietario where i.borrado=0";
 
 
             using (var command = new MySqlCommand(sql, connection))
@@ -41,6 +41,7 @@ public class RepositorioInmueble
                             latitud = reader.GetDecimal(nameof(Inmueble.latitud)),
                             longitud = reader.GetDecimal(nameof(Inmueble.longitud)),
                             idpropietario = reader.GetInt32(nameof(Inmueble.idpropietario)),
+                            tipoinmueble = reader.GetString(nameof(Inmueble.tipoinmueble)),
 
                             datospropietario = new Propietario
                             {
@@ -65,7 +66,7 @@ public class RepositorioInmueble
     {
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = $"INSERT INTO inmuebles (direccion,ambientes,superficie,latitud,longitud,idpropietario) VALUES ('{i.direccion}',{i.ambientes},{i.superficie},{i.latitud},{i.longitud},{i.idpropietario})";
+            var sql = $"INSERT INTO inmuebles (direccion,ambientes,superficie,latitud,longitud,idpropietario,tipoinmueble) VALUES ('{i.direccion}',{i.ambientes},{i.superficie},{i.latitud},{i.longitud},{i.idpropietario}, {i.tipoinmueble})";
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();
@@ -81,7 +82,7 @@ public class RepositorioInmueble
         Inmueble? inmueble = null;
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = @$"SELECT i.idinmueble, i.direccion, i.ambientes, i.superficie, i.latitud, i.longitud,  p.idpropietario, p.nombre, p.apellido, p.dni
+            var sql = @$"SELECT i.idinmueble, i.direccion, i.ambientes, i.superficie, i.latitud, i.longitud, i.tipoinmueble,  p.idpropietario, p.nombre, p.apellido, p.dni
         FROM inmuebles i
         INNER JOIN propietario p on p.idpropietario=i.idpropietario
         WHERE i.borrado=false and i.idinmueble = @idinmueble";
@@ -100,6 +101,7 @@ public class RepositorioInmueble
                         superficie = reader.GetInt32(nameof(Inmueble.superficie)),
                         latitud = reader.GetDecimal(nameof(Inmueble.latitud)),
                         longitud = reader.GetDecimal(nameof(Inmueble.longitud)),
+                        tipoinmueble = reader.GetString(nameof(Inmueble.tipoinmueble)),
                         idpropietario = reader.GetInt32(nameof(Inmueble.idpropietario)),
                         datospropietario = new Propietario
                         {
@@ -136,15 +138,13 @@ public class RepositorioInmueble
     
     public int ModificaInmueble(Inmueble i) //funciona ok
     {
-    
-
         using (var connection = new MySqlConnection(ConnectionString))
         {
             //var sql2 = @$"UPDATE inmuebles SET direccion = '{i.direccion}', ambientes = {i.ambientes}, superficie = {i.superficie}, idpropietario = {i.idpropietario} WHERE idinmueble = {i.idinmueble}";
             var sql=@$"UPDATE inmuebles SET {nameof(Inmueble.direccion)} =@{nameof(Inmueble.direccion)},
             {nameof(Inmueble.latitud)} =@{nameof(Inmueble.latitud)}, {nameof(Inmueble.longitud)} =@{nameof(Inmueble.longitud)},
              {nameof(Inmueble.ambientes)} =@{nameof(Inmueble.ambientes)}, {nameof(Inmueble.superficie)} =@{nameof(Inmueble.superficie)}, 
-             {nameof(Inmueble.idpropietario)} =@{nameof(Inmueble.idpropietario)}
+             {nameof(Inmueble.idpropietario)} =@{nameof(Inmueble.idpropietario)}, {nameof(Inmueble.tipoinmueble)} =@{nameof(Inmueble.tipoinmueble)}
               WHERE {nameof(Inmueble.idinmueble)} =@{nameof(Inmueble.idinmueble)}";
         
            var sql2 = @$"UPDATE inquilino
@@ -162,6 +162,7 @@ public class RepositorioInmueble
                 command.Parameters.AddWithValue($"@{nameof(Inmueble.superficie)}", i.superficie);
                 command.Parameters.AddWithValue($"@{nameof(Inmueble.idpropietario)}", i.idpropietario);
                 command.Parameters.AddWithValue($"@{nameof(Inmueble.idinmueble)}", i.idinmueble);
+                command.Parameters.AddWithValue($"@{nameof(Inmueble.tipoinmueble)}", i.tipoinmueble);
                 
                 connection.Open();
                 command.ExecuteNonQuery();

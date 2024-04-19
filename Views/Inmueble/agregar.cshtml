@@ -3,6 +3,7 @@
 @{
 	ViewData["Title"] = "Inmueble";
 	var ltaPropietarios = ViewBag.Propietarios;
+	var tipoinmueble = ViewBag.TipoInmueble;
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -37,7 +38,7 @@
 				<input asp-for="longitud" class="form-control" />
 				<span asp-validation-for="longitud" class="number"></span>
 			</div>
-		
+
 			<div>
 				<label class="control-label">Propietario</label>
 				<select class="form-control" name="idpropietario">
@@ -49,6 +50,20 @@
 				</select>
 				<span asp-validation-for="idpropietario" class="number"></span>
 			</div>
+
+			<div>
+				<label class="control-label">Tipo</label>
+				<select class="form-control" name="tipoinmueble">
+
+					@foreach (var item in tipoinmueble)
+					{
+						<option value="tipoinmueble">@item</option>
+					}
+				</select>
+				<span asp-validation-for="tipoinmueble" class="number"></span>
+			</div>
+
+
 			<br>
 			<div class="form-group">
 				<input type="submit" value="GUARDAR" class="btn btn-primary" />

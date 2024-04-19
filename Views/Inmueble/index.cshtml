@@ -19,6 +19,7 @@
                 <th>Latitud</th>
                 <th>Longitud</th>
                 <th>CodProp.</th>
+                <th>Tipo</th>
                 <th>Propietario</th>
                 <th>Acciones</th>
 
@@ -33,6 +34,7 @@
                     <td>@item.latitud</td>
                     <td>@item.longitud</td>
                     <td>@item.idpropietario</td>
+                    <td>@item.tipoinmueble</td>
                     <td>@item.datospropietario</td>
                     <td>
                         <a asp-action="Editar" asp-route-id="@item.idinmueble" class="fa-solid fa-pen-to-square"
