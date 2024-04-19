@@ -66,6 +66,33 @@ public class UsuarioController : Controller
         return RedirectToAction("Index");
     }
 
+
+    [HttpGet]
+    /*[Authorize(Roles = "Empleado")]*/
+    public ActionResult Perfil(int id)
+    {
+        //audit
+
+        ViewBag.Roles = Usuario.ObtenerRoles();
+
+        return View(repusu.GetUsuario(id));
+    }
+    [HttpPost]
+    public ActionResult Perfil(Usuario u)
+    {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Perfil");
+        ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
+        //
+        u.Clave = Usuario.hashearClave(u.Clave);
+        RepositorioUsuario ru = new RepositorioUsuario();
+
+        ru.ModificaUsuario(u);
+        //        return RedirectToAction("Index");
+        return RedirectToAction("Perfil");
+    }
+
     [HttpGet]
     /*[Authorize(Policy = "Administrador")]*/
     public IActionResult Create()
@@ -166,6 +193,93 @@ public class UsuarioController : Controller
             return View();
         }
     }
+
+
+    [HttpGet]
+    public ActionResult CambioAvatar(int id)
+    {
+        var usuario = repusu.GetUsuario(id);
+
+        // Obtener el ID del usuario autenticado
+        var usuarioId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
+        // Verificar si el usuario autenticado coincide con el ID del perfil solicitado
+        if (usuarioId == id)
+        {
+            RedirectToAction(nameof(Index));
+        }
+
+        return View(usuario);
+    }
+
+
+    [HttpPost]
+    public async Task<ActionResult> CambioAvatar(int id, IFormFile? avatarFile)
+    {
+        try
+        {
+            var usuario = repusu.GetUsuario(id);
+            // Obtener el ID del usuario autenticado
+            var usuarioId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
+            // Verificar si el usuario autenticado coincide con el ID del perfil solicitado
+            if (usuarioId == id)
+            {
+                RedirectToAction(nameof(Index));
+            }
+
+            if (avatarFile != null)
+            {
+                var resizedImagePath = await AvatarAsync(usuario, avatarFile);
+                if (resizedImagePath == null)
+                {
+                    ModelState.AddModelError("", "La extensión del archivo no es válida.");
+                    return View(usuario);
+                }
+                // Actualizar la URL del avatar en la base de datos
+                usuario.AvatarUrl = resizedImagePath;
+                repusu.ModificaUsuario(usuario);
+                TempData["Id"] = usuario.IdUsuario;
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                // Si no se proporciona un archivo,se sube null.
+                usuario.AvatarUrl = "";
+                repusu.ModificaUsuario(usuario);
+                return RedirectToAction(nameof(Index));
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message.ToString());
+            return RedirectToAction("CambioAvatar", new { id = id });
+        }
+    }
+
+    [HttpGet]
+    public ActionResult CambioPassword(int id)
+    {
+        //audit
+
+        ViewBag.Roles = Usuario.ObtenerRoles();
+
+        return View(repusu.GetUsuario(id));
+    }
+     [HttpPost]
+     public ActionResult CambioPassword(Usuario u)
+    {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "CambioPassword");
+        ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
+        //
+        u.Clave = Usuario.hashearClave(u.Clave);
+        RepositorioUsuario ru = new RepositorioUsuario();
+
+        ru.ModificaUsuario(u);
+        //        return RedirectToAction("Index");
+        return RedirectToAction("Index");
+    }
+
 
 
 
