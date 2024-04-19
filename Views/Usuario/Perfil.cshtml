@@ -30,7 +30,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Rol</label>
-                                <select class="form-control" name="Permiso" disabled>
+                                <select class="form-control mb-3" name="Permiso" disabled>
                                     @foreach (var kvp in (IDictionary<int, string>)ViewBag.Roles)
                                         @if (kvp.Key == Model.Permiso)
                                         {
