@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-04-2024 a las 17:57:10
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 20-04-2024 a las 17:54:26
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `auditorias` (
   `IdUsuario` int(11) NOT NULL,
   `Fecha` datetime NOT NULL,
   `Observaciones` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `auditorias`
@@ -121,7 +121,20 @@ INSERT INTO `auditorias` (`IdAuditoria`, `IdUsuario`, `Fecha`, `Observaciones`) 
 (189, 26, '2024-04-19 12:24:28', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
 (190, 26, '2024-04-19 12:55:31', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: usuarios'),
 (191, 26, '2024-04-19 12:56:13', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Alta Modulo: usuarios'),
-(192, 26, '2024-04-19 12:56:33', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: cierre Sesión Modulo: usuarios');
+(192, 26, '2024-04-19 12:56:33', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
+(193, 26, '2024-04-20 11:59:31', 'Usuario:lopez pujato22, pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
+(194, 26, '2024-04-20 11:59:48', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(195, 26, '2024-04-20 12:04:49', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
+(196, 26, '2024-04-20 12:04:57', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(197, 26, '2024-04-20 12:31:02', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
+(198, 26, '2024-04-20 12:32:41', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(199, 26, '2024-04-20 12:35:07', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(200, 26, '2024-04-20 12:37:59', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(201, 26, '2024-04-20 12:38:28', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Perfil Modulo: usuarios'),
+(202, 26, '2024-04-20 12:40:27', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: cierre Sesión Modulo: usuarios'),
+(203, 26, '2024-04-20 12:40:33', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(204, 26, '2024-04-20 12:40:45', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: Perfil Modulo: usuarios'),
+(205, 26, '2024-04-20 12:52:11', 'Usuario:Lopez Pujato, Pablo-(26)-Acción: CambioPassword Modulo: usuarios');
 
 -- --------------------------------------------------------
 
@@ -137,31 +150,31 @@ CREATE TABLE `contratos` (
   `fhasta` date NOT NULL,
   `importe` decimal(8,2) NOT NULL,
   `borrado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `contratos`
 --
 
 INSERT INTO `contratos` (`idcontrato`, `idinmueble`, `idinquilino`, `fdesde`, `fhasta`, `importe`, `borrado`) VALUES
-(1, 4, 12, '2021-03-12', '2024-04-12', 250.33, 0),
-(2, 10, 5, '2021-03-12', '2021-12-12', 25033.00, 1),
-(3, 9, 1, '0000-00-00', '0000-00-00', 2541.00, 1),
-(4, 1, 12, '2024-04-04', '2024-04-03', 221.00, 1),
-(5, 1, 12, '0000-00-00', '0000-00-00', 2.00, 1),
-(6, 3, 12, '0000-00-00', '0000-00-00', 2.00, 1),
-(7, 3, 12, '0000-00-00', '0000-00-00', 2.00, 1),
-(8, 3, 8, '2024-01-01', '2024-12-31', 235.00, 0),
-(9, 2, 1, '2024-01-01', '2024-12-31', 12.00, 0),
-(10, 1, 12, '2024-04-01', '2024-05-09', 25.00, 0),
-(11, 9, 13, '2024-04-09', '2024-04-30', 2541.00, 0),
-(12, 6, 9, '2024-04-15', '2025-05-30', 250000.00, 0),
-(13, 7, 12, '2024-04-10', '2024-09-12', 25422.00, 0),
-(14, 11, 11, '2024-04-19', '2024-06-20', 55000.00, 0),
-(15, 10, 8, '2024-04-25', '2024-05-30', 22.00, 0),
-(16, 6, 12, '2024-05-01', '2024-08-18', 211111.00, 0),
-(17, 10, 1, '2024-04-18', '2024-04-25', 454656.00, 0),
-(18, 13, 12, '2024-04-12', '2024-06-13', 255541.22, 0);
+(1, 4, 12, '2021-03-12', '2024-04-12', '250.33', 0),
+(2, 10, 5, '2021-03-12', '2021-12-12', '25033.00', 1),
+(3, 9, 1, '0000-00-00', '0000-00-00', '2541.00', 1),
+(4, 1, 12, '2024-04-04', '2024-04-03', '221.00', 1),
+(5, 1, 12, '0000-00-00', '0000-00-00', '2.00', 1),
+(6, 3, 12, '0000-00-00', '0000-00-00', '2.00', 1),
+(7, 3, 12, '0000-00-00', '0000-00-00', '2.00', 1),
+(8, 3, 8, '2024-01-01', '2024-12-31', '235.00', 0),
+(9, 2, 1, '2024-01-01', '2024-12-31', '12.00', 0),
+(10, 1, 12, '2024-04-01', '2024-05-09', '25.00', 0),
+(11, 9, 13, '2024-04-09', '2024-04-30', '2541.00', 0),
+(12, 6, 9, '2024-04-15', '2025-05-30', '250000.00', 0),
+(13, 7, 12, '2024-04-10', '2024-09-12', '25422.00', 0),
+(14, 11, 11, '2024-04-19', '2024-06-20', '55000.00', 0),
+(15, 10, 8, '2024-04-25', '2024-05-30', '22.00', 0),
+(16, 6, 12, '2024-05-01', '2024-08-18', '211111.00', 0),
+(17, 10, 1, '2024-04-18', '2024-04-25', '454656.00', 0),
+(18, 13, 12, '2024-04-12', '2024-06-13', '255541.22', 0);
 
 -- --------------------------------------------------------
 
@@ -179,28 +192,29 @@ CREATE TABLE `inmuebles` (
   `idpropietario` int(11) NOT NULL,
   `tipoinmueble` varchar(20) NOT NULL,
   `nompropietario` varchar(100) NOT NULL,
+  `estado` varchar(15) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `inmuebles`
 --
 
-INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `tipoinmueble`, `nompropietario`, `borrado`) VALUES
-(1, 'virgen del carmen 10', 2, 200, 1.25, 1.25, 1, 'Casa', '', 0),
-(2, 'Rivadavia 538', 2, 200, 2.74, 0.00, 6, 'Departamento', '', 0),
-(3, 'balcarce', 833, 30, 5.00, 1.00, 1, '', '', 1),
-(4, 'BALCARCE', 833, 30, 5.00, 1.00, 12, 'Departamento', '', 0),
-(5, 'MONTEVIDEO', 200, 2, 1.50, 2.00, 20, 'Local', '', 0),
-(6, 'IRIONDO 98', 2, 150, 2.22, 4422.00, 1, 'Depósito', '', 0),
-(7, 'Lafinur 2350', 2, 2, 0.00, 4422.00, 11, 'Casa', '', 0),
-(8, 'BUENOS AIRES 833', 3, 3, 3.55, 21.00, 1, 'Departamento', '', 0),
-(9, 'MONTEVIDEO', 12, 2, 0.00, 2.00, 12, 'Departamento', '', 0),
-(10, 'SAN MARTIN 232', 1, 122, 0.00, 2333.00, 1, 'Casa', '', 0),
-(11, 'montevideo 885', 12, 123, 0.00, 45.32, 1, 'Local', '', 0),
-(12, 'montevideo 1121', 123, 123, 22.33, 25.21, 1, 'Comercio', '', 0),
-(13, 'rivadavia 538', 2, 1000, 225.22, 35.33, 6, 'Local', '', 0),
-(14, 'SAN MARTÍN 234', 2, 120, 15.22, 1544.22, 1, 'Comercio', '', 0);
+INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `tipoinmueble`, `nompropietario`, `estado`, `borrado`) VALUES
+(1, 'virgen del carmen 10', 2, 200, '1.25', '1.25', 1, 'Casa', '', '', 0),
+(2, 'Rivadavia 538', 2, 200, '2.74', '0.00', 6, 'Departamento', '', '', 0),
+(3, 'balcarce', 833, 30, '5.00', '1.00', 1, '', '', '', 1),
+(4, 'BALCARCE', 833, 30, '5.00', '1.00', 12, 'Departamento', '', '', 0),
+(5, 'MONTEVIDEO', 200, 2, '1.50', '2.00', 20, 'Local', '', '', 0),
+(6, 'IRIONDO 98', 2, 150, '2.22', '4422.00', 1, 'Depósito', '', '', 0),
+(7, 'Lafinur 2350', 2, 2, '0.00', '4422.00', 11, 'Casa', '', '', 0),
+(8, 'BUENOS AIRES 833', 3, 3, '3.55', '21.00', 1, 'Departamento', '', '', 0),
+(9, 'MONTEVIDEO', 12, 2, '0.00', '2.00', 12, 'Departamento', '', '', 0),
+(10, 'SAN MARTIN 232', 1, 122, '0.00', '2333.00', 1, 'Casa', '', '', 0),
+(11, 'montevideo 885', 12, 123, '0.00', '45.32', 1, 'Local', '', '', 0),
+(12, 'montevideo 1121', 123, 123, '22.33', '25.21', 1, 'Comercio', '', '', 0),
+(13, 'rivadavia 538', 2, 1000, '225.22', '35.33', 6, 'Local', '', '', 0),
+(14, 'SAN MARTÍN 234', 2, 120, '15.22', '1544.22', 1, 'Comercio', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -216,7 +230,7 @@ CREATE TABLE `inquilino` (
   `clave` varchar(30) NOT NULL,
   `dni` int(8) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `inquilino`
@@ -255,27 +269,27 @@ CREATE TABLE `pagos` (
   `borrado` tinyint(1) NOT NULL,
   `anulado` tinyint(1) NOT NULL,
   `detalle` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `pagos`
 --
 
 INSERT INTO `pagos` (`idpago`, `idcontrato`, `fpago`, `importe`, `borrado`, `anulado`, `detalle`) VALUES
-(1, 8, '2020-10-10', 25000.33, 0, 0, '0'),
-(2, 1, '1916-10-19', 15110.33, 0, 0, '0'),
-(3, 2, '2024-12-31', 5000.33, 0, 0, '0'),
-(13, 13, '2024-04-09', 1919.00, 0, 0, '0'),
-(14, 12, '2024-04-11', 99999.99, 0, 0, 'Multa'),
-(15, 1, '2024-04-11', 15000.00, 0, 0, ''),
-(16, 1, '2024-04-18', 25.33, 0, 0, ''),
-(17, 1, '2024-04-25', 254.22, 0, 0, 'Multa'),
-(18, 1, '2024-04-17', 25.33, 0, 0, ''),
-(21, 1, '2024-04-18', 11111.00, 0, 0, ''),
-(50, 11, '2024-05-02', 254.22, 0, 0, ''),
-(51, 1, '2024-04-11', 254.22, 0, 0, 'Multa'),
-(52, 1, '2024-04-25', 21111.00, 0, 0, ''),
-(53, 1, '2024-04-18', 99999.99, 0, 0, 'Multa');
+(1, 8, '2020-10-10', '25000.33', 0, 0, '0'),
+(2, 1, '1916-10-19', '15110.33', 0, 0, '0'),
+(3, 2, '2024-12-31', '5000.33', 0, 0, '0'),
+(13, 13, '2024-04-09', '1919.00', 0, 0, '0'),
+(14, 12, '2024-04-11', '99999.99', 0, 0, 'Multa'),
+(15, 1, '2024-04-11', '15000.00', 0, 0, ''),
+(16, 1, '2024-04-18', '25.33', 0, 0, ''),
+(17, 1, '2024-04-25', '254.22', 0, 0, 'Multa'),
+(18, 1, '2024-04-17', '25.33', 0, 0, ''),
+(21, 1, '2024-04-18', '11111.00', 0, 0, ''),
+(50, 11, '2024-05-02', '254.22', 0, 0, ''),
+(51, 1, '2024-04-11', '254.22', 0, 0, 'Multa'),
+(52, 1, '2024-04-25', '21111.00', 0, 0, ''),
+(53, 1, '2024-04-18', '99999.99', 0, 0, 'Multa');
 
 -- --------------------------------------------------------
 
@@ -291,7 +305,7 @@ CREATE TABLE `propietario` (
   `mail` varchar(30) NOT NULL,
   `clave` text NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `propietario`
@@ -336,7 +350,7 @@ CREATE TABLE `usuarios` (
   `Borrado` tinyint(1) NOT NULL,
   `Permiso` int(2) NOT NULL,
   `AvatarUrl` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -349,16 +363,16 @@ INSERT INTO `usuarios` (`IdUsuario`, `Nombre`, `Apellido`, `Email`, `Clave`, `Bo
 (24, 'Manuel', 'Torres', 'manu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=\n', 0, 2, '/update\\avatar_33.png'),
 (25, 'Lulu', 'Lopez', 'lulu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_27.png'),
 (26, 'Pablo', 'Lopez Pujato', 'pp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_26.png'),
-(27, 'Lulu', 'Gutierrez', 'lulu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=\n', 0, 2, '/update\\avatar_32.png'),
-(28, 'Facundo', 'Lopez Pujato', 'facu@gmail.cm', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 0, NULL),
+(27, 'Lulu', 'Gutierrez', 'lulu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_27.png'),
+(28, 'Facundo', 'LOPEZ Pujato', 'ppppp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_28.png'),
 (29, 'Pablo perfil Emplreado pr', 'Lopez Pujato', 'ppp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, NULL),
 (30, 'GOMEZ', 'JUAN', 'jj@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_30.jpg'),
 (31, 'Facundo', 'Lopez Pujato', 'facu@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_32.png'),
 (32, 'Esteban', 'Quito', 'pp@correo.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, NULL),
 (33, 'Usuario', 'usuarioultimo', 'qq@qq.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_33.png'),
-(34, 'Edurdo', 'Rosso', 'eduardoroso@lacosta.com', 'pcHk3H69xHDoCvdWoCjwf1h2QhmcXOst+pZwT/TEYLo=', 0, 1, NULL),
+(34, 'Eduardo', 'Rosso', 'eduardoroso@lacosta.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_34.png'),
 (35, 'Pablo', 'Gomez', '99999999', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, NULL),
-(36, 'Marcelo', 'Gomez', '123', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_36.png'),
+(36, 'Marcelo', 'Gomez', 'qq@qqa.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_36.png'),
 (37, 'Esteban', 'Martinez', 'pemamartinez@correo.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_37.jpg');
 
 --
@@ -420,7 +434,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `auditorias`
 --
 ALTER TABLE `auditorias`
-  MODIFY `IdAuditoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
+  MODIFY `IdAuditoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
 
 --
 -- AUTO_INCREMENT de la tabla `contratos`

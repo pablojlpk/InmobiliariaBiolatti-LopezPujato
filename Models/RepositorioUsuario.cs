@@ -129,6 +129,7 @@ public class RepositorioUsuario
 
 
 
+
     public Usuario? ObtenerUsuarioLogin(string Email, string Clave)
     {
         using var conn = new MySqlConnection(ConnectionString);
@@ -161,4 +162,82 @@ public class RepositorioUsuario
         }
         return usuario;
     }
+
+
+public int ControlaClave(int idusu, string clave)
+    {
+        var res = -1;
+        using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+        {
+            var sql = @$"SELECT {nameof(Usuario.Clave)}
+             FROM usuarios WHERE
+             {nameof(Usuario.IdUsuario)} = @IdUsuario
+         and {nameof(Usuario.Clave)} = @Clave;";
+            using (MySqlCommand command = new MySqlCommand(sql, connection))
+            {
+                command.CommandType = CommandType.Text;
+                command.Parameters.AddWithValue("@IdUsuario", idusu);
+                command.Parameters.AddWithValue("@Clave", clave);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    res=1;
+
+                }
+                connection.Close();
+            }
+        }
+
+        return res;
+		
+		
+    }
+
+
+    public int ModificaClave(int idusu, string clave)
+    {
+        var res = -1;
+        var clavehash = Usuario.hashearClave(clave);
+        using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+        {
+            var sql = @$"UPDATE usuarios SET {nameof(Usuario.Clave)} = @Clave WHERE {nameof(Usuario.IdUsuario)} = @IdUsuario";
+            using (MySqlCommand command = new MySqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@IdUsuario", idusu);
+                command.Parameters.AddWithValue("@Clave", clave);
+                connection.Open();
+                res = Convert.ToInt32(command.ExecuteScalar());
+                connection.Close();
+            }
+        }
+        return res;
+    }
+
+public Usuario ModificarPerfil(Usuario usuario){
+
+    using (MySqlConnection connection = new MySqlConnection(ConnectionString))  
+    {
+        var sql = @$"UPDATE usuarios SET {nameof(Usuario.Nombre)} = @Nombre,
+         {nameof(Usuario.Apellido)} = @Apellido,
+        {nameof(Usuario.Email)} = @Email,
+         WHERE {nameof(Usuario.IdUsuario)} = @IdUsuario";
+        using (MySqlCommand command = new MySqlCommand(sql, connection))
+        {
+            command.Parameters.AddWithValue("@IdUsuario", usuario.IdUsuario);
+            command.Parameters.AddWithValue("@Nombre", usuario.Nombre);
+            command.Parameters.AddWithValue("@Apellido", usuario.Apellido);
+            command.Parameters.AddWithValue("@Email", usuario.Email);
+            
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+        
+
+        }
+
+    return usuario;
+}
+
 }

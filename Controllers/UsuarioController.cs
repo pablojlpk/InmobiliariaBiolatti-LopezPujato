@@ -30,7 +30,6 @@ public class UsuarioController : Controller
     public IActionResult Index()
     {
         var lista = repusu.GetUsuarios();
-
         return View(lista);
     }
 
@@ -58,7 +57,6 @@ public class UsuarioController : Controller
         {
             RepositorioUsuario ru = new RepositorioUsuario();
             Usuario? u = ru.GetUsuario(usuario.IdUsuario);
-
             if (u != null)
             {
                 // Actualizar datos básicos del usuario
@@ -72,14 +70,12 @@ public class UsuarioController : Controller
                 {
                     u.Clave = Usuario.hashearClave(usuario.Clave);
                 }
-
                 // Manejo del avatar
                 if (!string.IsNullOrEmpty(u.AvatarUrl))
                 {
                     var ruta = Path.Combine(environment.WebRootPath, "update", $"avatar_{u.IdUsuario}" + Path.GetExtension(u.AvatarUrl));
                     // Hacer algo con la ruta del avatar, si es necesario
                 }
-
                 if (avatarFile != null)
                 {
                     var resizedImagePath = await AvatarAsync(u, avatarFile);
@@ -87,54 +83,50 @@ public class UsuarioController : Controller
                     {
                         return View(usuario); // Retorna la vista con errores de validación si la extensión del archivo no es válida
                     }
-
                     u.AvatarUrl = resizedImagePath;
                 }
                 else
                 {
                     u.AvatarUrl = null; // Si no se proporciona un archivo, establece el AvatarUrl a null
                 }
-
                 ru.ModificaUsuario(u);
                 return RedirectToAction("Index", "Usuario"); // Redirige al Index de Usuario después de una edición exitosa
             }
             else
             {
                 ViewBag.Roles = Usuario.ObtenerRoles();
-                return View(ru.GetUsuario(usuario.IdUsuario));
+                var cartel="entra";
+                return RedirectToAction("index", "Home");
+             
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message.ToString());
-            return RedirectToAction("editar", new { id = usuario.IdUsuario });
+            return RedirectToAction("index", new { id = usuario.IdUsuario });
         }
     }
-
-
 
     [HttpGet]
     /*[Authorize(Roles = "Empleado")]*/
     public ActionResult Perfil(int id)
     {
-        //audit
-
+       
         ViewBag.Roles = Usuario.ObtenerRoles();
 
         return View(repusu.GetUsuario(id));
     }
     [HttpPost]
-    public ActionResult Perfil(Usuario u)
+    public ActionResult ModificaPerfil(Usuario u)
     {
         //audit
         var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
-        var detalle = ra.ArmarDetalle(User.Identity.Name, "Perfil");
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Modificar Perfil");
         ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
         //
-        u.Clave = Usuario.hashearClave(u.Clave);
+        
         RepositorioUsuario ru = new RepositorioUsuario();
 
-        ru.ModificaUsuario(u);
+        ru.ModificarPerfil(u);
         //        return RedirectToAction("Index");
         return RedirectToAction("Perfil");
     }
@@ -245,7 +237,6 @@ public class UsuarioController : Controller
     public ActionResult CambioAvatar(int id)
     {
         var usuario = repusu.GetUsuario(id);
-
         // Obtener el ID del usuario autenticado
         var usuarioId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
         // Verificar si el usuario autenticado coincide con el ID del perfil solicitado
@@ -301,29 +292,42 @@ public class UsuarioController : Controller
         }
     }
 
-    [HttpGet]
-    public ActionResult CambioPassword(int id)
+    
+
+    public ActionResult CambioPassword()
     {
         //audit
-
-        ViewBag.Roles = Usuario.ObtenerRoles();
-
-        return View(repusu.GetUsuario(id));
+        return View();
     }
-    [HttpPost]
-    public ActionResult CambioPassword(Usuario u)
-    {
-        //audit
-        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
-        var detalle = ra.ArmarDetalle(User.Identity.Name, "CambioPassword");
-        ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
-        //
-        u.Clave = Usuario.hashearClave(u.Clave);
-        RepositorioUsuario ru = new RepositorioUsuario();
 
-        ru.ModificaUsuario(u);
-        //        return RedirectToAction("Index");
-        return RedirectToAction("Index");
+    [HttpPost]
+    public ActionResult CambioPassword(string ClaveAnterior, string ClaveNueva)
+    {
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        RepositorioUsuario ru = new RepositorioUsuario();
+        var Mensaje = "";
+        var clavehash = Usuario.hashearClave(ClaveAnterior);
+
+        var resultado = ru.ControlaClave(Convert.ToInt32(idus), clavehash);
+        if (resultado == 1)
+        {
+            //audit
+            var detalle = ra.ArmarDetalle(User.Identity.Name, "CambioPassword");
+            ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
+            //
+            ClaveNueva = Usuario.hashearClave(ClaveNueva);
+            ru.ModificaClave(Convert.ToInt32(idus), ClaveNueva);
+
+            Mensaje = "EL CAMBIO SE REALIZÓ CORRECTAMENTE";
+        }
+        else
+        {
+            Mensaje = "Clave Incorrecta";
+        }
+        ViewBag.Mensaje = Mensaje;
+        return View();
+
+
     }
 
 
