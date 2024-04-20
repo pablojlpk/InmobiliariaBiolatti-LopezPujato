@@ -1,60 +1,83 @@
 @model InmobiliariaBiolatti_LopezPujato.Models.Contrato;
-
 @{
-	ViewData["Title"] = "Contratos";
-	var ListaInmuebles = ViewBag.Inmuebles;
-	var ListaInquilinos = ViewBag.Inquilinos;
-	var ltaPropietarios = ViewBag.Propietarios;
+    ViewData["Title"] = "Contratos";
+    var ListaInmuebles = ViewBag.Inmuebles;
+    var ListaInquilinos = ViewBag.Inquilinos;
+    var ltaPropietarios = ViewBag.Propietarios;
 }
-<div class="col-md-4">
-	<form asp-action="Create" enctype="multipart/form-data">
-		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-		<div>
-				<label class="control-label">Inmuebles</label>
-				<select class="form-control" name="idinmueble">
-					@foreach (var item in ListaInmuebles)
-					{
-						<option value="@item.idinmueble">@item.ToString()</option>
-					}
-				</select>
-				<span asp-validation-for="idinmueble" class="number"></span>
-		</div>
-
-		<div>
-			<label class="control-label">Inquilino</label>
-			<select class="form-control" name="idinquilino">
-
-				@foreach (var item in ListaInquilinos)
-				{
-					<option value="@item.idinquilino">@item.ToString()</option>
-				}
-			</select>
-			<span asp-validation-for="idinquilino" class="number"></span>
-		</div>
-		<div class="form-group">
-			<label asp-for="importe" class="control-label"></label>
-			<input asp-for="importe" class="form-control" />
-			<span asp-validation-for="importe" class="number"></span>
-		</div>
-		<div class="form-group">
-			<label asp-for="fdesde" class="control-label">Fecha Desde</label>
-			<input asp-for="fdesde" class="form-control" />
-			<span asp-validation-for="fdesde" class="date"></span>
-		</div>
-		<div class="form-group">
-			<label asp-for="fhasta" class="control-label">Fecha Desde</label>
-			<input asp-for="fhasta" class="form-control" />
-			<span asp-validation-for="fhasta" class="date"></span>
-		</div>
-		<br>
-		<div class="form-group">
-			<input type="submit" value="GUARDAR" class="btn btn-primary" />
-			<a asp-action="index" class="btn btn-primary">volver</a>
-
-
-
-		</div>
-
-	</form>
-
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-center"><b>Nuevo Contrato</b></h1>
+                    <form asp-action="Create" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label class="control-label">Inmueble</label>
+                            <select asp-for="idinmueble" class="form-control" required>
+                                <option value="">Seleccione un inmueble</option>
+                                @foreach (var item in ListaInmuebles)
+                                {
+                                    <option value="@item.idinmueble">@item.ToString()</option>
+                                }
+                            </select>
+                            <span asp-validation-for="idinmueble" class="number text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Inquilino</label>
+                            <select asp-for="idinquilino" class="form-control" required>
+                                <option value="">Seleccione un inquilino</option>
+                                @foreach (var item in ListaInquilinos)
+                                {
+                                    <option value="@item.idinquilino">@item.ToString()</option>
+                                }
+                            </select>
+                            <span asp-validation-for="idinquilino" class="number text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="importe" class="control-label">Importe</label>
+                            <input asp-for="importe" class="form-control" required />
+                            <span asp-validation-for="importe" class="number text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="fdesde" class="control-label">Fecha Desde</label>
+                            <input asp-for="fdesde" class="form-control" required />
+                            <span asp-validation-for="fdesde" class="date text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="fhasta" class="control-label">Fecha Hasta</label>
+                            <input asp-for="fhasta" class="form-control" required />
+                            <span asp-validation-for="fhasta" class="date text-danger"></span>
+                        </div>
+                        <div class="form-group text-center mt-2">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a asp-action="index" class="btn btn-primary">Volver</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    <script>
+        // Evitar el envío del formulario si hay campos inválidos
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+}

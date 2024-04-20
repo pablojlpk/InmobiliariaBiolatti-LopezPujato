@@ -1,78 +1,96 @@
 @model InmobiliariaBiolatti_LopezPujato.Models.Inmueble;
 
 @{
-	ViewData["Title"] = "Inmueble";
-	var ltaPropietarios = ViewBag.Propietarios;
-	var tipoinmueble = ViewBag.TipoInmueble;
+    <h1>@ViewData["Title"]</h1>
+    var ltaPropietarios = ViewBag.Propietarios;
+    var tipoinmueble = ViewBag.TipoInmueble;
 }
-<h1>@ViewData["Title"]</h1>
-
-<p>Alta de un Inmueble</p>
-<div class="row">
-
-	<div class="col-md-4">
-		<form asp-action="Create" enctype="multipart/form-data">
-			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-			<div class="form-group">
-				<label asp-for="direccion" class="control-label"></label>
-				<input asp-for="direccion" class="form-control" />
-				<span asp-validation-for="direccion" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="ambientes" class="control-label"></label>
-				<input asp-for="ambientes" class="form-control" />
-				<span asp-validation-for="ambientes" class="number"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="superficie" class="control-label"></label>
-				<input asp-for="superficie" class="form-control" />
-				<span asp-validation-for="superficie" class="number"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="latitud" class="control-label"></label>
-				<input asp-for="latitud" class="form-control" />
-				<span asp-validation-for="latitud" class="number"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="longitud" class="control-label"></label>
-				<input asp-for="longitud" class="form-control" />
-				<span asp-validation-for="longitud" class="number"></span>
-			</div>
-
-			<div>
-				<label class="control-label">Propietario</label>
-				<select class="form-control" name="idpropietario">
-
-					@foreach (var item in ltaPropietarios)
-					{
-						<option value="@item.idpropietario">@item.ToString()</option>
-					}
-				</select>
-				<span asp-validation-for="idpropietario" class="number"></span>
-			</div>
-
-			<div>
-				<label class="control-label">Tipo</label>
-				<select class="form-control" name="tipoinmueble">
-
-					@foreach (var item in tipoinmueble)
-					{
-						<option value="tipoinmueble">@item</option>
-					}
-				</select>
-				<span asp-validation-for="tipoinmueble" class="number"></span>
-			</div>
-
-
-			<br>
-			<div class="form-group">
-				<input type="submit" value="GUARDAR" class="btn btn-primary" />
-				<a asp-action="index" class="btn btn-primary">volver</a>
 
 
 
-			</div>
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-center"><b>Nuevo Inmueble</b></h1>
+                    <form asp-action="Create" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="direccion" class="control-label"></label>
+                            <input asp-for="direccion" class="form-control" required />
+                            <span asp-validation-for="direccion" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ambientes" class="control-label"></label>
+                            <input asp-for="ambientes" class="form-control" required />
+                            <span asp-validation-for="ambientes" class="number text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="superficie" class="control-label"></label>
+                            <input asp-for="superficie" class="form-control" required />
+                            <span asp-validation-for="superficie" class="number text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="latitud" class="control-label"></label>
+                            <input asp-for="latitud" class="form-control" required />
+                            <span asp-validation-for="latitud" class="number text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="longitud" class="control-label"></label>
+                            <input asp-for="longitud" class="form-control" required />
+                            <span asp-validation-for="longitud" class="number text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Propietario</label>
+                            <select asp-for="idpropietario" class="form-control" required>
+                                <option value="">Seleccione un propietario</option>
+                                @foreach (var item in ltaPropietarios)
+                                {
+                                    <option value="@item.idpropietario">@item.ToString()</option>
+                                }
+                            </select>
+                            <span asp-validation-for="idpropietario" class="number text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Tipo</label>
+                            <select asp-for="tipoinmueble" class="form-control" required>
+                                <option value="">Seleccione un tipo de inmueble</option>
+                                @foreach (var item in tipoinmueble)
+                                {
+                                    <option value="@item">@item</option>
+                                }
+                            </select>
+                            <span asp-validation-for="tipoinmueble" class="number text-danger"></span>
+                        </div>
+                        <div class="form-group text-center mt-2">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a asp-action="index" class="btn btn-primary">Volver</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-		</form>
-
-	</div>
+@section Scripts {
+    <script>
+        // Evitar el envío del formulario si hay campos inválidos
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+}

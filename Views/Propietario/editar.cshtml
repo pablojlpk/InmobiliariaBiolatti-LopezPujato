@@ -1,60 +1,77 @@
 @model InmobiliariaBiolatti_LopezPujato.Models.Propietario;
 @{
-	ViewData["Title"] = "Editar Propietario";
-int? idpropietario = Model == null? 0 : Model.idpropietario;
+    <h1>@ViewData["Title"]</h1>
+    int? idpropietario = Model == null ? 0 : Model.idpropietario;
 }
 
-<h1>@ViewData["Title"]</h1>
 
-<p>EDITANDO DATOS ....  </p>
-<br>
-
-<div class="row">
-   
-<div class="col-md-4">
-		<form asp-action="ModPropietario">
-			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-			<div class="form-group">
-				<label class="control-label">Codigo</label>
-				<input asp-for="idpropietario" class="form-control" value="@idpropietario" readonly />
-				<span asp-validation-for="idpropietario" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="nombre" class="control-label"></label>
-				<input asp-for="nombre" class="form-control" />
-				<span asp-validation-for="nombre" class="text-danger" ></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="apellido" class="control-label"></label>
-				<input asp-for="apellido" class="form-control" />
-				<span asp-validation-for="apellido" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="mail" class="control-label"></label>
-				<input asp-for="mail" class="form-control" />
-				<span asp-validation-for="mail" class="text-danger"></span>
-			</div>
-            <div class="form-group">
-				<label asp-for="dni" class="control-label"></label>
-				<input asp-for="dni" class="form-control"  />
-				<span asp-validation-for="dni" class="number"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="clave" class="control-label"></label>
-				<input asp-for="clave" class="form-control"  />
-				<span asp-validation-for="clave" class="text-danger"></span>
-			</div>
-			
-			<div class="form-group">
-				<input type="submit" value="GUARDAR" class="btn btn-primary" />
-				<a asp-action="index" class="btn btn-primary">volver</a>
-				
-
-
-			</div>
-			
-		</form>
-
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-center"><b>Editar Propietario</b></h1>
+                    <form asp-action="ModPropietario" class="needs-validation" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label class="control-label">Código</label>
+                            <input asp-for="idpropietario" class="form-control" value="@idpropietario" readonly />
+                            <span asp-validation-for="idpropietario" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="nombre" class="control-label"></label>
+                            <input asp-for="nombre" class="form-control" required />
+                            <span asp-validation-for="nombre" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="apellido" class="control-label"></label>
+                            <input asp-for="apellido" class="form-control" required />
+                            <span asp-validation-for="apellido" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="mail" class="control-label"></label>
+                            <input asp-for="mail" class="form-control" required />
+                            <span asp-validation-for="mail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="dni" class="control-label"></label>
+                            <input asp-for="dni" class="form-control" required />
+                            <span asp-validation-for="dni" class="number text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="clave" class="control-label"></label>
+                            <input asp-for="clave" class="form-control" required />
+                            <span asp-validation-for="clave" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-center mt-2">
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            <a asp-action="index" class="btn btn-primary">Volver</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
+@section Scripts {
+    <script>
+        // Evitar el envío del formulario si hay campos inválidos
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+}
 

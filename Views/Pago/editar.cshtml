@@ -5,38 +5,44 @@
     var listaContratos = ViewBag.Contratos;
 }
 
-<h1>Editar Datos del Pago</h1>
-<div class="col-md-4">
-    <form asp-action="Editar" enctype="multipart/form-data">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="idpago" class="control-label"></label>
-            <input asp-for="idpago" class="form-control" readonly />
-            <span asp-validation-for="idpago" class="number"></span>
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center"> <!-- Agregamos la clase text-center para centrar horizontalmente -->
+                <h1>Editar Datos del Pago</h1>
+            </div>
+            <form asp-action="Editar" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="idpago" class="control-label"></label>
+                    <input asp-for="idpago" class="form-control" readonly />
+                    <span asp-validation-for="idpago" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="idcontrato" class="control-label">Contrato</label>
+                    <select asp-for="idcontrato" class="form-control">
+                        @foreach (var contrato in listaContratos)
+                        {
+                            <option value="@contrato.idcontrato">@contrato.ToString()</option>
+                        }
+                    </select>
+                    <span asp-validation-for="idcontrato" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="fpago" class="control-label">Fecha de Pago</label>
+                    <input asp-for="fpago" class="form-control" type="date" readonly />
+                    <span asp-validation-for="fpago" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="importe" class="control-label">Importe</label>
+                    <input asp-for="importe" class="form-control mb-3" readonly />
+                    <span asp-validation-for="importe" class="text-danger " ></span>
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="GUARDAR" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-primary">Volver</a>
+                </div>
+            </form>
         </div>
-        <div>
-            <label class="control-label">Contrato</label>
-            <select class="form-control" asp-for="idcontrato">
-                @foreach (var contrato in listaContratos)
-                {
-                    <option value="@contrato.idcontrato">@contrato.ToString()</option>
-                }
-            </select>
-            <span asp-validation-for="idcontrato" class="number"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="fpago" class="control-label">Fecha de Pago</label>
-            <input asp-for="fpago" class="form-control" readonly />
-            <span asp-validation-for="fpago" class="date"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="importe" class="control-label">Importe</label>
-            <input asp-for="importe" class="form-control" readonly />
-            <span asp-validation-for="importe" class="number"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="GUARDAR" class="btn btn-primary"/>
-            <a asp-action="Index" class="btn btn-primary">Volver</a>
-        </div>
-    </form>
+    </div>
 </div>

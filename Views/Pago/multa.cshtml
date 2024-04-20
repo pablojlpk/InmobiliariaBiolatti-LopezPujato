@@ -12,7 +12,8 @@
     
     <div class="form-group">
         <label asp-for="idcontrato" class="control-label">Contrato</label>
-        <select asp-for="idcontrato" class="form-control">
+        <select asp-for="idcontrato" class="form-control" required>
+            <option value="">Seleccione un contrato</option>
             @foreach (var contrato in listaContratos)
             {
                 <option value="@contrato.idcontrato">@contrato.ToString()</option>
@@ -23,16 +24,17 @@
     
     <div class="form-group">
         <label asp-for="importe" class="control-label">Importe</label>
-        <input asp-for="importe" class="form-control" />
+        <input asp-for="importe" class="form-control" required />
         <span asp-validation-for="importe" class="text-danger"></span>
     </div>
     
     <div class="form-group">
         <label asp-for="fpago" class="control-label">Fecha de Pago</label>
-        <input asp-for="fpago" class="form-control" />
+        <input asp-for="fpago" class="form-control  mb-3" required />
         <span asp-validation-for="fpago" class="text-danger"></span>
     </div>
-    
+    <div  class="form-group text-center">
     <input type="submit" value="GUARDAR" class="btn btn-primary" />
     <a asp-action="index" class="btn btn-primary">Volver</a>
+    </div>
 </form>
