@@ -51,20 +51,66 @@ public class UsuarioController : Controller
 
         return View(repusu.GetUsuario(id));
     }
-    public ActionResult EditarUsuario(Usuario u)
-    {
-        //audit
-        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
-        var detalle = ra.ArmarDetalle(User.Identity.Name, "Editar");
-        ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
-        //
-        u.Clave = Usuario.hashearClave(u.Clave);
-        RepositorioUsuario ru = new RepositorioUsuario();
 
-        ru.ModificaUsuario(u);
-        //        return RedirectToAction("Index");
-        return RedirectToAction("Index");
+    public async Task<ActionResult> EditarUsuario(Usuario usuario, IFormFile avatarFile)
+    {
+        try
+        {
+            RepositorioUsuario ru = new RepositorioUsuario();
+            Usuario? u = ru.GetUsuario(usuario.IdUsuario);
+
+            if (u != null)
+            {
+                // Actualizar datos básicos del usuario
+                u.Nombre = usuario.Nombre;
+                u.Apellido = usuario.Apellido;
+                u.Email = usuario.Email;
+                u.Permiso = usuario.Permiso;
+
+                // Actualizar la clave si se proporciona
+                if (!string.IsNullOrEmpty(usuario.Clave))
+                {
+                    u.Clave = Usuario.hashearClave(usuario.Clave);
+                }
+
+                // Manejo del avatar
+                if (!string.IsNullOrEmpty(u.AvatarUrl))
+                {
+                    var ruta = Path.Combine(environment.WebRootPath, "update", $"avatar_{u.IdUsuario}" + Path.GetExtension(u.AvatarUrl));
+                    // Hacer algo con la ruta del avatar, si es necesario
+                }
+
+                if (avatarFile != null)
+                {
+                    var resizedImagePath = await AvatarAsync(u, avatarFile);
+                    if (resizedImagePath == null)
+                    {
+                        return View(usuario); // Retorna la vista con errores de validación si la extensión del archivo no es válida
+                    }
+
+                    u.AvatarUrl = resizedImagePath;
+                }
+                else
+                {
+                    u.AvatarUrl = null; // Si no se proporciona un archivo, establece el AvatarUrl a null
+                }
+
+                ru.ModificaUsuario(u);
+                return RedirectToAction("Index", "Usuario"); // Redirige al Index de Usuario después de una edición exitosa
+            }
+            else
+            {
+                ViewBag.Roles = Usuario.ObtenerRoles();
+                return View(ru.GetUsuario(usuario.IdUsuario));
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message.ToString());
+            return RedirectToAction("editar", new { id = usuario.IdUsuario });
+        }
     }
+
 
 
     [HttpGet]
@@ -264,8 +310,8 @@ public class UsuarioController : Controller
 
         return View(repusu.GetUsuario(id));
     }
-     [HttpPost]
-     public ActionResult CambioPassword(Usuario u)
+    [HttpPost]
+    public ActionResult CambioPassword(Usuario u)
     {
         //audit
         var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
