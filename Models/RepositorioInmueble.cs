@@ -22,9 +22,7 @@ public class RepositorioInmueble
         using (var connection = new MySqlConnection(ConnectionString))
         {
             //var sql = $"Select * from inmuebles where borrado=0;";
-            var sql = $"Select idinmueble, direccion, ambientes, superficie, latitud, longitud, tipoinmueble, p.idpropietario, p.nombre, p.apellido, p.dni from inmuebles i Inner join propietario p on i.idpropietario=p.idpropietario where i.borrado=0";
-
-
+            var sql = $"Select idinmueble, direccion, ambientes, superficie, latitud, longitud, tipoinmueble, estado, p.idpropietario, p.nombre, p.apellido, p.dni from inmuebles i Inner join propietario p on i.idpropietario=p.idpropietario where i.borrado=0";
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();
@@ -42,6 +40,7 @@ public class RepositorioInmueble
                             longitud = reader.GetDecimal(nameof(Inmueble.longitud)),
                             idpropietario = reader.GetInt32(nameof(Inmueble.idpropietario)),
                             tipoinmueble = reader.GetString(nameof(Inmueble.tipoinmueble)),
+                            estado = reader.GetString(nameof(Inmueble.estado)),
 
                             datospropietario = new Propietario
                             {
@@ -62,11 +61,58 @@ public class RepositorioInmueble
         return inmuebles;
     }
 
+
+public IList<Inmueble> GetInmueblesDisponibles()
+    {
+        var inmuebles = new List<Inmueble>();
+        using (var connection = new MySqlConnection(ConnectionString))
+        {
+            //var sql = $"Select * from inmuebles where borrado=0;";
+            var sql = $"Select idinmueble, direccion, ambientes, superficie, latitud, longitud, tipoinmueble, estado, p.idpropietario, p.nombre, p.apellido, p.dni from inmuebles i Inner join propietario p on i.idpropietario=p.idpropietario where i.borrado=0 and Estado='Disponible'";
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        inmuebles.Add(new Inmueble
+                        {
+                            idinmueble = reader.GetInt32(nameof(Inmueble.idinmueble)),
+                            direccion = reader.GetString(nameof(Inmueble.direccion)),
+                            ambientes = reader.GetInt32(nameof(Inmueble.ambientes)),
+                            superficie = reader.GetInt32(nameof(Inmueble.superficie)),
+                            latitud = reader.GetDecimal(nameof(Inmueble.latitud)),
+                            longitud = reader.GetDecimal(nameof(Inmueble.longitud)),
+                            idpropietario = reader.GetInt32(nameof(Inmueble.idpropietario)),
+                            tipoinmueble = reader.GetString(nameof(Inmueble.tipoinmueble)),
+                            estado = reader.GetString(nameof(Inmueble.estado)),
+
+                            datospropietario = new Propietario
+                            {
+                                idpropietario = reader.GetInt32(nameof(Propietario.idpropietario)),
+                                nombre = reader.GetString(nameof(Propietario.nombre)),
+                                apellido = reader.GetString(nameof(Propietario.apellido)),
+                                dni = reader.GetInt32(nameof(Propietario.dni))
+                            }
+
+                            //borrado = reader.GetBoolean(nameof(Inmueble.borrado))
+                        });
+                    }
+                    connection.Close();
+                }
+            }
+
+        }
+        return inmuebles;
+    }
+
+
     public Inmueble AltaInmueble(Inmueble i) // funciona ok
     {
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = $"INSERT INTO inmuebles (direccion,ambientes,superficie,latitud,longitud,idpropietario,tipoinmueble) VALUES ('{i.direccion}',{i.ambientes},{i.superficie},{i.latitud},{i.longitud},{i.idpropietario}, {i.tipoinmueble})";
+            var sql = $"INSERT INTO inmuebles (direccion,ambientes,superficie,latitud,longitud,idpropietario, tipoinmueble) VALUES ('{i.direccion}',{i.ambientes},{i.superficie},{i.latitud},{i.longitud},{i.idpropietario}, '{i.tipoinmueble}')";
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();
@@ -82,7 +128,7 @@ public class RepositorioInmueble
         Inmueble? inmueble = null;
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = @$"SELECT i.idinmueble, i.direccion, i.ambientes, i.superficie, i.latitud, i.longitud, i.tipoinmueble,  p.idpropietario, p.nombre, p.apellido, p.dni
+            var sql = @$"SELECT i.idinmueble, i.direccion, i.ambientes, i.superficie, i.latitud, i.longitud, i.tipoinmueble, i.estado, p.idpropietario, p.nombre, p.apellido, p.dni
         FROM inmuebles i
         INNER JOIN propietario p on p.idpropietario=i.idpropietario
         WHERE i.borrado=false and i.idinmueble = @idinmueble";
@@ -103,6 +149,7 @@ public class RepositorioInmueble
                         longitud = reader.GetDecimal(nameof(Inmueble.longitud)),
                         tipoinmueble = reader.GetString(nameof(Inmueble.tipoinmueble)),
                         idpropietario = reader.GetInt32(nameof(Inmueble.idpropietario)),
+                        estado=reader.GetString(nameof(Inmueble.estado)),
                         datospropietario = new Propietario
                         {
                             idpropietario = reader.GetInt32(nameof(Propietario.idpropietario)),

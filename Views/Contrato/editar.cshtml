@@ -19,9 +19,8 @@
                             <span asp-validation-for="idcontrato" class="number text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <<label class="control-label"> Inmueble </label>
+                            <label class="control-label"> Inmueble </label>
                             <select asp-for="idinmueble" class="form-control" required>
-                                <option value="">Seleccione un inmueble</option>
                                 @foreach (var item in ListaInmuebles)
                                 {
                                     <option value="@item.idinmueble">@item.ToString()</option>

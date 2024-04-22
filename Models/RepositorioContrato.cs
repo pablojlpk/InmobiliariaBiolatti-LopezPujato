@@ -20,8 +20,8 @@ public class RepositorioContrato
 
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            
-            
+
+
             var sql2 = @"INSERT INTO contratos (idinmueble, idinquilino, fdesde, fhasta, importe)
              VALUES (@idinmueble,@idinquilino,@fdesde,@fhasta, @importe);";
 
@@ -40,7 +40,6 @@ public class RepositorioContrato
         }
         return c;
     }
-
 
     public Contrato GetContrato(int idcontrato)
     {
@@ -93,7 +92,6 @@ public class RepositorioContrato
         }
         return c;
     }
-
 
     public List<Contrato> GetContratos()
     {
@@ -155,7 +153,9 @@ public class RepositorioContrato
         {
             var sql = @$"UPDATE contratos SET {nameof(Contrato.idinmueble)} =@{nameof(Contrato.idinmueble)},
              {nameof(Contrato.idinquilino)} =@{nameof(Contrato.idinquilino)},
-             {nameof(Contrato.importe)} =@{nameof(Contrato.importe)}
+             {nameof(Contrato.importe)} =@{nameof(Contrato.importe)},
+             {nameof(Contrato.fdesde)} =@{nameof(Contrato.fdesde)},
+             {nameof(Contrato.fhasta)} =@{nameof(Contrato.fhasta)}
               WHERE {nameof(Contrato.idcontrato)} =@{nameof(Contrato.idcontrato)}";
             using (var command = new MySqlCommand(sql, connection))
             {
@@ -163,6 +163,8 @@ public class RepositorioContrato
                 command.Parameters.AddWithValue($"@{nameof(Contrato.idinmueble)}", c.idinmueble);
                 command.Parameters.AddWithValue($"@{nameof(Contrato.idinquilino)}", c.idinquilino);
                 command.Parameters.AddWithValue($"@{nameof(Contrato.importe)}", c.importe);
+                command.Parameters.AddWithValue($"@{nameof(Contrato.fdesde)}", c.fdesde);
+                command.Parameters.AddWithValue($"@{nameof(Contrato.fhasta)}", c.fhasta);
                 connection.Open();
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -188,6 +190,78 @@ public class RepositorioContrato
         return res;
     }
 
-    //final
+    /*
+        public int ModificaEstadoInmuebleContrato()
+        {
+            using (var connection = new MySqlConnection(ConnectionString))
+            {
+                var sql = @$"UPDATE inmuebles
+    LEFT JOIN contratos ON inmuebles.idinmueble = contratos.idinmueble
+    SET inmuebles.estado = 
+        CASE
+            WHEN contratos.idcontrato IS NULL THEN 'Disponible'
+            ELSE 'Alquilado'
+        END
+    WHERE 
+        contratos.fhasta > CURDATE() OR contratos.fhasta IS NULL ;
 
+    ";
+
+                using (var command = new MySqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            return 1;
+        }
+
+    */
+
+    public int ModificaEstadoInmuebleContrato()
+    {
+        using (var connection = new MySqlConnection(ConnectionString))
+        {
+            var sql = @$" UPDATE inmuebles SET estado = 'Alquilado' WHERE idinmueble IN (SELECT idinmueble FROM contratos WHERE contratos.fhasta >= CURDATE());";
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+
+sql = @$" UPDATE inmuebles SET estado = 'Disponible' WHERE idinmueble IN ( SELECT idinmueble FROM inmuebles  WHERE borrado = 0 AND idinmueble NOT IN (
+          SELECT idinmueble FROM contratos WHERE contratos.fhasta > CURDATE()
+      )
+);";
+
+           
+
+             using (var command = new MySqlCommand(sql, connection))
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+
+        }
+
+            
+
+
+        return 1;
+    }
+
+
+
+
+
+
+    //final
 }
+
+
+
+
+

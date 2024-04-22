@@ -20,6 +20,7 @@
                 <th>Longitud</th>
                 <th>CodProp.</th>
                 <th>Tipo</th>
+                <th>Estado</th>
                 <th>Propietario</th>
                 <th>Acciones</th>
 
@@ -35,6 +36,16 @@
                     <td>@item.longitud</td>
                     <td>@item.idpropietario</td>
                     <td>@item.tipoinmueble</td>
+                    
+                    @if(item.estado=="Disponible")
+
+                    {
+                    <td style="color:blue; font-weight:bold">@item.estado</td>
+                    }
+                    else{
+                        <td>@item.estado</td>
+                    }
+
                     <td>@item.datospropietario</td>
                     <td>
                         <a asp-action="Editar" asp-route-id="@item.idinmueble" class="fa-solid fa-pen-to-square"

@@ -47,7 +47,7 @@ public class ContratoController : Controller
 
         RepositorioContrato rc = new RepositorioContrato();
         rc.AltaContrato(c);
-
+        rc.ModificaEstadoInmuebleContrato();
         return RedirectToAction(nameof(Index));
     }
 
@@ -83,6 +83,7 @@ public IActionResult ModContrato(Contrato c){
         //
     RepositorioContrato rc = new RepositorioContrato();
     rc.ModificaContrato(c);
+    rc.ModificaEstadoInmuebleContrato();
     return RedirectToAction(nameof(Index));
 }
 
