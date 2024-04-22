@@ -129,13 +129,13 @@
                                         var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid);
                                         var userId = userIdClaim?.Value;
                                     }
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="Usuario"
-                                            asp-action="Perfil" asp-route-id="@userId">Perfil</a>
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="Usuario"
+                                    <li><a class="list-group-item" asp-area="" asp-controller="Usuario"
+                                            asp-action="Perfil" asp-route-id="@userId" Style="font-color:black">Perfil</a>
+                                    <li><a class="list-group-item" asp-area="" asp-controller="Usuario"
                                             asp-action="CambioAvatar" asp-route-id="@userId">Cambiar Avatar</a>
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="Usuario"
+                                    <li><a class="list-group-item" asp-area="" asp-controller="Usuario"
                                             asp-action="CambioPassword" asp-route-id="@userId">Editar Contraseña</a>
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="HOME"
+                                    <li><a class="list-group-item" asp-area="" asp-controller="HOME"
                                             asp-action="salir" asp-route-id="@userId">SALIR</a>
                                 </ul>
                             </div>

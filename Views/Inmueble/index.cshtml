@@ -36,14 +36,15 @@
                     <td>@item.longitud</td>
                     <td>@item.idpropietario</td>
                     <td>@item.tipoinmueble</td>
-                    @if(item.estado=="Disponible")
+                            @if (item.estado == "Disponible")
 
-                    {
-                    <td style="color:blue; font-weight:bold">@item.estado</td>
-                    }
-                    else{
+                            {
+                        <td style="color:blue; font-weight:bold">@item.estado</td>
+                            }
+                            else
+                            {
                         <td>@item.estado</td>
-                    }
+                            }
 
                     <td>@item.datospropietario</td>
                     <td>
