@@ -100,6 +100,17 @@ public IActionResult InmueblesDisponibles() //funciona ok
     }
 
 
+public IActionResult ListaContratoPorInmueble(int id)
+{
+    RepositorioContrato rc = new RepositorioContrato();
+    var buscar=id;
+    var contratos = rc.ListadoContratosPorInmueble(buscar);
+    ViewBag.Titulo = "Listado de Contratos por Inmueble";
+    
+    return View("listadocontratos", contratos);
+}
+
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

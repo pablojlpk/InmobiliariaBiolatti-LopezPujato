@@ -1,0 +1,64 @@
+@model IEnumerable<Contrato>
+@{
+  var Titulo=  ViewBag.Titulo;
+    ViewData["Title"] = Titulo;
+}
+
+<h1>@ViewData["Title"]</h1>
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+<script src="https://kit.fontawesome.com/708362d465.js" crossorigin="anonymous"></script>
+
+
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>C.C-Inm-Inq</th>
+                <th>Datos Inmueble</th>
+                <th>Nombre Inquilino</th>
+                <th>Fecha Hasta.</th>
+                <th>Importe</th>
+                <th></th>
+            <tr>
+
+                    @foreach (var item in Model)
+                    {
+                <tr>
+
+                    <td>@item.idcontrato-@item.idinmueble-@item.idinquilino</td>
+
+
+                    <td>@item.datosinmueble?.ToString()</td>
+                    <td>@item.datosinquilino?.ToString()</td>
+                    <td>@item.fhasta</td>
+                    <td>@item.importe</td>
+                    <td>
+                    <td>
+                        <a asp-action="Editar" asp-route-id="@item.idcontrato" class="fa-solid fa-pen-to-square"
+                            style="color:blue"></a>
+                                    @if (User.IsInRole("Administrador"))
+                                    {
+                            <a asp-action="Eliminar" asp-route-id="@item.idcontrato" class="fa-solid fa-trash"
+                                style="color:red"></a>
+                                    }
+                        <a asp-action="Detalle" asp-route-id="@item.idcontrato" class="fa-solid fa-file"
+                            style="color: green" style="color:blue"></a>
+
+                    </td>
+                </tr>
+
+
+
+                    }
+
+
+            </tr>
+
+
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<a asp-action="index" class="btn btn-success">Volver</a>

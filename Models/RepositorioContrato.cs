@@ -308,6 +308,60 @@ public List<Contrato> ListarContratosVigentes()
     }
 
 
+public List<Contrato> ListadoContratosPorInmueble(int id)
+    {
+        List<Contrato> contratos = new List<Contrato>();
+        using (var connection = new MySqlConnection(ConnectionString))
+        {
+
+            var sql = $@"SELECT c.idcontrato, c.idinmueble, c.idinquilino,c.fdesde, c.fhasta,
+             c.importe,
+            i.nombre ,i.apellido, i.dni,
+            m.direccion, m.superficie, m.ambientes
+            FROM contratos c
+            JOIN inquilino i ON c.idinquilino = i.idinquilino
+            JOIN inmuebles m ON c.idinmueble = m.idinmueble
+            WHERE c.borrado = 0 and c.idinmueble = {id}";
+
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Contrato c = new Contrato
+                        {
+                            idcontrato = reader.GetInt32(nameof(Contrato.idcontrato)),
+                            idinmueble = reader.GetInt32(nameof(Contrato.idinmueble)),
+                            idinquilino = reader.GetInt32(nameof(Contrato.idinquilino)),
+                            fdesde = reader.GetDateTime(nameof(Contrato.fdesde)),
+                            fhasta = reader.GetDateTime(nameof(Contrato.fhasta)),
+                            importe = reader.GetDecimal(nameof(Contrato.importe)),
+                            datosinmueble = new Inmueble
+                            {
+                                idinmueble = reader.GetInt32(nameof(Inmueble.idinmueble)),
+                                direccion = reader.GetString(nameof(Inmueble.direccion)),
+                                superficie = reader.GetInt32(nameof(Inmueble.superficie)),
+                                ambientes = reader.GetInt32(nameof(Inmueble.ambientes)),
+                            },
+                            datosinquilino = new Inquilino
+                            {
+                                idinquilino = reader.GetInt32(nameof(Inquilino.idinquilino)),
+                                nombre = reader.GetString(nameof(Inquilino.nombre)),
+                                apellido = reader.GetString(nameof(Inquilino.apellido)),
+                                dni = reader.GetInt32(nameof(Inquilino.dni)),
+                            }
+                        };
+                        contratos.Add(c);
+                    }
+                }
+                connection.Close();
+            }
+        }
+        return contratos;
+    }
+
 
 
 
