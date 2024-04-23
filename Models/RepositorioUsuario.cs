@@ -43,7 +43,6 @@ public class RepositorioUsuario
     }
 
     public Usuario GetUsuario(int id)
-
     {
         Usuario usu = new Usuario();
         var sql = $"SELECT idusuario,nombre,apellido,email,clave,avatarurl,permiso FROM usuarios where idusuario={id} and borrado=0";
@@ -107,7 +106,7 @@ public class RepositorioUsuario
           {nameof(Usuario.Apellido)} = @Apellido, {nameof(Usuario.Email)} = @Email,
           {nameof(Usuario.Clave)} = @Clave, {nameof(Usuario.AvatarUrl)} = @AvatarUrl,
            {nameof(Usuario.Permiso)} = @Permiso
-          WHERE {nameof(Usuario.IdUsuario)} = @IdUsuario";
+          WHERE {nameof(Usuario.IdUsuario)} = @IdUsuario;";
 
             using (MySqlCommand command = new MySqlCommand(sql, connection))
             {
@@ -218,16 +217,16 @@ public Usuario ModificarPerfil(Usuario usuario){
 
     using (MySqlConnection connection = new MySqlConnection(ConnectionString))  
     {
-        var sql = @$"UPDATE usuarios SET {nameof(Usuario.Nombre)} = @Nombre,
-         {nameof(Usuario.Apellido)} = @Apellido,
-        {nameof(Usuario.Email)} = @Email,
-         WHERE {nameof(Usuario.IdUsuario)} = @IdUsuario";
+        var sql = @$" UPDATE usuarios SET {nameof(Usuario.Nombre)} = @Nombre,
+         {nameof(Usuario.Apellido)} = @Apellido , {nameof(Usuario.Email)} = @Email
+         WHERE {nameof(Usuario.IdUsuario)} = @IdUsuario;";
         using (MySqlCommand command = new MySqlCommand(sql, connection))
         {
-            command.Parameters.AddWithValue("@IdUsuario", usuario.IdUsuario);
+            
             command.Parameters.AddWithValue("@Nombre", usuario.Nombre);
             command.Parameters.AddWithValue("@Apellido", usuario.Apellido);
             command.Parameters.AddWithValue("@Email", usuario.Email);
+            command.Parameters.AddWithValue("@IdUsuario", usuario.IdUsuario);
             
             connection.Open();
             command.ExecuteNonQuery();

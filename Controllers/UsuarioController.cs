@@ -128,7 +128,7 @@ public class UsuarioController : Controller
 
         ru.ModificarPerfil(u);
         //        return RedirectToAction("Index");
-        return RedirectToAction("Perfil");
+        return RedirectToAction("Index");
     }
 
     [HttpGet]
