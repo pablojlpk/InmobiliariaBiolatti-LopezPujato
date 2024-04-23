@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.TagHelpers;
 using ZstdSharp.Unsafe;
 using System.Reflection.Metadata.Ecma335;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Components;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -81,6 +82,17 @@ public class PropietarioController : Controller
     public IActionResult Agregar()
     {
         return View();
+    }
+    public IActionResult ListadoInmueblesPorPropietario(int idp){
+        RepositorioInmueble ri = new RepositorioInmueble();
+        var idprop = Convert.ToInt32(RouteData.Values["id"]);
+        
+        var inmuebles = ri.ListadoInmueblesPorPropietario(idprop);
+ 
+        ViewBag.Titulo="Listado de Inmuebles por Propietario";
+        return View("listado",inmuebles);
+
+        
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

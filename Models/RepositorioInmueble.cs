@@ -226,5 +226,45 @@ public IList<Inmueble> GetInmueblesDisponibles()
     }
 
 
+    public IList<Inmueble> ListadoInmueblesPorPropietario(int propietario)
+    {
+        var inmuebles = new List<Inmueble>();
+        using (var connection = new MySqlConnection(ConnectionString))
+        {
+            //var sql = $"Select * from inmuebles where borrado=0;";
+            var sql = $"Select * from inmuebles  where borrado=0 and idpropietario = {propietario};";
+            
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        inmuebles.Add(new Inmueble
+                        {
+                            idinmueble = reader.GetInt32(nameof(Inmueble.idinmueble)),
+                            direccion = reader.GetString(nameof(Inmueble.direccion)),
+                            ambientes = reader.GetInt32(nameof(Inmueble.ambientes)),
+                            superficie = reader.GetInt32(nameof(Inmueble.superficie)),
+                            latitud = reader.GetDecimal(nameof(Inmueble.latitud)),
+                            longitud = reader.GetDecimal(nameof(Inmueble.longitud)),
+                            tipoinmueble = reader.GetString(nameof(Inmueble.tipoinmueble)),
+                            estado = reader.GetString(nameof(Inmueble.estado)),
+                            importe = reader.GetDecimal(nameof(Inmueble.importe)),
+
+                           
+                        });
+                    }
+                    connection.Close();
+                }
+            }
+
+        }
+        return inmuebles;
+    }
+
+
+
 //final
 }

@@ -1,0 +1,46 @@
+@model IEnumerable<Inmueble>
+@{
+    var Titulo=ViewBag.Titulo;
+    ViewData["Title"] = Titulo;
+
+}
+
+<h1>@ViewData["Title"]</h1>
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+<script src="https://kit.fontawesome.com/708362d465.js" crossorigin="anonymous"></script>
+
+
+<div class="col-md-15" style="font-size: 15px;";">
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Direccion</th>
+                <th>Amb.</th>
+                <th>Sup.</th>
+                <th>Lat</th>
+                <th>Long</th>
+                <th>CodProp.</th>
+                <th>Tipo</th>
+
+            <tr>
+                    @foreach (var item in Model)
+                    {
+                <tr>
+                    <td>@item.idinmueble</td>
+                    <td>@item.direccion</td>
+                    <td>@item.ambientes</td>
+                    <td>@item.superficie</td>
+                    <td>@item.latitud</td>
+                    <td>@item.longitud</td>
+                    <td>@item.tipoinmueble</td>
+                </tr>
+                    }
+            </tr>
+
+
+            </tr>
+        </thead>
+    </table>
+</div>
+
