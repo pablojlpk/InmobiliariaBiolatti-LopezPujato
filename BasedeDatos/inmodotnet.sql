@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-04-2024 a las 15:10:48
+-- Tiempo de generación: 23-04-2024 a las 15:19:57
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -109,8 +109,8 @@ CREATE TABLE `inmuebles` (
   `direccion` varchar(100) NOT NULL,
   `ambientes` int(2) NOT NULL,
   `superficie` int(4) NOT NULL,
-  `latitud` decimal(7,2) NOT NULL,
-  `longitud` decimal(7,2) NOT NULL,
+  `latitud` decimal(10,3) NOT NULL,
+  `longitud` decimal(10,3) NOT NULL,
   `idpropietario` int(11) NOT NULL,
   `tipoinmueble` varchar(20) NOT NULL,
   `nompropietario` varchar(100) NOT NULL,
@@ -124,18 +124,18 @@ CREATE TABLE `inmuebles` (
 --
 
 INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `tipoinmueble`, `nompropietario`, `importe`, `estado`, `borrado`) VALUES
-(15, 'Av. Libertad 123', 3, 150, -99999.99, -99999.99, 33, 'Casa', '', 25412.22, 'Alquilado', 0),
-(16, 'San Martin 456', 3, 80, 2255.22, -99999.99, 34, 'Departamento', '', 100000.00, 'Disponible', 0),
-(17, 'Belgrano 789', 4, 200, -99999.99, -99999.99, 35, 'Casa', '', 50000.00, 'Alquilado', 0),
-(18, 'Corrientes 1010', 1, 50, -99999.99, -99999.99, 38, 'Local', '', 15000.00, 'Alquilado', 0),
-(19, 'General Paz 100', 1, 40, -99999.99, -99999.99, 36, 'Depósito', '', 25001.00, 'Alquilado', 0),
-(20, 'Junin 6060', 1, 300, -99999.99, -99999.99, 39, 'Depósito', '', 25000.00, 'Disponible', 0),
-(21, 'Entre rios 7070', 0, 500, -99999.99, -99999.99, 37, 'Terreno', '', 10250.22, 'Disponible', 0),
-(22, 'La Rioja 300', 2, 75, -99999.99, -99999.99, 40, 'Departamento', '', 25144.00, 'Alquilado', 0),
-(23, 'Uruguay 1313', 4, 180, -99999.99, -99999.99, 31, 'Local', '', 25411.22, 'Alquilado', 0),
-(24, 'Av. Callao 909', 1, 80, -99999.99, -99999.99, 32, 'Local', '', 15222.00, 'Alquilado', 0),
-(25, 'Heras 131', 1, 45, -99999.99, -99999.99, 33, 'Departamento', '', 2551.00, 'Alquilado', 0),
-(26, 'Av. Cordoba 909', 2, 85, -99999.99, -99999.99, 39, 'Departamento', '', 0.00, 'Disponible', 0);
+(15, 'Av. Libertad 123', 3, 150, -99999.990, -99999.990, 33, 'Casa', '', 25412.22, 'Alquilado', 0),
+(16, 'San Martin 456', 3, 80, 2255.220, -99999.990, 34, 'Departamento', '', 100000.00, 'Disponible', 0),
+(17, 'Belgrano 789', 4, 200, -99999.990, -99999.990, 35, 'Casa', '', 50000.00, 'Alquilado', 0),
+(18, 'Corrientes 1010', 1, 50, -99999.990, -99999.990, 38, 'Local', '', 15000.00, 'Alquilado', 0),
+(19, 'General Paz 100', 1, 40, -99999.990, -99999.990, 36, 'Depósito', '', 25001.00, 'Alquilado', 0),
+(20, 'Junin 6060', 1, 300, -99999.990, -99999.990, 39, 'Depósito', '', 25000.00, 'Disponible', 0),
+(21, 'Entre rios 7070', 0, 500, -99999.990, -99999.990, 37, 'Terreno', '', 10250.22, 'Disponible', 0),
+(22, 'La Rioja 300', 2, 75, -99999.990, -99999.990, 40, 'Departamento', '', 25144.00, 'Alquilado', 0),
+(23, 'Uruguay 1313', 4, 180, -99999.990, -99999.990, 31, 'Local', '', 25411.22, 'Alquilado', 0),
+(24, 'Av. Callao 909', 1, 80, -99999.990, -99999.990, 32, 'Local', '', 15222.00, 'Alquilado', 0),
+(25, 'Heras 131', 1, 45, -99999.990, -99999.990, 33, 'Departamento', '', 2551.00, 'Alquilado', 0),
+(26, 'Av. Cordoba 909', 2, 85, -99999.990, -99999.990, 39, 'Departamento', '', 0.00, 'Disponible', 0);
 
 -- --------------------------------------------------------
 
