@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-04-2024 a las 18:24:36
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 23-04-2024 a las 19:01:31
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `auditorias` (
   `IdUsuario` int(11) NOT NULL,
   `Fecha` datetime NOT NULL,
   `Observaciones` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `auditorias`
@@ -82,7 +82,20 @@ INSERT INTO `auditorias` (`IdAuditoria`, `IdUsuario`, `Fecha`, `Observaciones`) 
 (381, 41, '2024-04-23 13:20:48', 'Usuario:Biolatti, Ana luz-(41)-Acción: Alta Modulo: Contrato'),
 (382, 41, '2024-04-23 13:21:43', 'Usuario:Biolatti, Ana luz-(41)-Acción: Modificar Modulo: Inmuebles'),
 (383, 41, '2024-04-23 13:22:57', 'Usuario:Biolatti, Ana luz-(41)-Acción: Modificar Perfil Modulo: usuarios'),
-(384, 41, '2024-04-23 13:23:31', 'Usuario:Biolatti, Ana luz-(41)-Acción: cierre Sesión Modulo: usuarios');
+(384, 41, '2024-04-23 13:23:31', 'Usuario:Biolatti, Ana luz-(41)-Acción: cierre Sesión Modulo: usuarios'),
+(385, 40, '2024-04-23 13:43:45', 'Usuario:lopez pujato, Pablo -(40)-Acción: Alta Modulo: Propietarios'),
+(386, 40, '2024-04-23 13:44:39', 'Usuario:lopez pujato, Pablo -(40)-Acción: Modificar Modulo: Inmuebles'),
+(387, 40, '2024-04-23 13:45:30', 'Usuario:lopez pujato, Pablo -(40)-Acción: Modificar Modulo: Inmuebles'),
+(388, 40, '2024-04-23 13:45:38', 'Usuario:lopez pujato, Pablo -(40)-Acción: Editar Modulo: Inmuebles'),
+(389, 40, '2024-04-23 13:45:43', 'Usuario:lopez pujato, Pablo -(40)-Acción: Baja Modulo: Inmuebles'),
+(390, 40, '2024-04-23 13:46:41', 'Usuario:lopez pujato, Pablo -(40)-Acción: Modificar Modulo: Inmuebles'),
+(391, 40, '2024-04-23 13:48:16', 'Usuario:lopez pujato, Pablo -(40)-Acción: Modificar Modulo: Inmuebles'),
+(392, 40, '2024-04-23 13:49:04', 'Usuario:lopez pujato, Pablo -(40)-Acción: Editar Modulo: Inmuebles'),
+(393, 40, '2024-04-23 13:49:46', 'Usuario:lopez pujato, Pablo -(40)-Acción: Editar Modulo: Propietarios'),
+(394, 40, '2024-04-23 13:49:50', 'Usuario:lopez pujato, Pablo -(40)-Acción: Modificar Modulo: Propietarios'),
+(395, 40, '2024-04-23 13:51:40', 'Usuario:lopez pujato, Pablo -(40)-Acción: cierre Sesión Modulo: usuarios'),
+(396, 42, '2024-04-23 13:51:47', 'Usuario:Cantero, Ricardo-(42)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(397, 42, '2024-04-23 13:55:37', 'Usuario:Cantero, Ricardo-(42)-Acción: Modificar Modulo: Inmuebles');
 
 -- --------------------------------------------------------
 
@@ -98,27 +111,27 @@ CREATE TABLE `contratos` (
   `fhasta` date NOT NULL,
   `importe` decimal(8,2) NOT NULL,
   `borrado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `contratos`
 --
 
 INSERT INTO `contratos` (`idcontrato`, `idinmueble`, `idinquilino`, `fdesde`, `fhasta`, `importe`, `borrado`) VALUES
-(19, 16, 18, '2024-05-01', '2024-04-22', '80000.00', 0),
-(20, 15, 19, '2024-04-23', '2024-11-23', '120000.00', 0),
-(21, 16, 21, '2024-05-01', '2024-05-30', '999999.99', 1),
-(22, 17, 20, '2024-05-01', '2025-06-01', '350000.00', 0),
-(23, 18, 21, '2024-05-01', '2024-12-01', '130000.00', 0),
-(24, 19, 22, '2024-04-29', '2024-08-29', '40000.00', 0),
-(25, 20, 24, '2024-05-01', '2024-04-22', '300000.00', 0),
-(26, 22, 23, '2024-05-01', '2024-09-01', '90000.00', 0),
-(27, 23, 26, '2024-04-23', '2024-06-23', '375000.00', 0),
-(28, 25, 25, '2024-05-07', '2024-06-07', '56000.00', 0),
-(29, 24, 27, '2024-05-01', '2024-08-01', '120000.00', 0),
-(30, 25, 30, '2024-10-01', '2024-12-01', '150000.00', 0),
-(31, 22, 27, '2024-07-01', '2024-10-01', '70000.00', 0),
-(32, 19, 25, '2024-05-07', '2024-07-07', '120000.00', 0);
+(19, 16, 18, '2024-05-01', '2024-04-22', 80000.00, 0),
+(20, 15, 19, '2024-04-23', '2024-11-23', 120000.00, 0),
+(21, 16, 21, '2024-05-01', '2024-05-30', 999999.99, 1),
+(22, 17, 20, '2024-05-01', '2025-06-01', 350000.00, 0),
+(23, 18, 21, '2024-05-01', '2024-12-01', 130000.00, 0),
+(24, 19, 22, '2024-04-29', '2024-08-29', 40000.00, 0),
+(25, 20, 24, '2024-05-01', '2024-04-22', 300000.00, 0),
+(26, 22, 23, '2024-05-01', '2024-09-01', 90000.00, 0),
+(27, 23, 26, '2024-04-23', '2024-06-23', 375000.00, 0),
+(28, 25, 25, '2024-05-07', '2024-06-07', 56000.00, 0),
+(29, 24, 27, '2024-05-01', '2024-08-01', 120000.00, 0),
+(30, 25, 30, '2024-10-01', '2024-12-01', 150000.00, 0),
+(31, 22, 27, '2024-07-01', '2024-10-01', 70000.00, 0),
+(32, 19, 25, '2024-05-07', '2024-07-07', 120000.00, 0);
 
 -- --------------------------------------------------------
 
@@ -139,25 +152,28 @@ CREATE TABLE `inmuebles` (
   `importe` decimal(9,2) NOT NULL,
   `estado` varchar(15) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `inmuebles`
 --
 
 INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `tipoinmueble`, `nompropietario`, `importe`, `estado`, `borrado`) VALUES
-(15, 'Av. Libertad 123', 3, 150, '-99999.990', '-99999.990', 33, 'Casa', '', '25412.22', 'Alquilado', 0),
-(16, 'San Martin 456', 3, 80, '2255.220', '-99999.990', 34, 'Departamento', '', '100000.00', 'Disponible', 0),
-(17, 'Belgrano 789', 4, 200, '-99999.990', '-99999.990', 35, 'Casa', '', '50000.00', 'Alquilado', 0),
-(18, 'Corrientes 1010', 1, 50, '-99999.990', '-99999.990', 38, 'Local', '', '15000.00', 'Alquilado', 0),
-(19, 'General Paz 100', 1, 40, '-99999.990', '-99999.990', 36, 'Depósito', '', '25001.00', 'Alquilado', 0),
-(20, 'Junin 6060', 1, 300, '-99999.990', '-99999.990', 39, 'Depósito', '', '25000.00', 'Disponible', 0),
-(21, 'Entre rios 7070', 0, 500, '-99999.990', '-99999.990', 37, 'Terreno', '', '10250.22', 'Disponible', 0),
-(22, 'La Rioja 300', 2, 75, '-99999.990', '-99999.990', 40, 'Departamento', '', '25144.00', 'Alquilado', 0),
-(23, 'Uruguay 1313', 4, 180, '-99999.990', '-99999.990', 31, 'Local', '', '25411.22', 'Alquilado', 0),
-(24, 'Av. Callao 909', 1, 80, '-99999.990', '-99999.990', 32, 'Local', '', '15222.00', 'Alquilado', 0),
-(25, 'Heras 131', 1, 45, '-99999.990', '-99999.990', 33, 'Departamento', '', '2551.00', 'Alquilado', 0),
-(26, 'Av. Cordoba 909', 2, 85, '-99999.990', '-99999.990', 39, 'Departamento', '', '0.00', 'Disponible', 0);
+(15, 'Av. Libertad 123', 3, 150, -99999.990, -99999.990, 33, 'Casa', '', 25412.22, 'Alquilado', 0),
+(16, 'San Martin 456', 3, 80, 2255.220, -99999.990, 34, 'Departamento', '', 100000.00, 'Disponible', 0),
+(17, 'Belgrano 789', 4, 200, -99999.990, -99999.990, 35, 'Casa', '', 50000.00, 'Alquilado', 0),
+(18, 'Corrientes 1010', 1, 50, -99999.990, -99999.990, 38, 'Local', '', 15000.00, 'Alquilado', 0),
+(19, 'General Paz 100', 1, 40, -99999.990, -99999.990, 36, 'Depósito', '', 25001.00, 'Alquilado', 0),
+(20, 'Junin 6060', 1, 300, -99999.990, -99999.990, 39, 'Depósito', '', 25000.00, 'Disponible', 0),
+(21, 'Entre rios 7070', 0, 500, -99999.990, -99999.990, 37, 'Terreno', '', 10250.22, 'Disponible', 0),
+(22, 'La Rioja 300', 2, 75, -99999.990, -99999.990, 40, 'Departamento', '', 25144.00, 'Alquilado', 0),
+(23, 'Uruguay 1313', 4, 180, -99999.990, -99999.990, 31, 'Local', '', 25411.22, 'Alquilado', 0),
+(24, 'Av. Callao 909', 1, 80, -99999.990, -99999.990, 32, 'Local', '', 15222.00, 'Alquilado', 0),
+(25, 'Heras 131', 1, 45, -99999.990, -99999.990, 33, 'Departamento', '', 2551.00, 'Alquilado', 0),
+(26, 'Av. Cordoba 909', 2, 85, -99999.990, 15427.222, 39, 'Departamento', '', 25444.33, 'Disponible', 0),
+(29, 'MAIPU 316', 4, 250, 22250.330, 2341.220, 46, 'Casa', '', 26443.33, 'Disponible', 0),
+(30, 'MAIPU 990', 4, 1, 25411.330, 3332.220, 46, 'Local', '', 75500.00, 'Disponible', 0),
+(31, 'PRINGLES 435', 5, 3, 211.000, 33332.220, 46, 'Depósito', '', 1542.36, 'Disponible', 0);
 
 -- --------------------------------------------------------
 
@@ -173,7 +189,7 @@ CREATE TABLE `inquilino` (
   `clave` varchar(30) NOT NULL,
   `dni` int(8) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `inquilino`
@@ -209,28 +225,28 @@ CREATE TABLE `pagos` (
   `borrado` tinyint(1) NOT NULL,
   `anulado` tinyint(1) NOT NULL,
   `detalle` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `pagos`
 --
 
 INSERT INTO `pagos` (`idpago`, `idcontrato`, `fpago`, `importe`, `borrado`, `anulado`, `detalle`) VALUES
-(54, 19, '2024-05-01', '80000.00', 0, 0, ''),
-(55, 20, '2024-04-30', '99999.99', 0, 0, ''),
-(56, 22, '2024-04-23', '99999.99', 0, 0, ''),
-(57, 23, '2024-05-01', '99999.99', 0, 0, ''),
-(58, 24, '2024-04-24', '40000.00', 0, 0, ''),
-(59, 25, '2024-04-24', '99999.99', 0, 0, ''),
-(60, 27, '2024-04-24', '99999.99', 0, 0, ''),
-(61, 28, '2024-04-26', '56000.00', 0, 1, ''),
-(62, 29, '2024-04-25', '12000.00', 0, 0, ''),
-(63, 19, '2024-04-24', '12555.00', 0, 0, 'Multa'),
-(64, 20, '2024-04-23', '50822.66', 0, 0, 'Multa'),
-(65, 26, '2024-04-10', '26.64', 0, 1, 'Multa'),
-(66, 26, '2024-04-23', '254.00', 0, 0, ''),
-(67, 31, '2024-05-01', '70000.00', 0, 0, ''),
-(68, 31, '2024-05-01', '7000000.00', 0, 1, 'Multa');
+(54, 19, '2024-05-01', 80000.00, 0, 0, ''),
+(55, 20, '2024-04-30', 99999.99, 0, 0, ''),
+(56, 22, '2024-04-23', 99999.99, 0, 0, ''),
+(57, 23, '2024-05-01', 99999.99, 0, 0, ''),
+(58, 24, '2024-04-24', 40000.00, 0, 0, ''),
+(59, 25, '2024-04-24', 99999.99, 0, 0, ''),
+(60, 27, '2024-04-24', 99999.99, 0, 0, ''),
+(61, 28, '2024-04-26', 56000.00, 0, 1, ''),
+(62, 29, '2024-04-25', 12000.00, 0, 0, ''),
+(63, 19, '2024-04-24', 12555.00, 0, 0, 'Multa'),
+(64, 20, '2024-04-23', 50822.66, 0, 0, 'Multa'),
+(65, 26, '2024-04-10', 26.64, 0, 1, 'Multa'),
+(66, 26, '2024-04-23', 254.00, 0, 0, ''),
+(67, 31, '2024-05-01', 70000.00, 0, 0, ''),
+(68, 31, '2024-05-01', 7000000.00, 0, 1, 'Multa');
 
 -- --------------------------------------------------------
 
@@ -246,7 +262,7 @@ CREATE TABLE `propietario` (
   `mail` varchar(30) NOT NULL,
   `clave` text NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `propietario`
@@ -267,7 +283,8 @@ INSERT INTO `propietario` (`idpropietario`, `nombre`, `apellido`, `dni`, `mail`,
 (42, 'GABRIELA', 'BAEZ', 37155187, 'baezgabriela@gmail.com', '123', 0),
 (43, 'ALBERTO', 'AYALA', 15444678, 'ayalaalberlo@gmail.com', '123', 0),
 (44, 'ANTONIO', 'BANDERA', 17654909, 'banderaantonio@gmail.com', '123', 0),
-(45, 'JULIETA', 'BERNAL', 39876589, 'julietabernal@gmail.com', '123', 0);
+(45, 'JULIETA', 'BERNAL', 39876589, 'julietabernal@gmail.com', '123', 0),
+(46, 'ROBERTO', 'OLGUIN', 12456789, 'roberto@gmail.com', '123', 0);
 
 -- --------------------------------------------------------
 
@@ -284,7 +301,7 @@ CREATE TABLE `usuarios` (
   `Borrado` tinyint(1) NOT NULL,
   `Permiso` int(2) NOT NULL,
   `AvatarUrl` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -356,7 +373,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `auditorias`
 --
 ALTER TABLE `auditorias`
-  MODIFY `IdAuditoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=385;
+  MODIFY `IdAuditoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=398;
 
 --
 -- AUTO_INCREMENT de la tabla `contratos`
@@ -368,7 +385,7 @@ ALTER TABLE `contratos`
 -- AUTO_INCREMENT de la tabla `inmuebles`
 --
 ALTER TABLE `inmuebles`
-  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `inquilino`
@@ -386,7 +403,7 @@ ALTER TABLE `pagos`
 -- AUTO_INCREMENT de la tabla `propietario`
 --
 ALTER TABLE `propietario`
-  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `idpropietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

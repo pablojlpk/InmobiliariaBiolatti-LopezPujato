@@ -114,7 +114,7 @@ public IList<Inmueble> GetInmueblesDisponibles()
     {
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = $"INSERT INTO inmuebles (direccion,ambientes,superficie,latitud,longitud,idpropietario, tipoinmueble, importe) VALUES ('{i.direccion}',{i.ambientes},{i.superficie},{i.latitud},{i.longitud},{i.idpropietario}, '{i.tipoinmueble}, {i.importe}')";
+            var sql = $"INSERT INTO inmuebles (direccion,ambientes,superficie,latitud,longitud,idpropietario, tipoinmueble, estado, importe) VALUES ('{i.direccion}',{i.ambientes},{i.superficie},{i.latitud},{i.longitud},{i.idpropietario}, '{i.tipoinmueble}','Disponible', {i.importe})";
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();
