@@ -89,6 +89,17 @@ public class InmuebleController : Controller
         ri.Baja(id);
         return RedirectToAction(nameof(Index));
     }
+
+
+public IActionResult InmueblesDisponibles() //funciona ok
+    {
+        RepositorioInmueble ri = new RepositorioInmueble();
+        var inmuebles = ri.GetInmueblesDisponibles();
+        ViewBag.Titulo = "Listado de Inmuebles Disponibles";
+        return View("listado",inmuebles);
+    }
+
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

@@ -1,6 +1,8 @@
 @model IEnumerable<Inmueble>
 @{
-    ViewData["Title"] = "Inmuebles";
+    var Titulo=ViewBag.Titulo;
+    ViewData["Title"] = Titulo;
+
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -71,4 +73,3 @@
 </div>
 
 <a asp-action="agregar" class="btn btn-success">Crear nuevo</a>
-<a asp-action="InmueblesDisponibles" class="btn btn-success">Listado Inmuebles Disponibles</a>

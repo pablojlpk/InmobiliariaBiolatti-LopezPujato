@@ -53,48 +53,59 @@ public class ContratoController : Controller
 
     public IActionResult Editar(int id)
     {
-       ViewBag.Inmuebles = rinmuebles.GetInmuebles();
+        ViewBag.Inmuebles = rinmuebles.GetInmuebles();
         ViewBag.Inquilinos = rinquilinos.GetInquilinos();
-        
+
         Contrato c = new Contrato();
         c = new RepositorioContrato().GetContrato(id);
-        return View(c);       
+        return View(c);
     }
 
-//[Authorize(Policy = "Administrador")]
-public IActionResult Eliminar(int id)
-{
-    //audit
+    //[Authorize(Policy = "Administrador")]
+    public IActionResult Eliminar(int id)
+    {
+        //audit
         var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
         var detalle = ra.ArmarDetalle(User.Identity.Name, "Baja");
         ra.AltaAuditoria(idus, detalle, " Modulo: Contrato");
         //
-    RepositorioContrato rc = new RepositorioContrato();
-    rc.Eliminar(id);
-    return RedirectToAction(nameof(Index));
-}
+        RepositorioContrato rc = new RepositorioContrato();
+        rc.Eliminar(id);
+        return RedirectToAction(nameof(Index));
+    }
 
 
-public IActionResult ModContrato(Contrato c){
-    //audit
+    public IActionResult ModContrato(Contrato c)
+    {
+        //audit
         var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
         var detalle = ra.ArmarDetalle(User.Identity.Name, "Modificar");
         ra.AltaAuditoria(idus, detalle, " Modulo: Contrato");
         //
-    RepositorioContrato rc = new RepositorioContrato();
-    rc.ModificaContrato(c);
-    rc.ModificaEstadoInmuebleContrato();
-    return RedirectToAction(nameof(Index));
-}
+        RepositorioContrato rc = new RepositorioContrato();
+        rc.ModificaContrato(c);
+        rc.ModificaEstadoInmuebleContrato();
+        return RedirectToAction(nameof(Index));
+    }
 
-public IActionResult Detalle(int id)
-{
-    ViewBag.Inmuebles = rinmuebles.GetInmuebles();
-    ViewBag.Inquilinos = rinquilinos.GetInquilinos();
-    Contrato c = new Contrato();
-    c = new RepositorioContrato().GetContrato(id);
-    return View(c);
-}
+    public IActionResult Detalle(int id)
+    {
+        ViewBag.Inmuebles = rinmuebles.GetInmuebles();
+        ViewBag.Inquilinos = rinquilinos.GetInquilinos();
+        Contrato c = new Contrato();
+        c = new RepositorioContrato().GetContrato(id);
+        return View(c);
+    }
+
+    public IActionResult ListarContratosVigentes()
+    {
+        RepositorioContrato rc = new RepositorioContrato();
+        var contratos = rc.ListarContratosVigentes();
+        ViewBag.Titulo = "Listado de Contratos Vigentes";
+        return View("listado", contratos);
+    }
+
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

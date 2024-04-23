@@ -1,7 +1,7 @@
 @model IEnumerable<Contrato>
 @{
-    ViewData["Title"] = "Contratos";
-
+  var Titulo=  ViewBag.Titulo;
+    ViewData["Title"] = Titulo;
 }
 
 <h1>@ViewData["Title"]</h1>
