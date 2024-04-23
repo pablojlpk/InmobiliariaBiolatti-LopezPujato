@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-04-2024 a las 19:01:31
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 23-04-2024 a las 19:40:11
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `auditorias` (
   `IdUsuario` int(11) NOT NULL,
   `Fecha` datetime NOT NULL,
   `Observaciones` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `auditorias`
@@ -111,27 +111,27 @@ CREATE TABLE `contratos` (
   `fhasta` date NOT NULL,
   `importe` decimal(8,2) NOT NULL,
   `borrado` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `contratos`
 --
 
 INSERT INTO `contratos` (`idcontrato`, `idinmueble`, `idinquilino`, `fdesde`, `fhasta`, `importe`, `borrado`) VALUES
-(19, 16, 18, '2024-05-01', '2024-04-22', 80000.00, 0),
-(20, 15, 19, '2024-04-23', '2024-11-23', 120000.00, 0),
-(21, 16, 21, '2024-05-01', '2024-05-30', 999999.99, 1),
-(22, 17, 20, '2024-05-01', '2025-06-01', 350000.00, 0),
-(23, 18, 21, '2024-05-01', '2024-12-01', 130000.00, 0),
-(24, 19, 22, '2024-04-29', '2024-08-29', 40000.00, 0),
-(25, 20, 24, '2024-05-01', '2024-04-22', 300000.00, 0),
-(26, 22, 23, '2024-05-01', '2024-09-01', 90000.00, 0),
-(27, 23, 26, '2024-04-23', '2024-06-23', 375000.00, 0),
-(28, 25, 25, '2024-05-07', '2024-06-07', 56000.00, 0),
-(29, 24, 27, '2024-05-01', '2024-08-01', 120000.00, 0),
-(30, 25, 30, '2024-10-01', '2024-12-01', 150000.00, 0),
-(31, 22, 27, '2024-07-01', '2024-10-01', 70000.00, 0),
-(32, 19, 25, '2024-05-07', '2024-07-07', 120000.00, 0);
+(19, 16, 18, '2024-05-01', '2024-04-22', '80000.00', 0),
+(20, 15, 19, '2024-04-23', '2024-11-23', '120000.00', 0),
+(21, 16, 21, '2024-05-01', '2024-05-30', '999999.99', 1),
+(22, 17, 20, '2024-05-01', '2025-06-01', '350000.00', 0),
+(23, 18, 21, '2024-05-01', '2024-12-01', '130000.00', 0),
+(24, 19, 22, '2024-04-29', '2024-08-29', '40000.00', 0),
+(25, 20, 24, '2024-05-01', '2024-04-22', '300000.00', 0),
+(26, 22, 23, '2024-05-01', '2024-09-01', '90000.00', 0),
+(27, 23, 26, '2024-04-23', '2024-06-23', '375000.00', 0),
+(28, 25, 25, '2024-05-07', '2024-06-07', '56000.00', 0),
+(29, 24, 27, '2024-05-01', '2024-08-01', '120000.00', 0),
+(30, 25, 30, '2024-10-01', '2024-12-01', '150000.00', 0),
+(31, 22, 27, '2024-07-01', '2024-10-01', '70000.00', 0),
+(32, 19, 25, '2024-05-07', '2024-07-07', '120000.00', 0);
 
 -- --------------------------------------------------------
 
@@ -152,28 +152,28 @@ CREATE TABLE `inmuebles` (
   `importe` decimal(9,2) NOT NULL,
   `estado` varchar(15) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `inmuebles`
 --
 
 INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `latitud`, `longitud`, `idpropietario`, `tipoinmueble`, `nompropietario`, `importe`, `estado`, `borrado`) VALUES
-(15, 'Av. Libertad 123', 3, 150, -99999.990, -99999.990, 33, 'Casa', '', 25412.22, 'Alquilado', 0),
-(16, 'San Martin 456', 3, 80, 2255.220, -99999.990, 34, 'Departamento', '', 100000.00, 'Disponible', 0),
-(17, 'Belgrano 789', 4, 200, -99999.990, -99999.990, 35, 'Casa', '', 50000.00, 'Alquilado', 0),
-(18, 'Corrientes 1010', 1, 50, -99999.990, -99999.990, 38, 'Local', '', 15000.00, 'Alquilado', 0),
-(19, 'General Paz 100', 1, 40, -99999.990, -99999.990, 36, 'Depósito', '', 25001.00, 'Alquilado', 0),
-(20, 'Junin 6060', 1, 300, -99999.990, -99999.990, 39, 'Depósito', '', 25000.00, 'Disponible', 0),
-(21, 'Entre rios 7070', 0, 500, -99999.990, -99999.990, 37, 'Terreno', '', 10250.22, 'Disponible', 0),
-(22, 'La Rioja 300', 2, 75, -99999.990, -99999.990, 40, 'Departamento', '', 25144.00, 'Alquilado', 0),
-(23, 'Uruguay 1313', 4, 180, -99999.990, -99999.990, 31, 'Local', '', 25411.22, 'Alquilado', 0),
-(24, 'Av. Callao 909', 1, 80, -99999.990, -99999.990, 32, 'Local', '', 15222.00, 'Alquilado', 0),
-(25, 'Heras 131', 1, 45, -99999.990, -99999.990, 33, 'Departamento', '', 2551.00, 'Alquilado', 0),
-(26, 'Av. Cordoba 909', 2, 85, -99999.990, 15427.222, 39, 'Departamento', '', 25444.33, 'Disponible', 0),
-(29, 'MAIPU 316', 4, 250, 22250.330, 2341.220, 46, 'Casa', '', 26443.33, 'Disponible', 0),
-(30, 'MAIPU 990', 4, 1, 25411.330, 3332.220, 46, 'Local', '', 75500.00, 'Disponible', 0),
-(31, 'PRINGLES 435', 5, 3, 211.000, 33332.220, 46, 'Depósito', '', 1542.36, 'Disponible', 0);
+(15, 'Av. Libertad 123', 3, 150, '-99999.990', '-99999.990', 33, 'Casa', '', '25412.22', 'Alquilado', 0),
+(16, 'San Martin 456', 3, 80, '2255.220', '-99999.990', 34, 'Departamento', '', '100000.00', 'Disponible', 0),
+(17, 'Belgrano 789', 4, 200, '-99999.990', '-99999.990', 35, 'Casa', '', '50000.00', 'Alquilado', 0),
+(18, 'Corrientes 1010', 1, 50, '-99999.990', '-99999.990', 38, 'Local', '', '15000.00', 'Alquilado', 0),
+(19, 'General Paz 100', 1, 40, '-99999.990', '-99999.990', 36, 'Depósito', '', '25001.00', 'Alquilado', 0),
+(20, 'Junin 6060', 1, 300, '-99999.990', '-99999.990', 39, 'Depósito', '', '25000.00', 'Disponible', 0),
+(21, 'Entre rios 7070', 0, 500, '-99999.990', '-99999.990', 37, 'Terreno', '', '10250.22', 'Disponible', 0),
+(22, 'La Rioja 300', 2, 75, '-99999.990', '-99999.990', 40, 'Departamento', '', '25144.00', 'Alquilado', 0),
+(23, 'Uruguay 1313', 4, 180, '-99999.990', '-99999.990', 31, 'Local', '', '25411.22', 'Alquilado', 0),
+(24, 'Av. Callao 909', 1, 80, '-99999.990', '-99999.990', 32, 'Local', '', '15222.00', 'Alquilado', 0),
+(25, 'Heras 131', 1, 45, '-99999.990', '-99999.990', 33, 'Departamento', '', '2551.00', 'Alquilado', 0),
+(26, 'Av. Cordoba 909', 2, 85, '-99999.990', '15427.222', 39, 'Departamento', '', '25444.33', 'Disponible', 0),
+(29, 'MAIPU 316', 4, 250, '22250.330', '2341.220', 46, 'Casa', '', '26443.33', 'Disponible', 0),
+(30, 'MAIPU 990', 4, 1, '25411.330', '3332.220', 46, 'Local', '', '75500.00', 'Disponible', 0),
+(31, 'PRINGLES 435', 5, 3, '211.000', '33332.220', 46, 'Depósito', '', '1542.36', 'Disponible', 0);
 
 -- --------------------------------------------------------
 
@@ -189,7 +189,7 @@ CREATE TABLE `inquilino` (
   `clave` varchar(30) NOT NULL,
   `dni` int(8) NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `inquilino`
@@ -225,28 +225,28 @@ CREATE TABLE `pagos` (
   `borrado` tinyint(1) NOT NULL,
   `anulado` tinyint(1) NOT NULL,
   `detalle` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `pagos`
 --
 
 INSERT INTO `pagos` (`idpago`, `idcontrato`, `fpago`, `importe`, `borrado`, `anulado`, `detalle`) VALUES
-(54, 19, '2024-05-01', 80000.00, 0, 0, ''),
-(55, 20, '2024-04-30', 99999.99, 0, 0, ''),
-(56, 22, '2024-04-23', 99999.99, 0, 0, ''),
-(57, 23, '2024-05-01', 99999.99, 0, 0, ''),
-(58, 24, '2024-04-24', 40000.00, 0, 0, ''),
-(59, 25, '2024-04-24', 99999.99, 0, 0, ''),
-(60, 27, '2024-04-24', 99999.99, 0, 0, ''),
-(61, 28, '2024-04-26', 56000.00, 0, 1, ''),
-(62, 29, '2024-04-25', 12000.00, 0, 0, ''),
-(63, 19, '2024-04-24', 12555.00, 0, 0, 'Multa'),
-(64, 20, '2024-04-23', 50822.66, 0, 0, 'Multa'),
-(65, 26, '2024-04-10', 26.64, 0, 1, 'Multa'),
-(66, 26, '2024-04-23', 254.00, 0, 0, ''),
-(67, 31, '2024-05-01', 70000.00, 0, 0, ''),
-(68, 31, '2024-05-01', 7000000.00, 0, 1, 'Multa');
+(54, 19, '2024-05-01', '80000.00', 0, 0, ''),
+(55, 20, '2024-04-30', '99999.99', 0, 0, ''),
+(56, 22, '2024-04-23', '99999.99', 0, 0, ''),
+(57, 23, '2024-05-01', '99999.99', 0, 0, ''),
+(58, 24, '2024-04-24', '40000.00', 0, 0, ''),
+(59, 25, '2024-04-24', '99999.99', 0, 0, ''),
+(60, 27, '2024-04-24', '99999.99', 0, 0, ''),
+(61, 28, '2024-04-26', '56000.00', 0, 1, ''),
+(62, 29, '2024-04-25', '12000.00', 0, 0, ''),
+(63, 19, '2024-04-24', '12555.00', 0, 0, 'Multa'),
+(64, 20, '2024-04-23', '50822.66', 0, 0, 'Multa'),
+(65, 26, '2024-04-10', '26.64', 0, 1, 'Multa'),
+(66, 26, '2024-04-23', '254.00', 0, 0, ''),
+(67, 31, '2024-05-01', '70000.00', 0, 0, ''),
+(68, 31, '2024-05-01', '7000000.00', 0, 1, 'Multa');
 
 -- --------------------------------------------------------
 
@@ -262,7 +262,7 @@ CREATE TABLE `propietario` (
   `mail` varchar(30) NOT NULL,
   `clave` text NOT NULL,
   `borrado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `propietario`
@@ -301,7 +301,7 @@ CREATE TABLE `usuarios` (
   `Borrado` tinyint(1) NOT NULL,
   `Permiso` int(2) NOT NULL,
   `AvatarUrl` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -311,7 +311,7 @@ INSERT INTO `usuarios` (`IdUsuario`, `Nombre`, `Apellido`, `Email`, `Clave`, `Bo
 (39, 'Miguel', 'Torres', 'migueltorres@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_39.png'),
 (40, 'Pablo ', 'lopez pujato', 'pp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_40.jpg'),
 (41, 'Ana ', 'Biolatti', 'analuzbiolatti@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_41.png'),
-(42, 'Ricardo', 'Cantero', 'ricardocantero@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_42.png'),
+(42, 'Ricardo', 'Cantero', 'empleado@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_42.png'),
 (43, 'Javier', 'Rios', 'javirios@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_43.png');
 
 --
