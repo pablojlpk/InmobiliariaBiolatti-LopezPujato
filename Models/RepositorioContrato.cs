@@ -232,9 +232,10 @@ public class RepositorioContrato
             }
 
 sql = @$" UPDATE inmuebles SET estado = 'Disponible' WHERE idinmueble IN ( SELECT idinmueble FROM inmuebles  WHERE borrado = 0 AND idinmueble NOT IN (
-          SELECT idinmueble FROM contratos WHERE contratos.fhasta > CURDATE()
+          SELECT idinmueble FROM contratos WHERE contratos.fhasta >= CURDATE()
       )
 );";
+sql = @$" UPDATE inmuebles SET estado = 'Disponible' WHERE idinmueble IN (SELECT idinmueble FROM contratos WHERE contratos.fhasta <= CURDATE());";
 
            
 

@@ -32,11 +32,14 @@ public class Inmueble
 
     public bool? borrado { get; set; }
     public string? tipoinmueble { get; set; }
+    [Required]
+    
+    public decimal importe { get; set; }
     public string? estado { get; set; }="Disponible";
     
     public override string ToString()
     {
-        return $"{direccion}, amb: {ambientes}, superf: {superficie}, tipo: {tipoinmueble}";
+        return $"{direccion}, amb: {ambientes}, superf: {superficie}, tipo: {tipoinmueble}, PB$: {importe}";
     }
 
 

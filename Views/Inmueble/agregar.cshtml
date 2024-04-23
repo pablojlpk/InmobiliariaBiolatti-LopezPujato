@@ -41,6 +41,11 @@
                             <input asp-for="longitud" class="form-control" required />
                             <span asp-validation-for="longitud" class="number text-danger"></span>
                         </div>
+                            <div class="form-group">
+                            <label asp-for="importe" class="control-label"></label>
+                            <input asp-for="importe" class="form-control" required />
+                            <span asp-validation-for="importe" class="decimal text-danger"></span>
+                        </div>
                         <div class="form-group">
                             <label class="control-label">Propietario</label>
                             <select asp-for="idpropietario" class="form-control" required>

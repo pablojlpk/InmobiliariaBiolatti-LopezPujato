@@ -8,18 +8,19 @@
 <script src="https://kit.fontawesome.com/708362d465.js" crossorigin="anonymous"></script>
 
 
-<div class="col-md-12">
+<div class="col-md-15" style="font-size: 15px;";">
     <table class="table">
         <thead>
             <tr>
                 <th>Codigo</th>
                 <th>Direccion</th>
-                <th>Ambientes</th>
-                <th>Superficie</th>
-                <th>Latitud</th>
-                <th>Longitud</th>
+                <th>Amb.</th>
+                <th>Sup.</th>
+                <th>Lat</th>
+                <th>Long</th>
                 <th>CodProp.</th>
                 <th>Tipo</th>
+                <th>P. Base</th>
                 <th>Estado</th>
                 <th>Propietario</th>
                 <th>Acciones</th>
@@ -36,6 +37,7 @@
                     <td>@item.longitud</td>
                     <td>@item.idpropietario</td>
                     <td>@item.tipoinmueble</td>
+                    <td>@item.importe</td>
                             @if (item.estado == "Disponible")
 
                             {

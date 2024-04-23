@@ -89,15 +89,21 @@ public class UsuarioController : Controller
                 {
                     u.AvatarUrl = null; // Si no se proporciona un archivo, establece el AvatarUrl a null
                 }
+
+                //audit
+                var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+                var detalle = ra.ArmarDetalle(User.Identity.Name, "Modificar");
+                ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
+                //
                 ru.ModificaUsuario(u);
                 return RedirectToAction("Index", "Usuario"); // Redirige al Index de Usuario después de una edición exitosa
             }
             else
             {
                 ViewBag.Roles = Usuario.ObtenerRoles();
-                var cartel="entra";
+                var cartel = "entra";
                 return RedirectToAction("index", "Home");
-             
+
             }
         }
         catch (Exception ex)
@@ -110,7 +116,7 @@ public class UsuarioController : Controller
     /*[Authorize(Roles = "Empleado")]*/
     public ActionResult Perfil(int id)
     {
-       
+
         ViewBag.Roles = Usuario.ObtenerRoles();
 
         return View(repusu.GetUsuario(id));
@@ -123,7 +129,7 @@ public class UsuarioController : Controller
         var detalle = ra.ArmarDetalle(User.Identity.Name, "Modificar Perfil");
         ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
         //
-        
+
         RepositorioUsuario ru = new RepositorioUsuario();
 
         ru.ModificarPerfil(u);
@@ -292,7 +298,7 @@ public class UsuarioController : Controller
         }
     }
 
-    
+
 
     public ActionResult CambioPassword()
     {
