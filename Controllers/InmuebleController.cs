@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.TagHelpers;
 using ZstdSharp.Unsafe;
 using System.Reflection.Metadata.Ecma335;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -19,13 +20,15 @@ public class InmuebleController : Controller
     RepositorioAuditoria ra = new RepositorioAuditoria();
     //audit
 
-
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult Index() //funciona ok
     {
         RepositorioInmueble ri = new RepositorioInmueble();
         var inmuebles = ri.GetInmuebles();
         return View(inmuebles);
     }
+
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult agregar() //redirecciono ventana alta inmueble y armo listafunciona ok
     {
         RepositorioPropietario rp = new RepositorioPropietario();
@@ -35,27 +38,28 @@ public class InmuebleController : Controller
 
         return View();
     }
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult create(Inmueble i) //alta un nuevo inmueblefunciona ok
     {
-            if (ModelState.IsValid)
-            {
-         
-                //audit
-                var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
-                var detalle = ra.ArmarDetalle(User.Identity.Name, "Modificar");
-                ra.AltaAuditoria(idus, detalle, " Modulo: Inmuebles");
-                //
+        if (ModelState.IsValid)
+        {
 
-                RepositorioInmueble ri = new RepositorioInmueble();
-                var res = ri.AltaInmueble(i);
+            //audit
+            var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+            var detalle = ra.ArmarDetalle(User.Identity.Name, "Modificar");
+            ra.AltaAuditoria(idus, detalle, " Modulo: Inmuebles");
+            //
 
-                return RedirectToAction(nameof(Index));
-            }
+            RepositorioInmueble ri = new RepositorioInmueble();
+            var res = ri.AltaInmueble(i);
+
+            return RedirectToAction(nameof(Index));
+        }
 
         return View(agregar);
 
     }
-
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult Editar(int id) //funciona ok
     {
         RepositorioInmueble ri = new RepositorioInmueble();
@@ -66,6 +70,7 @@ public class InmuebleController : Controller
         return View(inmueble);
     }
 
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult ModInmueble(Inmueble i)
     {
         //audit
@@ -77,7 +82,7 @@ public class InmuebleController : Controller
         ri.ModificaInmueble(i);
         return RedirectToAction(nameof(Index));
     }
-
+    [Authorize(Policy = "Administrador")]
     public IActionResult Baja(int id)
     {
         //audit
@@ -90,25 +95,25 @@ public class InmuebleController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-
-public IActionResult InmueblesDisponibles() //funciona ok
+    [Authorize(Policy = "EmpleadoOAdministrador")]
+    public IActionResult InmueblesDisponibles() //funciona ok
     {
         RepositorioInmueble ri = new RepositorioInmueble();
         var inmuebles = ri.GetInmueblesDisponibles();
         ViewBag.Titulo = "Listado de Inmuebles Disponibles";
-        return View("listado",inmuebles);
+        return View("listado", inmuebles);
     }
 
+     [Authorize(Policy = "EmpleadoOAdministrador")]
+    public IActionResult ListaContratoPorInmueble(int id)
+    {
+        RepositorioContrato rc = new RepositorioContrato();
+        var buscar = id;
+        var contratos = rc.ListadoContratosPorInmueble(buscar);
+        ViewBag.Titulo = "Listado de Contratos por Inmueble";
 
-public IActionResult ListaContratoPorInmueble(int id)
-{
-    RepositorioContrato rc = new RepositorioContrato();
-    var buscar=id;
-    var contratos = rc.ListadoContratosPorInmueble(buscar);
-    ViewBag.Titulo = "Listado de Contratos por Inmueble";
-    
-    return View("listadocontratos", contratos);
-}
+        return View("listadocontratos", contratos);
+    }
 
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

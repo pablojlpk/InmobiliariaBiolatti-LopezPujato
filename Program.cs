@@ -24,6 +24,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 
+
 builder.Services.AddAuthorization(options =>  //requiero politicas
 {
     options.AddPolicy("Administrador", policy =>
@@ -32,7 +33,11 @@ builder.Services.AddAuthorization(options =>  //requiero politicas
     policy.RequireRole("Empleado"));
     //no activo la policy de empleado ya que solamente tengo dos roles en este ejemplo
 });
-
+ builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("EmpleadoOAdministrador", policy =>
+            policy.RequireRole("Empleado", "Administrador"));
+    });
 
 
 

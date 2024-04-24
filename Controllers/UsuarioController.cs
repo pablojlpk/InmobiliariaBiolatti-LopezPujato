@@ -33,7 +33,7 @@ public class UsuarioController : Controller
         return View(lista);
     }
 
-
+    [Authorize(Policy = "Administrador")]
     public IActionResult Detalle(int id)
     {
         var lista = repusu.GetUsuario(id);
@@ -41,7 +41,7 @@ public class UsuarioController : Controller
     }
 
     [HttpGet]
-    /*[Authorize(Roles = "Administrador")]*/
+    [Authorize(Roles = "Administrador")]
     public ActionResult editar(int id)
     {
         //audit
@@ -51,6 +51,8 @@ public class UsuarioController : Controller
         return View(repusu.GetUsuario(id));
     }
 
+    [HttpPost]
+    [Authorize(Roles = "Administrador")]
     public async Task<ActionResult> EditarUsuario(Usuario usuario, IFormFile avatarFile)
     {
         try
@@ -113,7 +115,7 @@ public class UsuarioController : Controller
     }
 
     [HttpGet]
-    /*[Authorize(Roles = "Empleado")]*/
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public ActionResult Perfil(int id)
     {
 
@@ -122,6 +124,7 @@ public class UsuarioController : Controller
         return View(repusu.GetUsuario(id));
     }
     [HttpPost]
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public ActionResult ModificaPerfil(Usuario u)
     {
         //audit
@@ -134,11 +137,11 @@ public class UsuarioController : Controller
 
         ru.ModificarPerfil(u);
         //        return RedirectToAction("Index");
-        return RedirectToAction("Index");
+        return RedirectToAction("Perfil", new { id = u.IdUsuario });
     }
 
     [HttpGet]
-    /*[Authorize(Policy = "Administrador")]*/
+    [Authorize(Policy = "Administrador")]
     public IActionResult Create()
     {
         //audit
@@ -191,6 +194,7 @@ public class UsuarioController : Controller
         }
     }
     [HttpPost]
+    [Authorize(Policy = "Administrador")]
     public async Task<ActionResult> Create(Usuario usuario, IFormFile? avatarFile)
     {
         try
@@ -240,6 +244,7 @@ public class UsuarioController : Controller
 
 
     [HttpGet]
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public ActionResult CambioAvatar(int id)
     {
         var usuario = repusu.GetUsuario(id);
@@ -248,7 +253,7 @@ public class UsuarioController : Controller
         // Verificar si el usuario autenticado coincide con el ID del perfil solicitado
         if (usuarioId == id)
         {
-            RedirectToAction(nameof(Index));
+            RedirectToAction(nameof(CambioAvatar));
         }
 
         return View(usuario);
@@ -256,6 +261,7 @@ public class UsuarioController : Controller
 
 
     [HttpPost]
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public async Task<ActionResult> CambioAvatar(int id, IFormFile? avatarFile)
     {
         try
@@ -299,7 +305,7 @@ public class UsuarioController : Controller
     }
 
 
-
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public ActionResult CambioPassword()
     {
         //audit
@@ -307,6 +313,7 @@ public class UsuarioController : Controller
     }
 
     [HttpPost]
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public ActionResult CambioPassword(string ClaveAnterior, string ClaveNueva)
     {
         var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);

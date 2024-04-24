@@ -6,6 +6,7 @@ using ZstdSharp.Unsafe;
 using System.Reflection.Metadata.Ecma335;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -18,6 +19,8 @@ public class PropietarioController : Controller
         _logger = logger;
     }
     RepositorioAuditoria ra = new RepositorioAuditoria();
+
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult Index()
     {
         RepositorioPropietario rp = new RepositorioPropietario();
@@ -27,7 +30,7 @@ public class PropietarioController : Controller
     }
 
 
-
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult create(Propietario p)
     {
         //audit
@@ -39,7 +42,7 @@ public class PropietarioController : Controller
         rp.AltaPropietario(p);
         return RedirectToAction(nameof(Index));
     }
-
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult Editar(int id)
     {
         //audit
@@ -54,7 +57,7 @@ public class PropietarioController : Controller
         return View(propietario);
     }
 
-
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult ModPropietario(Propietario p)
     {
         //audit
@@ -66,7 +69,7 @@ public class PropietarioController : Controller
         var res = rp.Modifica(p);
         return RedirectToAction(nameof(Index));
     }
-
+    [Authorize(policy: "Administrador")]
     public IActionResult Baja(int id)
     {
         //audit
@@ -79,16 +82,18 @@ public class PropietarioController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult Agregar()
     {
         return View();
     }
+
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult ListadoInmueblesPorPropietario(int idp){
         RepositorioInmueble ri = new RepositorioInmueble();
         var idprop = Convert.ToInt32(RouteData.Values["id"]);
         
         var inmuebles = ri.ListadoInmueblesPorPropietario(idprop);
- 
         ViewBag.Titulo="Listado de Inmuebles por Propietario";
         return View("listado",inmuebles);
 

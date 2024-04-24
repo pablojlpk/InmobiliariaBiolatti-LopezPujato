@@ -24,6 +24,8 @@ public class ContratoController : Controller
     }
     RepositorioAuditoria ra = new RepositorioAuditoria();
 
+
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult Index()
     {
         RepositorioContrato rc = new RepositorioContrato();
@@ -31,12 +33,15 @@ public class ContratoController : Controller
         return View(contratos);
 
     }
+
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult agregar()
     {
         ViewBag.Inmuebles = rinmuebles.GetInmuebles();
         ViewBag.Inquilinos = rinquilinos.GetInquilinos();
         return View();
     }
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult Create(Contrato c)
     {
         //audit
@@ -51,6 +56,8 @@ public class ContratoController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult Editar(int id)
     {
         ViewBag.Inmuebles = rinmuebles.GetInmuebles();
@@ -61,7 +68,7 @@ public class ContratoController : Controller
         return View(c);
     }
 
-    //[Authorize(Policy = "Administrador")]
+    [Authorize(Policy = "Administrador")]
     public IActionResult Eliminar(int id)
     {
         //audit
@@ -74,7 +81,7 @@ public class ContratoController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult ModContrato(Contrato c)
     {
         //audit
@@ -87,7 +94,7 @@ public class ContratoController : Controller
         rc.ModificaEstadoInmuebleContrato();
         return RedirectToAction(nameof(Index));
     }
-
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult Detalle(int id)
     {
         ViewBag.Inmuebles = rinmuebles.GetInmuebles();
@@ -97,6 +104,7 @@ public class ContratoController : Controller
         return View(c);
     }
 
+    [Authorize(Policy = "EmpleadoOAdministrador")]
     public IActionResult ListarContratosVigentes()
     {
         RepositorioContrato rc = new RepositorioContrato();

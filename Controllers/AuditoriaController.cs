@@ -22,7 +22,7 @@ public class AuditoriaController : Controller
     
 
 RepositorioAuditoria ra= new RepositorioAuditoria();
-    
+    [Authorize(Policy = "Administrador")]
     public IActionResult Index() 
     {
         var lista=ra.obtenerAuditorias();

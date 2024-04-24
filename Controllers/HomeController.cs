@@ -21,14 +21,15 @@ public class HomeController : Controller
     RepositorioUsuario repusu = new RepositorioUsuario();
     RepositorioAuditoria ra = new RepositorioAuditoria();
 
-public IActionResult bienvenido(){
-          //audit
+    public IActionResult bienvenido()
+    {
+        //audit
         var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
         var detalle = ra.ArmarDetalle(User.Identity.Name, "ACCESO CORRECTO");
         ra.AltaAuditoria(idus, detalle, " Modulo: LOGIN");
         //
-    return View("index");
-}
+        return View("index");
+    }
 
     public IActionResult Index() //LOGIN USUARIO AUTENTIFICADO
     {
@@ -47,25 +48,27 @@ public IActionResult bienvenido(){
             }
             else
             {
-                if (usuariologin==null){
-                    usuariologin=new LoginView();
+                if (usuariologin == null)
+                {
+                    usuariologin = new LoginView();
                 }
-                var Mensaje="";
+                var Mensaje = "";
                 RepositorioUsuario ru = new RepositorioUsuario();
                 string hashed = Usuario.hashearClave(usuariologin.Clave);
-              
+
                 var usuario = ru.ObtenerUsuarioLogin(usuariologin.Email, hashed);
-                if (usuario == null || usuario.Clave != hashed )
+                if (usuario == null || usuario.Clave != hashed)
                 {
-                    Mensaje="El usuario o la contraseña son incorrectos";    
-                    if(Usuario.hashearClave(usuariologin.Clave)==Usuario.hashearClave("")){
-                        Mensaje="";
+                    Mensaje = "El usuario o la contraseña son incorrectos";
+                    if (Usuario.hashearClave(usuariologin.Clave) == Usuario.hashearClave(""))
+                    {
+                        Mensaje = "";
                     }
-                  
+
                     ViewBag.Mensaje = Mensaje;
                     return View();
                 }
-                 
+
                 var claims = new List<Claim>{
                         new Claim(ClaimTypes.Name, usuario.ToString()),
                         new Claim(ClaimTypes.PrimarySid, usuario.IdUsuario.ToString()),
@@ -79,7 +82,7 @@ public IActionResult bienvenido(){
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 await HttpContext.SignInAsync(
                     CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity)
-                    
+
                     );
 
                 return RedirectToAction("bienvenido", "Home");
@@ -100,9 +103,9 @@ public IActionResult bienvenido(){
         var detalle = ra.ArmarDetalle(User.Identity.Name, "cierre Sesión");
         ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
         //
-      
-             await HttpContext.SignOutAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme);
+
+        await HttpContext.SignOutAsync(
+           CookieAuthenticationDefaults.AuthenticationScheme);
         return RedirectToAction("Index", "Home");
     }
 
