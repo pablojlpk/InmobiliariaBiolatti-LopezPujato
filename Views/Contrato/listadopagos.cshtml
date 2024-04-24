@@ -1,0 +1,69 @@
+@model IEnumerable<InmobiliariaBiolatti_LopezPujato.Models.Pago>
+
+@{
+    var Titulo = ViewBag.Titulo;
+    ViewData["Title"] = Titulo;
+    decimal suma = 0M;
+}
+
+<h1>@ViewData["Title"]</h1>
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+<script src="https://kit.fontawesome.com/708362d465.js" crossorigin="anonymous"></script>
+<br>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Número de Pago</th>
+                    <th>Nombre del Inquilino</th>
+                    <th>Fecha de Inicio del Contrato</th>
+                    <th>Fecha de Pago</th>
+                    <th>Importe</th>
+                    <th>Estado</th>
+                    <th>Detalle</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.idpago</td>
+                        <td>@item.datosContrato.datosinquilino</td>
+                        <td>@item.datosContrato.fdesde</td>
+                        <td>@item.fpago.ToShortDateString()</td>
+                        <td>@item.importe.ToString()</td>
+
+
+                        @if (item.anulado == false)
+                        {
+                            <td></td>
+                        }
+                        else
+                        {
+                            <td style="color:red; font-weight:bold">Anulado</td>
+                        }
+                        <td>@item.detalle</td>
+
+                    </tr>
+                    suma += item.importe;
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="row-4">
+        <div class="form-control">
+            <label for="suma">Total de Movimientos: </label>
+            <input type="number" class="form-control" value=@suma readonly>
+        </div>
+
+    </div>
+
+    <br>
+</div>
+<a asp-action="index" class="btn btn-primary">Volver</a>

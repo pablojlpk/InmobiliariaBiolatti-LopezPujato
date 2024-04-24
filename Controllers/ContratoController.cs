@@ -6,6 +6,7 @@ using ZstdSharp.Unsafe;
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using System.Collections.Immutable;
 
 namespace InmobiliariaBiolatti_LopezPujato.Controllers;
 
@@ -111,6 +112,17 @@ public class ContratoController : Controller
         var contratos = rc.ListarContratosVigentes();
         ViewBag.Titulo = "Listado de Contratos Vigentes";
         return View("listado", contratos);
+    }
+
+    [Authorize(Policy = "EmpleadoOAdministrador")]
+    public IActionResult ListaPagosPorContrato()
+    {
+        RepositorioPago rp = new RepositorioPago();
+        var idcontrato = Convert.ToInt32(RouteData.Values["id"]);
+        
+        var pagos = rp.ListarPagosPorContrato(idcontrato);
+        ViewBag.Titulo="Listado de Pagos por Contrato - Nro Contrato: "+ idcontrato;
+        return View("listadopagos", pagos);
     }
 
 

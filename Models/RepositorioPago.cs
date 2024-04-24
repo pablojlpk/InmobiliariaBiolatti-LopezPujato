@@ -15,14 +15,12 @@ namespace InmobiliariaBiolatti_LopezPujato.Models
         public IList<Pago> GetPagos()
         {
             var pagos = new List<Pago>();
-
             using (var connection = new MySqlConnection(ConnectionString))
             {
                 var sql = $@"SELECT {nameof(Pago.idpago)}, {nameof(Pago.idcontrato)},
                  {nameof(Pago.importe)}, {nameof(Pago.fpago)},
                   {nameof(Pago.anulado)}, {nameof(Pago.detalle)}
                    FROM PAGOS WHERE borrado = 0 ORDER BY idpago desc";
-
                 using var command = new MySqlCommand(sql, connection);
                 connection.Open();
                 using (var reader = command.ExecuteReader())
@@ -59,7 +57,6 @@ namespace InmobiliariaBiolatti_LopezPujato.Models
             using (var connection = new MySqlConnection(ConnectionString))
             {
                 var sql = $"SELECT {nameof(Pago.idpago)}, {nameof(Pago.idcontrato)}, {nameof(Pago.importe)}, {nameof(Pago.fpago)} FROM PAGOS WHERE idpago = @idpago";
-
                 using (var command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@idpago", id);
@@ -165,6 +162,43 @@ namespace InmobiliariaBiolatti_LopezPujato.Models
             }
             return res;
         }
+
+   public IList<Pago> ListarPagosPorContrato(int idcon)
+        {
+            var pagos = new List<Pago>();
+            using (var connection = new MySqlConnection(ConnectionString))
+            {
+                var sql = $@"SELECT {nameof(Pago.idpago)}, {nameof(Pago.idcontrato)},
+                 {nameof(Pago.importe)}, {nameof(Pago.fpago)},
+                  {nameof(Pago.anulado)}, {nameof(Pago.detalle)}
+                   FROM PAGOS WHERE borrado = 0 and idcontrato = {idcon} ORDER BY idpago desc";
+                using var command = new MySqlCommand(sql, connection);
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var pago = new Pago
+                        {
+                            idpago = reader.GetInt32(nameof(Pago.idpago)),
+                            idcontrato = reader.GetInt32(nameof(Pago.idcontrato)),
+                            importe = reader.GetDecimal(nameof(Pago.importe)),
+                            fpago = reader.GetDateTime(nameof(Pago.fpago)),
+                            anulado = reader.GetBoolean(nameof(Pago.anulado)),
+                            detalle = reader.GetString(nameof(Pago.detalle))
+                        };
+                        pago.datosContrato = ObtenerDetallesContrato(pago.idcontrato);
+                        pagos.Add(pago);
+                    }
+                }
+                connection.Close();
+            }
+            return pagos;
+        }
+
+
+
+        //final
     }
 }
 

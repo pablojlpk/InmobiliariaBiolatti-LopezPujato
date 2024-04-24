@@ -94,7 +94,7 @@ public class PropietarioController : Controller
         var idprop = Convert.ToInt32(RouteData.Values["id"]);
         
         var inmuebles = ri.ListadoInmueblesPorPropietario(idprop);
-        ViewBag.Titulo="Listado de Inmuebles por Propietario";
+        ViewBag.Titulo="Listado de Inmuebles por Propietario - Codigo: "+idprop;
         return View("listado",inmuebles);
 
         

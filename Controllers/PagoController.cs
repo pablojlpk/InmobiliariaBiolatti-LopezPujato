@@ -151,6 +151,9 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
             ViewBag.Contratos = rcontratos.GetContratos();
             return View(pago);
         }
+
+
+        //final
     }
 }
 

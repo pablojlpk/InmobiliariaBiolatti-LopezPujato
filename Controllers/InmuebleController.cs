@@ -110,7 +110,7 @@ public class InmuebleController : Controller
         RepositorioContrato rc = new RepositorioContrato();
         var buscar = id;
         var contratos = rc.ListadoContratosPorInmueble(buscar);
-        ViewBag.Titulo = "Listado de Contratos por Inmueble";
+        ViewBag.Titulo = "Listado de Contratos por Inmueble - Codigo: " + buscar;
 
         return View("listadocontratos", contratos);
     }
