@@ -69,6 +69,7 @@ public class RepositorioContrato
                             fdesde = reader.GetDateTime(nameof(Contrato.fdesde)),
                             fhasta = reader.GetDateTime(nameof(Contrato.fhasta)),
                             importe = reader.GetDecimal(nameof(Contrato.importe)),
+                           
                             datosinquilino = new Inquilino
                             {
                                 idinquilino = reader.GetInt32(nameof(Inquilino.idinquilino)),

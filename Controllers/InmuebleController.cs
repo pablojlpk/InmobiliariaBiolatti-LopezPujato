@@ -20,7 +20,7 @@ public class InmuebleController : Controller
     RepositorioAuditoria ra = new RepositorioAuditoria();
     //audit
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult Index() //funciona ok
     {
         RepositorioInmueble ri = new RepositorioInmueble();
@@ -28,7 +28,7 @@ public class InmuebleController : Controller
         return View(inmuebles);
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult agregar() //redirecciono ventana alta inmueble y armo listafunciona ok
     {
         RepositorioPropietario rp = new RepositorioPropietario();
@@ -38,7 +38,7 @@ public class InmuebleController : Controller
 
         return View();
     }
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult create(Inmueble i) //alta un nuevo inmueblefunciona ok
     {
         if (ModelState.IsValid)
@@ -59,7 +59,7 @@ public class InmuebleController : Controller
         return View(agregar);
 
     }
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult Editar(int id) //funciona ok
     {
         RepositorioInmueble ri = new RepositorioInmueble();
@@ -70,7 +70,7 @@ public class InmuebleController : Controller
         return View(inmueble);
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult ModInmueble(Inmueble i)
     {
         //audit
@@ -95,7 +95,7 @@ public class InmuebleController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult InmueblesDisponibles() //funciona ok
     {
         RepositorioInmueble ri = new RepositorioInmueble();
@@ -104,7 +104,7 @@ public class InmuebleController : Controller
         return View("listado", inmuebles);
     }
 
-     [Authorize(Policy = "EmpleadoOAdministrador")]
+     [Authorize]
     public IActionResult ListaContratoPorInmueble(int id)
     {
         RepositorioContrato rc = new RepositorioContrato();

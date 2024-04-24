@@ -117,7 +117,7 @@ public class UsuarioController : Controller
     [HttpGet]
 
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public ActionResult Perfil(int id)
     {
         var idusuario = Convert.ToInt32(((User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value)));
@@ -127,7 +127,7 @@ public class UsuarioController : Controller
     }
     [HttpPost]
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public ActionResult ModificaPerfil(Usuario u)
     {
         //audit
@@ -246,7 +246,7 @@ public class UsuarioController : Controller
 
 
     [HttpGet]
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public ActionResult CambioAvatar(int id)
     {
         var usuario = repusu.GetUsuario(id);
@@ -263,7 +263,7 @@ public class UsuarioController : Controller
 
 
     [HttpPost]
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public async Task<ActionResult> CambioAvatar(int id, IFormFile? avatarFile)
     {
         try
@@ -307,7 +307,7 @@ public class UsuarioController : Controller
     }
 
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public ActionResult CambioPassword()
     {
         //audit
@@ -315,7 +315,7 @@ public class UsuarioController : Controller
     }
 
     [HttpPost]
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public ActionResult CambioPassword(string ClaveAnterior, string ClaveNueva)
     {
         var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);

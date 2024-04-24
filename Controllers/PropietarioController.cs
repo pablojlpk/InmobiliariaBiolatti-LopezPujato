@@ -20,7 +20,7 @@ public class PropietarioController : Controller
     }
     RepositorioAuditoria ra = new RepositorioAuditoria();
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult Index()
     {
         RepositorioPropietario rp = new RepositorioPropietario();
@@ -30,7 +30,7 @@ public class PropietarioController : Controller
     }
 
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult create(Propietario p)
     {
         //audit
@@ -42,7 +42,7 @@ public class PropietarioController : Controller
         rp.AltaPropietario(p);
         return RedirectToAction(nameof(Index));
     }
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult Editar(int id)
     {
         //audit
@@ -57,7 +57,7 @@ public class PropietarioController : Controller
         return View(propietario);
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult ModPropietario(Propietario p)
     {
         //audit
@@ -82,13 +82,13 @@ public class PropietarioController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult Agregar()
     {
         return View();
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult ListadoInmueblesPorPropietario(int idp){
         RepositorioInmueble ri = new RepositorioInmueble();
         var idprop = Convert.ToInt32(RouteData.Values["id"]);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-04-2024 a las 19:40:11
+-- Tiempo de generación: 24-04-2024 a las 21:56:31
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -95,7 +95,26 @@ INSERT INTO `auditorias` (`IdAuditoria`, `IdUsuario`, `Fecha`, `Observaciones`) 
 (394, 40, '2024-04-23 13:49:50', 'Usuario:lopez pujato, Pablo -(40)-Acción: Modificar Modulo: Propietarios'),
 (395, 40, '2024-04-23 13:51:40', 'Usuario:lopez pujato, Pablo -(40)-Acción: cierre Sesión Modulo: usuarios'),
 (396, 42, '2024-04-23 13:51:47', 'Usuario:Cantero, Ricardo-(42)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
-(397, 42, '2024-04-23 13:55:37', 'Usuario:Cantero, Ricardo-(42)-Acción: Modificar Modulo: Inmuebles');
+(397, 42, '2024-04-23 13:55:37', 'Usuario:Cantero, Ricardo-(42)-Acción: Modificar Modulo: Inmuebles'),
+(398, 41, '2024-04-24 16:38:09', 'Usuario:Biolatti, Ana -(41)-Acción: cierre Sesión Modulo: usuarios'),
+(399, 43, '2024-04-24 16:38:13', 'Usuario:Rios, Javier-(43)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(400, 43, '2024-04-24 16:40:58', 'Usuario:Rios, Javier-(43)-Acción: Anular Modulo: Pagos'),
+(401, 43, '2024-04-24 16:41:30', 'Usuario:Rios, Javier-(43)-Acción: Alta Modulo: Pagos'),
+(402, 43, '2024-04-24 16:42:05', 'Usuario:Rios, Javier-(43)-Acción: Alta Modulo: Pagos'),
+(403, 43, '2024-04-24 16:42:43', 'Usuario:Rios, Javier-(43)-Acción: Alta Modulo: Pagos'),
+(404, 43, '2024-04-24 16:43:53', 'Usuario:Rios, Javier-(43)-Acción: MULTA Modulo: Pagos'),
+(405, 43, '2024-04-24 16:44:16', 'Usuario:Rios, Javier-(43)-Acción: Modificar Modulo: Pagos'),
+(406, 43, '2024-04-24 16:44:24', 'Usuario:Rios, Javier-(43)-Acción: Modificar Modulo: Pagos'),
+(407, 43, '2024-04-24 16:46:04', 'Usuario:Rios, Javier-(43)-Acción: Anular Modulo: Pagos'),
+(408, 43, '2024-04-24 16:46:13', 'Usuario:Rios, Javier-(43)-Acción: Anular Modulo: Pagos'),
+(409, 43, '2024-04-24 16:49:41', 'Usuario:Rios, Javier-(43)-Acción: Modificar Modulo: Inmuebles'),
+(410, 43, '2024-04-24 16:52:51', 'Usuario:Rios, Javier-(43)-Acción: Modificar Modulo: Inmuebles'),
+(411, 43, '2024-04-24 16:54:22', 'Usuario:Rios, Javier-(43)-Acción: Modificar Modulo: Inmuebles'),
+(412, 43, '2024-04-24 16:54:53', 'Usuario:Rios, Javier-(43)-Acción: cierre Sesión Modulo: usuarios'),
+(413, 41, '2024-04-24 16:54:58', 'Usuario:Biolatti, Ana -(41)-Acción: ACCESO CORRECTO Modulo: LOGIN'),
+(414, 41, '2024-04-24 16:55:04', 'Usuario:Biolatti, Ana -(41)-Acción: Alta Modulo: usuarios'),
+(415, 41, '2024-04-24 16:55:39', 'Usuario:Biolatti, Ana -(41)-Acción: Alta Modulo: usuarios'),
+(416, 41, '2024-04-24 16:55:55', 'Usuario:Biolatti, Ana -(41)-Acción: Modificar Perfil Modulo: usuarios');
 
 -- --------------------------------------------------------
 
@@ -173,7 +192,9 @@ INSERT INTO `inmuebles` (`idinmueble`, `direccion`, `ambientes`, `superficie`, `
 (26, 'Av. Cordoba 909', 2, 85, '-99999.990', '15427.222', 39, 'Departamento', '', '25444.33', 'Disponible', 0),
 (29, 'MAIPU 316', 4, 250, '22250.330', '2341.220', 46, 'Casa', '', '26443.33', 'Disponible', 0),
 (30, 'MAIPU 990', 4, 1, '25411.330', '3332.220', 46, 'Local', '', '75500.00', 'Disponible', 0),
-(31, 'PRINGLES 435', 5, 3, '211.000', '33332.220', 46, 'Depósito', '', '1542.36', 'Disponible', 0);
+(31, 'PRINGLES 435', 5, 3, '211.000', '33332.220', 46, 'Depósito', '', '1542.36', 'Disponible', 0),
+(32, 'hipolito yrigoyen 1345', 3, 80, '5630.000', '3389.000', 34, 'comercial', '', '80000.00', 'Disponible', 0),
+(33, 'humberto primo 2020', 1, 50, '-53000.000', '-670005.000', 41, 'Depósito', '', '20000.00', 'Disponible', 0);
 
 -- --------------------------------------------------------
 
@@ -233,20 +254,24 @@ CREATE TABLE `pagos` (
 
 INSERT INTO `pagos` (`idpago`, `idcontrato`, `fpago`, `importe`, `borrado`, `anulado`, `detalle`) VALUES
 (54, 19, '2024-05-01', '80000.00', 0, 0, ''),
-(55, 20, '2024-04-30', '99999.99', 0, 0, ''),
-(56, 22, '2024-04-23', '99999.99', 0, 0, ''),
-(57, 23, '2024-05-01', '99999.99', 0, 0, ''),
+(55, 20, '2024-04-30', '80000.00', 0, 0, ''),
+(56, 22, '2024-04-23', '65000.00', 0, 0, ''),
+(57, 23, '2024-05-01', '55000.00', 0, 0, ''),
 (58, 24, '2024-04-24', '40000.00', 0, 0, ''),
-(59, 25, '2024-04-24', '99999.99', 0, 0, ''),
-(60, 27, '2024-04-24', '99999.99', 0, 0, ''),
+(59, 25, '2024-04-24', '76000.00', 0, 0, ''),
+(60, 27, '2024-04-24', '45000.00', 0, 0, ''),
 (61, 28, '2024-04-26', '56000.00', 0, 1, ''),
 (62, 29, '2024-04-25', '12000.00', 0, 0, ''),
 (63, 19, '2024-04-24', '12555.00', 0, 0, 'Multa'),
 (64, 20, '2024-04-23', '50822.66', 0, 0, 'Multa'),
 (65, 26, '2024-04-10', '26.64', 0, 1, 'Multa'),
-(66, 26, '2024-04-23', '254.00', 0, 0, ''),
+(66, 26, '2024-04-23', '254.00', 0, 1, ''),
 (67, 31, '2024-05-01', '70000.00', 0, 0, ''),
-(68, 31, '2024-05-01', '7000000.00', 0, 1, 'Multa');
+(68, 31, '2024-05-01', '7000000.00', 0, 1, 'Multa'),
+(69, 25, '2024-04-24', '80000.00', 0, 1, 'SEPTIEMBRE'),
+(70, 20, '2024-04-24', '40000.00', 0, 0, 'MARZO'),
+(71, 27, '2024-04-24', '1239090.00', 0, 1, 'ENERO'),
+(72, 27, '2024-04-24', '45000.00', 0, 0, 'Multa');
 
 -- --------------------------------------------------------
 
@@ -310,9 +335,10 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`IdUsuario`, `Nombre`, `Apellido`, `Email`, `Clave`, `Borrado`, `Permiso`, `AvatarUrl`) VALUES
 (39, 'Miguel', 'Torres', 'migueltorres@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_39.png'),
 (40, 'Pablo ', 'lopez pujato', 'pp@pp.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_40.jpg'),
-(41, 'Ana ', 'Biolatti', 'analuzbiolatti@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_41.png'),
+(41, 'Ana luz', 'Biolatti', 'analuzbiolatti@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_41.png'),
 (42, 'Ricardo', 'Cantero', 'empleado@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_42.png'),
-(43, 'Javier', 'Rios', 'javirios@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_43.png');
+(43, 'Javier', 'Rios', 'javirios@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 2, '/update\\avatar_43.png'),
+(44, 'Juan', 'Gomez', 'juangomez@gmail.com', 'k3ydslbaTcDJEL1NRHX+0Nh2UWI52IXsIB+W2d6k9Jc=', 0, 1, '/update\\avatar_44.png');
 
 --
 -- Índices para tablas volcadas
@@ -373,7 +399,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `auditorias`
 --
 ALTER TABLE `auditorias`
-  MODIFY `IdAuditoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=398;
+  MODIFY `IdAuditoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=417;
 
 --
 -- AUTO_INCREMENT de la tabla `contratos`
@@ -385,7 +411,7 @@ ALTER TABLE `contratos`
 -- AUTO_INCREMENT de la tabla `inmuebles`
 --
 ALTER TABLE `inmuebles`
-  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `idinmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `inquilino`
@@ -397,7 +423,7 @@ ALTER TABLE `inquilino`
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `idpago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `idpago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de la tabla `propietario`
@@ -409,7 +435,7 @@ ALTER TABLE `propietario`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `IdUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `IdUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- Restricciones para tablas volcadas

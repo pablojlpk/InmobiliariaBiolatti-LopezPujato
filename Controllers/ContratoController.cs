@@ -26,7 +26,7 @@ public class ContratoController : Controller
     RepositorioAuditoria ra = new RepositorioAuditoria();
 
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult Index()
     {
         RepositorioContrato rc = new RepositorioContrato();
@@ -35,14 +35,14 @@ public class ContratoController : Controller
 
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult agregar()
     {
         ViewBag.Inmuebles = rinmuebles.GetInmuebles();
         ViewBag.Inquilinos = rinquilinos.GetInquilinos();
         return View();
     }
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult Create(Contrato c)
     {
         //audit
@@ -58,7 +58,7 @@ public class ContratoController : Controller
     }
 
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult Editar(int id)
     {
         ViewBag.Inmuebles = rinmuebles.GetInmuebles();
@@ -82,7 +82,7 @@ public class ContratoController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult ModContrato(Contrato c)
     {
         //audit
@@ -95,7 +95,7 @@ public class ContratoController : Controller
         rc.ModificaEstadoInmuebleContrato();
         return RedirectToAction(nameof(Index));
     }
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult Detalle(int id)
     {
         ViewBag.Inmuebles = rinmuebles.GetInmuebles();
@@ -105,7 +105,7 @@ public class ContratoController : Controller
         return View(c);
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult ListarContratosVigentes()
     {
         RepositorioContrato rc = new RepositorioContrato();
@@ -114,7 +114,7 @@ public class ContratoController : Controller
         return View("listado", contratos);
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult ListaPagosPorContrato()
     {
         RepositorioPago rp = new RepositorioPago();

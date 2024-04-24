@@ -8,23 +8,37 @@ namespace InmobiliariaBiolatti_LopezPujato.Models;
 //public int numero=0;
 
 
-public class Pago{ 
+public class Pago
+{
     [Key]
-		[Display(Name = "Identificador")]
-        public int idpago {get; set;} 
+    [Display(Name = "Identificador")]
+    public int idpago { get; set; }
 
-        [ForeignKey(nameof(idcontrato))]
-        
-		[Display(Name = "Contrato")]
-		public int idcontrato { get; set; }
-        public Contrato? datosContrato{ get; set; }
-		public decimal importe{ get; set; }
-        
-        [DataType(DataType.Date)]
-        public DateTime fpago { get; set; }
-        public bool borrado { get; set; }
+    [ForeignKey(nameof(idcontrato))]
 
-        public bool anulado { get; set; }
-        public String? detalle {get; set; }="";
+    [Display(Name = "Contrato")]
+    public int idcontrato { get; set; }
+    public Contrato? datosContrato { get; set; }
+    public decimal importe { get; set; }
+
+    [DataType(DataType.Date)]
+    public DateTime fpago { get; set; }
+    public bool borrado { get; set; }
+
+    public bool anulado { get; set; }
+    public String? detalle { get; set; } = "";
+
+
+    public static List<string> MesesList()
+    {
+        List<string> Meses = new List<string> { "ENERO", "FEBRERO", "MARZO",
+        "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"};
+        return Meses;
+
+    }
+
+
+
+
 
 }

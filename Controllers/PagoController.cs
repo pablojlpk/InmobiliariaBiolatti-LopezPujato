@@ -20,22 +20,24 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
         }
         RepositorioAuditoria ra = new RepositorioAuditoria();
 
-        [Authorize(Policy = "EmpleadoOAdministrador")]
+        [Authorize]
         public IActionResult Index()
         {
             RepositorioPago rp = new RepositorioPago();
             var pagos = rp.GetPagos();
             return View(pagos);
         }
-        [Authorize(Policy = "EmpleadoOAdministrador")]
+        [Authorize]
         public IActionResult agregar()
         {
 
             ViewBag.Contratos = rcontratos.GetContratos();
+            ViewBag.Meses= Pago.MesesList();
+
             return View();
         }
 
-        [Authorize(Policy = "EmpleadoOAdministrador")]
+        [Authorize]
         public IActionResult detalle(int id)
         {
             Pago p = new RepositorioPago().GetPago(id);
@@ -47,7 +49,7 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Policy = "EmpleadoOAdministrador")]
+        [Authorize]
         public IActionResult Create(Pago p)
         {
             if (ModelState.IsValid)
@@ -59,13 +61,15 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
                 //
                 RepositorioPago rp = new RepositorioPago();
                 rp.altaPago(p);
+
                 return RedirectToAction(nameof(Index));
             }
             ViewBag.Contratos = rcontratos.GetContratos();
+           
             return View(p);
 
         }
-        [Authorize(Policy = "EmpleadoOAdministrador")]
+        [Authorize]
         public IActionResult multa()
         {
             ViewBag.Contratos = rcontratos.GetContratos();
@@ -73,7 +77,7 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
             return View();
         }
 
-        [Authorize(Policy = "EmpleadoOAdministrador")]
+        [Authorize]
         public IActionResult AgregarMulta(Pago p)
         {
             if (ModelState.IsValid)
@@ -93,7 +97,7 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
 
 
         }
-        [Authorize(Policy = "EmpleadoOAdministrador")]
+        [Authorize]
         public IActionResult Editar(int id)
         {
             ViewBag.Contratos = rcontratos.GetContratos();
@@ -104,7 +108,7 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Policy = "EmpleadoOAdministrador")]
+        [Authorize]
         public IActionResult Editar(Pago p)
         {
             if (ModelState.IsValid)
@@ -121,7 +125,7 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
             ViewBag.Contratos = rcontratos.GetContratos();
             return View(p);
         }
-        [Authorize(Policy = "EmpleadoOAdministrador")]
+        [Authorize]
         public IActionResult AnularPago(int idpago)
         {
             //audit
@@ -133,7 +137,7 @@ namespace InmobiliariaBiolatti_LopezPujato.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Authorize(Policy = "EmpleadoOAdministrador")]
+        [Authorize]
         public IActionResult anular(int? id)
 
         {

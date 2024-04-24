@@ -10,7 +10,7 @@
 <br>
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <table class="table">
             <thead>
                 <tr>
@@ -47,11 +47,8 @@
                         <td>
                             <a asp-action="Editar" asp-route-id="@item.idpago" class="fa-solid fa-pen-to-square"
                                 style="color:blue"></a>
-                            @if (User.IsInRole("Administrador"))
-                            {
                                 <a asp-action="anular" asp-route-id="@item.idpago" class="fa-solid fa-trash"
                                     style="color:red"></a>
-                            }
                             <a asp-action="Detalle" asp-route-id="@item.idpago" class="fa-solid fa-file"
                                 style="color:green"></a>
                         </td>

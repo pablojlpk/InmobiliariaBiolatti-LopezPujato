@@ -15,7 +15,7 @@ public class InquilinoController : Controller
     }
     RepositorioAuditoria ra = new RepositorioAuditoria();
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult Index()
     {
         RepositorioInquilino ri = new RepositorioInquilino();
@@ -24,14 +24,14 @@ public class InquilinoController : Controller
         return View(lista);
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult agregar()
     {
 
         return View();
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult Create(Inquilino i)
     {
         //audit
@@ -45,7 +45,7 @@ public class InquilinoController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult Editar(int id)
     {
         RepositorioInquilino ri = new RepositorioInquilino();
@@ -54,7 +54,7 @@ public class InquilinoController : Controller
 
         return View(inquilino);
     }
-    [Authorize(Policy = "EmpleadoOAdministrador")]
+    [Authorize]
     public IActionResult ModInquilino(Inquilino i)
     {
         //audit
@@ -67,7 +67,7 @@ public class InquilinoController : Controller
         return RedirectToAction(nameof(Index));
     }
     
-    [Authorize(Policy = "Administrador")]
+    [Authorize]
     public IActionResult Eliminar(int id)
     {
         //audit
