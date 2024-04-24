@@ -45,7 +45,7 @@ public class Inmueble
 
     public static List<string> TipoInmueble()
     {
-        List<string> listado = new List<string> { "Casa", "Comercio", "Departamento", "Depósito", "Local", "Terreno" };
+        List<string> listado = new List<string> { "comercial", "residencial","Casa", "Comercio", "Departamento", "Depósito", "Local", "Terreno" };
 
         return listado;
     }
