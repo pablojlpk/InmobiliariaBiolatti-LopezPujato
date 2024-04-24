@@ -115,15 +115,18 @@ public class UsuarioController : Controller
     }
 
     [HttpGet]
+
+
     [Authorize(Policy = "EmpleadoOAdministrador")]
     public ActionResult Perfil(int id)
     {
-
+        var idusuario = Convert.ToInt32(((User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value)));
         ViewBag.Roles = Usuario.ObtenerRoles();
 
-        return View(repusu.GetUsuario(id));
+        return View(repusu.GetUsuario(idusuario));
     }
     [HttpPost]
+
     [Authorize(Policy = "EmpleadoOAdministrador")]
     public ActionResult ModificaPerfil(Usuario u)
     {
@@ -132,7 +135,6 @@ public class UsuarioController : Controller
         var detalle = ra.ArmarDetalle(User.Identity.Name, "Modificar Perfil");
         ra.AltaAuditoria(idus, detalle, " Modulo: usuarios");
         //
-
         RepositorioUsuario ru = new RepositorioUsuario();
 
         ru.ModificarPerfil(u);
