@@ -37,6 +37,10 @@ public class HomeController : Controller
         return View();
     }
 
+public IActionResult Restringido()
+{
+    return View();
+}
 
     public async Task<IActionResult> Login(LoginView usuariologin)
     {
@@ -114,3 +118,4 @@ public class HomeController : Controller
         return View();
     }
 }
+
