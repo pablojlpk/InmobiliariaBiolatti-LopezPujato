@@ -35,6 +35,7 @@ public class InmuebleController : Controller
         ViewBag.Propietarios = rp.GetPropietarios();
 
         ViewBag.tipoinmueble = Inmueble.TipoInmueble();
+        ViewBag.Habita = Inmueble.Habita();
 
         return View();
     }
@@ -67,6 +68,7 @@ public class InmuebleController : Controller
         RepositorioPropietario rprop = new RepositorioPropietario();
         ViewBag.Propietarios = rprop.GetPropietarios();
         ViewBag.tipoinmueble = Inmueble.TipoInmueble();
+        ViewBag.habita = Inmueble.Habita();
         return View(inmueble);
     }
 

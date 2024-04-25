@@ -22,7 +22,7 @@ public class RepositorioInmueble
         using (var connection = new MySqlConnection(ConnectionString))
         {
             //var sql = $"Select * from inmuebles where borrado=0;";
-            var sql = $"Select idinmueble, direccion, ambientes, superficie, latitud, longitud, tipoinmueble, estado, importe, p.idpropietario, p.nombre, p.apellido, p.dni from inmuebles i Inner join propietario p on i.idpropietario=p.idpropietario where i.borrado=0";
+            var sql = $"Select idinmueble, direccion, ambientes, superficie, latitud, longitud, tipoinmueble, habilitado, estado, importe, p.idpropietario, p.nombre, p.apellido, p.dni from inmuebles i Inner join propietario p on i.idpropietario=p.idpropietario where i.borrado=0";
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();
@@ -40,6 +40,7 @@ public class RepositorioInmueble
                             longitud = reader.GetDecimal(nameof(Inmueble.longitud)),
                             idpropietario = reader.GetInt32(nameof(Inmueble.idpropietario)),
                             tipoinmueble = reader.GetString(nameof(Inmueble.tipoinmueble)),
+                            habilitado=reader.GetString(nameof(Inmueble.habilitado)),
                             estado = reader.GetString(nameof(Inmueble.estado)),
                             importe = reader.GetDecimal(nameof(Inmueble.importe)),
 
@@ -69,7 +70,7 @@ public IList<Inmueble> GetInmueblesDisponibles()
         using (var connection = new MySqlConnection(ConnectionString))
         {
             //var sql = $"Select * from inmuebles where borrado=0;";
-            var sql = $"Select idinmueble, direccion, ambientes, superficie, latitud, longitud, tipoinmueble, estado, importe, p.idpropietario, p.nombre, p.apellido, p.dni from inmuebles i Inner join propietario p on i.idpropietario=p.idpropietario where i.borrado=0 and Estado='Disponible'";
+            var sql = $"Select idinmueble, direccion, ambientes, superficie, latitud, longitud, tipoinmueble, estado, habilitado, importe, p.idpropietario, p.nombre, p.apellido, p.dni from inmuebles i Inner join propietario p on i.idpropietario=p.idpropietario where i.borrado=0 and Estado='Disponible'";
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();
@@ -87,6 +88,7 @@ public IList<Inmueble> GetInmueblesDisponibles()
                             longitud = reader.GetDecimal(nameof(Inmueble.longitud)),
                             idpropietario = reader.GetInt32(nameof(Inmueble.idpropietario)),
                             tipoinmueble = reader.GetString(nameof(Inmueble.tipoinmueble)),
+                            habilitado = reader.GetString(nameof(Inmueble.habilitado)),
                             estado = reader.GetString(nameof(Inmueble.estado)),
                             importe=reader.GetDecimal(nameof(Inmueble.importe)),
 
@@ -114,7 +116,7 @@ public IList<Inmueble> GetInmueblesDisponibles()
     {
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = $"INSERT INTO inmuebles (direccion,ambientes,superficie,latitud,longitud,idpropietario, tipoinmueble, estado, importe) VALUES ('{i.direccion}',{i.ambientes},{i.superficie},{i.latitud},{i.longitud},{i.idpropietario}, '{i.tipoinmueble}','Disponible', {i.importe})";
+            var sql = $"INSERT INTO inmuebles (direccion,ambientes,superficie,latitud,longitud,idpropietario, tipoinmueble, habilitado, estado, importe) VALUES ('{i.direccion}',{i.ambientes},{i.superficie},{i.latitud},{i.longitud},{i.idpropietario}, '{i.tipoinmueble}','{i.habilitado}','Disponible', {i.importe})";
             using (var command = new MySqlCommand(sql, connection))
             {
                 connection.Open();
@@ -130,7 +132,7 @@ public IList<Inmueble> GetInmueblesDisponibles()
         Inmueble? inmueble = null;
         using (var connection = new MySqlConnection(ConnectionString))
         {
-            var sql = @$"SELECT i.idinmueble, i.direccion, i.ambientes, i.superficie, i.latitud, i.longitud, i.tipoinmueble, i.estado, i.importe, p.idpropietario, p.nombre, p.apellido, p.dni
+            var sql = @$"SELECT i.idinmueble, i.direccion, i.ambientes, i.superficie, i.latitud, i.longitud, i.tipoinmueble, i.habilitado,i.estado,  i.importe, p.idpropietario, p.nombre, p.apellido, p.dni
         FROM inmuebles i
         INNER JOIN propietario p on p.idpropietario=i.idpropietario
         WHERE i.borrado=false and i.idinmueble = @idinmueble";
@@ -151,6 +153,7 @@ public IList<Inmueble> GetInmueblesDisponibles()
                         longitud = reader.GetDecimal(nameof(Inmueble.longitud)),
                         tipoinmueble = reader.GetString(nameof(Inmueble.tipoinmueble)),
                         idpropietario = reader.GetInt32(nameof(Inmueble.idpropietario)),
+                        habilitado = reader.GetString(nameof(Inmueble.habilitado)),
                         estado=reader.GetString(nameof(Inmueble.estado)),
                         importe=reader.GetDecimal(nameof(Inmueble.importe)),
                         datospropietario = new Propietario
@@ -193,14 +196,12 @@ public IList<Inmueble> GetInmueblesDisponibles()
             var sql=@$"UPDATE inmuebles SET {nameof(Inmueble.direccion)} =@{nameof(Inmueble.direccion)},
             {nameof(Inmueble.latitud)} =@{nameof(Inmueble.latitud)}, {nameof(Inmueble.longitud)} =@{nameof(Inmueble.longitud)},
              {nameof(Inmueble.ambientes)} =@{nameof(Inmueble.ambientes)}, {nameof(Inmueble.superficie)} =@{nameof(Inmueble.superficie)}, 
-             {nameof(Inmueble.idpropietario)} =@{nameof(Inmueble.idpropietario)}, {nameof(Inmueble.tipoinmueble)} =@{nameof(Inmueble.tipoinmueble)}, {nameof(Inmueble.importe)} =@{nameof(Inmueble.importe)}
+             {nameof(Inmueble.idpropietario)} =@{nameof(Inmueble.idpropietario)}, {nameof(Inmueble.tipoinmueble)} =@{nameof(Inmueble.tipoinmueble)},
+             {nameof(Inmueble.habilitado)} =@{nameof(Inmueble.habilitado)},
+              {nameof(Inmueble.importe)} =@{nameof(Inmueble.importe)}
               WHERE {nameof(Inmueble.idinmueble)} =@{nameof(Inmueble.idinmueble)}";
         
-           /*var sql2 = @$"UPDATE inquilino
-            SET {nameof(Inquilino.nombre)} =@{nameof(Inquilino.nombre)}, {nameof(Inquilino.apellido)} =@{nameof(Inquilino.apellido)},
-             {nameof(Inquilino.dni)} =@{nameof(Inquilino.dni)}, {nameof(Inquilino.mail)} =@{nameof(Inquilino.mail)}, 
-             {nameof(Inquilino.clave)} =@{nameof(Inquilino.clave)}
-            WHERE {nameof(Inquilino.idinquilino)} =@{nameof(Inquilino.idinquilino)}";*/
+         
 
             using (var command = new MySqlCommand(sql, connection))
             {
@@ -211,6 +212,7 @@ public IList<Inmueble> GetInmueblesDisponibles()
                 command.Parameters.AddWithValue($"@{nameof(Inmueble.superficie)}", i.superficie);
                 command.Parameters.AddWithValue($"@{nameof(Inmueble.idpropietario)}", i.idpropietario);
                 command.Parameters.AddWithValue($"@{nameof(Inmueble.idinmueble)}", i.idinmueble);
+                command.Parameters.AddWithValue($"@{nameof(Inmueble.habilitado)}", i.habilitado);
                 command.Parameters.AddWithValue($"@{nameof(Inmueble.importe)}", i.importe);
                 command.Parameters.AddWithValue($"@{nameof(Inmueble.tipoinmueble)}", i.tipoinmueble);
                 

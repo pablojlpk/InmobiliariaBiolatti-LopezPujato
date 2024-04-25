@@ -23,6 +23,7 @@
                 <th>P. Base</th>
                 <th>Estado</th>
                 <th>Propietario</th>
+                <th>Habilitado</th>
                 <th>Acciones</th>
 
             <tr>
@@ -49,6 +50,7 @@
                             }
 
                     <td>@item.datospropietario</td>
+                    <td>@item.habilitado</td>
                     <td>
                         <a asp-action="Editar" asp-route-id="@item.idinmueble" class="fa-solid fa-pen-to-square"
                             |style="color:blue"></a>

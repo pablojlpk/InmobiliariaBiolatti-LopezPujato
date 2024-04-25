@@ -4,6 +4,7 @@
     <h1>@ViewData["Title"]</h1>
     var ltaPropietarios = ViewBag.Propietarios;
     var tipoinmueble = ViewBag.TipoInmueble;
+    var habita=ViewBag.Habita;
 }
 
 
@@ -69,6 +70,22 @@
                             </select>
                             <span asp-validation-for="tipoinmueble" class="number text-danger"></span>
                         </div>
+
+                         <div class="form-group">
+                            <label class="control-label">Habilitado</label>
+                            <select asp-for="habilitado" class="form-control" required>
+                                <option value="">Seleccione</option>
+                                @foreach (var item in habita)
+                                {
+                                    <option value="@item">@item</option>
+                                }
+                            </select>
+                            <span asp-validation-for="habilitado" class="number text-danger"></span>
+                        </div>
+
+
+
+
                         <div class="form-group text-center mt-2">
                             <button type="submit" class="btn btn-primary">Guardar</button>
                             <a asp-action="index" class="btn btn-primary">Volver</a>
