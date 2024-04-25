@@ -56,7 +56,7 @@ namespace InmobiliariaBiolatti_LopezPujato.Models
             Pago? pago = null;
             using (var connection = new MySqlConnection(ConnectionString))
             {
-                var sql = $"SELECT {nameof(Pago.idpago)}, {nameof(Pago.idcontrato)}, {nameof(Pago.importe)}, {nameof(Pago.fpago)}, {nameof(Pago.detalle)} FROM PAGOS WHERE idpago = @idpago";
+                var sql = $"SELECT {nameof(Pago.idpago)}, {nameof(Pago.idcontrato)}, {nameof(Pago.importe)}, {nameof(Pago.fpago)}, {nameof(Pago.anulado)}, {nameof(Pago.detalle)} FROM PAGOS WHERE idpago = @idpago";
                 using (var command = new MySqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@idpago", id);
@@ -71,6 +71,7 @@ namespace InmobiliariaBiolatti_LopezPujato.Models
                                 idcontrato = reader.GetInt32(nameof(Pago.idcontrato)),
                                 importe = reader.GetDecimal(nameof(Pago.importe)),
                                 fpago = reader.GetDateTime(nameof(Pago.fpago)),
+                                anulado= reader.GetBoolean(nameof(Pago.anulado)),
                                 detalle = reader.GetString(nameof(Pago.detalle)),
                             };
                         }

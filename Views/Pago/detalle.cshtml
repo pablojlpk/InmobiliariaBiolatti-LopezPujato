@@ -32,7 +32,14 @@
     <p><strong>Fecha Desde:</strong> @Model.datosContrato?.fdesde</p>
     <p><strong>Fecha Hasta:</strong> @Model.datosContrato?.fhasta</p>
     <p><strong>Detalle</strong> @Model.detalle</p>
-
+ @if (@Model.anulado == false)
+                        {
+                            <p></p>
+                        }
+                        else
+                        {
+                            <p style="color:red; font-weight:bold"><strong>Estado:</strong> Anulado</p>
+                        }
 </div>
 
 <a asp-action="Index" class="btn btn-primary">Volver</a>
