@@ -346,6 +346,19 @@ public class UsuarioController : Controller
     }
 
 
+ [Authorize(Policy = "Administrador")]
+ public IActionResult Baja(int id)
+    {
+        //audit
+        var idus = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value);
+        var detalle = ra.ArmarDetalle(User.Identity.Name, "Baja");
+        ra.AltaAuditoria(idus, detalle, " Modulo: Usuarios");
+        //
+        RepositorioUsuario ru = new RepositorioUsuario();
+
+        ru.Baja(id);
+        return RedirectToAction(nameof(Index));
+    }
 
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -239,4 +239,25 @@ public Usuario ModificarPerfil(Usuario usuario){
     return usuario;
 }
 
+public int Baja(int idusuario)
+    {
+        var res = -1;
+        using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+        {
+            var sql = @$"UPDATE usuarios
+            SET borrado = true
+            WHERE {nameof(Usuario.IdUsuario)} =@{nameof(Usuario.IdUsuario)}";
+
+            
+
+            using (MySqlCommand command = new MySqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue($"@{nameof(Usuario.IdUsuario)}", idusuario);
+                connection.Open();
+                res = Convert.ToInt32(command.ExecuteScalar());
+                connection.Close();
+            }
+        }
+        return res;
+    }       
 }

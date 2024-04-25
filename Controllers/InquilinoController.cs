@@ -67,7 +67,7 @@ public class InquilinoController : Controller
         return RedirectToAction(nameof(Index));
     }
     
-    [Authorize]
+    [Authorize(Policy = "Administrador")]
     public IActionResult Eliminar(int id)
     {
         //audit

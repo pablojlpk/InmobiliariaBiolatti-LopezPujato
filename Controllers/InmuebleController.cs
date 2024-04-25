@@ -53,7 +53,6 @@ public class InmuebleController : Controller
 
             RepositorioInmueble ri = new RepositorioInmueble();
             var res = ri.AltaInmueble(i);
-
             return RedirectToAction(nameof(Index));
         }
 
@@ -84,6 +83,7 @@ public class InmuebleController : Controller
         ri.ModificaInmueble(i);
         return RedirectToAction(nameof(Index));
     }
+    
     [Authorize(Policy = "Administrador")]
     public IActionResult Baja(int id)
     {
