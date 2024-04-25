@@ -258,7 +258,7 @@ public class UsuarioController : Controller
             RedirectToAction(nameof(CambioAvatar));
         }
 
-        return View(usuario);
+     return View(repusu.GetUsuario(id));
     }
 
 
